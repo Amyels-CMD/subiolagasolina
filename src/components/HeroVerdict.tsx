@@ -15,7 +15,7 @@ export function HeroVerdict({ summary }: HeroVerdictProps) {
   const isUnchanged = summary.isUnchanged;
 
   return (
-    <section className="relative pt-6 pb-12 sm:pt-10 sm:pb-16 text-center">
+    <section id="veredicto-principal" className="relative pt-6 pb-12 sm:pt-10 sm:pb-16 text-center">
       {/* Background glow orb */}
       <div
         className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-[500px] h-72 sm:h-[350px] rounded-full blur-[100px] pointer-events-none -z-10 ${

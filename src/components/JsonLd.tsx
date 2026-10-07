@@ -77,6 +77,25 @@ export function JsonLd({ summary }: JsonLdProps) {
     })),
   };
 
+  // 4. WebPage with Speakable Specification (Google Assistant / Voice Search)
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "¿Subió la gasolina en República Dominicana esta semana?",
+    url: baseUrl,
+    inLanguage: "es-DO",
+    description: `Consulta oficial en tiempo real de combustibles en RD. ${headlineVerdict}. ${subVerdict}`,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["#veredicto-principal", "#resumen-rapido"],
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "SubióLaGasolina",
+      url: baseUrl,
+    },
+  };
+
   return (
     <>
       <script
@@ -90,6 +109,10 @@ export function JsonLd({ summary }: JsonLdProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
       />
     </>
   );
