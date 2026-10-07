@@ -128,7 +128,7 @@ export function HistoricalTable({ history }: HistoricalTableProps) {
             </thead>
             <tbody className="divide-y divide-white/5 font-mono">
               {displayed.map((rec) => (
-                <tr key={rec.weekId} className="hover:bg-white/[0.02] transition-colors">
+                <tr key={`${rec.weekId}-${rec.startDate}`} className="hover:bg-white/[0.02] transition-colors">
                   <td className="py-3 px-3 font-sans text-slate-200 font-medium">
                     {rec.dateLabel}
                   </td>

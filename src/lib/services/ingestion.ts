@@ -37,8 +37,17 @@ const MONTH_MAP: Record<string, string> = {
 
 const MONTH_NAMES = [
   "enero", "febrero", "marzo", "abril", "mayo", "junio",
-  "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
 ];
+
+function getIsoWeek(dateStr: string) {
+  const [y, m, d] = dateStr.split("-").map(Number);
+  const date = new Date(Date.UTC(y, m - 1, d));
+  const dayNum = date.getUTCDay() || 7;
+  date.setUTCDate(date.getUTCDate() + 4 - dayNum);
+  const yearStart = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+  const weekNo = Math.ceil(((date.getTime() - yearStart.getTime()) / 86400000 + 1) / 7);
+  return { year: date.getUTCFullYear(), week: weekNo };
+}
 
 export async function syncFuelData(): Promise<SyncResult> {
   const currentHistory = getAllHistory();
@@ -126,10 +135,13 @@ export async function syncFuelData(): Promise<SyncResult> {
       }
       const endDate = `${endYear}-${endMonth}-${padDiaHasta}`;
 
+      const iso = getIsoWeek(startDate);
+      const weekId = `${iso.year}-W${String(iso.week).padStart(2, "0")}`;
+
       remoteWeeks.push({
-        weekId: `${anio}-W${String(Math.ceil((i % 52) + 1)).padStart(2, "0")}`,
-        year: anio,
-        weekNumber: Math.ceil((i % 52) + 1),
+        weekId,
+        year: iso.year,
+        weekNumber: iso.week,
         startDate,
         endDate,
         dateLabel: `${diaDesde} al ${diaHasta} de ${MONTH_NAMES[mesIndex]} de ${anio}`,

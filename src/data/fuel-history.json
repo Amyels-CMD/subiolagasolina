@@ -1,8 +1,8 @@
 [
   {
-    "weekId": "2020-W08",
+    "weekId": "2020-W01",
     "year": 2020,
-    "weekNumber": 8,
+    "weekNumber": 1,
     "startDate": "2020-01-01",
     "endDate": "2020-01-07",
     "dateLabel": "1 al 7 de enero de 2020",
@@ -23,9 +23,9 @@
     }
   },
   {
-    "weekId": "2020-W04",
+    "weekId": "2020-W01-2020-01-04",
     "year": 2020,
-    "weekNumber": 4,
+    "weekNumber": 1,
     "startDate": "2020-01-04",
     "endDate": "2020-01-10",
     "dateLabel": "4 al 10 de enero de 2020",
@@ -46,9 +46,9 @@
     }
   },
   {
-    "weekId": "2020-W05",
+    "weekId": "2020-W02",
     "year": 2020,
-    "weekNumber": 5,
+    "weekNumber": 2,
     "startDate": "2020-01-11",
     "endDate": "2020-01-17",
     "dateLabel": "11 al 17 de enero de 2020",
@@ -69,9 +69,9 @@
     }
   },
   {
-    "weekId": "2020-W06",
+    "weekId": "2020-W03",
     "year": 2020,
-    "weekNumber": 6,
+    "weekNumber": 3,
     "startDate": "2020-01-18",
     "endDate": "2020-01-24",
     "dateLabel": "18 al 24 de enero de 2020",
@@ -92,9 +92,9 @@
     }
   },
   {
-    "weekId": "2020-W07",
+    "weekId": "2020-W04",
     "year": 2020,
-    "weekNumber": 7,
+    "weekNumber": 4,
     "startDate": "2020-01-25",
     "endDate": "2020-01-31",
     "dateLabel": "25 al 31 de enero de 2020",
@@ -115,9 +115,9 @@
     }
   },
   {
-    "weekId": "2020-W03",
+    "weekId": "2020-W05",
     "year": 2020,
-    "weekNumber": 3,
+    "weekNumber": 5,
     "startDate": "2020-01-28",
     "endDate": "2020-02-03",
     "dateLabel": "28 al 3 de enero de 2020",
@@ -138,9 +138,9 @@
     }
   },
   {
-    "weekId": "2020-W09",
+    "weekId": "2020-W06",
     "year": 2020,
-    "weekNumber": 9,
+    "weekNumber": 6,
     "startDate": "2020-02-08",
     "endDate": "2020-02-14",
     "dateLabel": "8 al 14 de febrero de 2020",
@@ -161,9 +161,9 @@
     }
   },
   {
-    "weekId": "2020-W10",
+    "weekId": "2020-W07",
     "year": 2020,
-    "weekNumber": 10,
+    "weekNumber": 7,
     "startDate": "2020-02-15",
     "endDate": "2020-02-21",
     "dateLabel": "15 al 21 de febrero de 2020",
@@ -184,9 +184,9 @@
     }
   },
   {
-    "weekId": "2020-W11",
+    "weekId": "2020-W08",
     "year": 2020,
-    "weekNumber": 11,
+    "weekNumber": 8,
     "startDate": "2020-02-22",
     "endDate": "2020-02-28",
     "dateLabel": "22 al 28 de febrero de 2020",
@@ -207,9 +207,9 @@
     }
   },
   {
-    "weekId": "2020-W13",
+    "weekId": "2020-W10",
     "year": 2020,
-    "weekNumber": 13,
+    "weekNumber": 10,
     "startDate": "2020-03-07",
     "endDate": "2020-03-13",
     "dateLabel": "7 al 13 de marzo de 2020",
@@ -230,9 +230,9 @@
     }
   },
   {
-    "weekId": "2020-W14",
+    "weekId": "2020-W11",
     "year": 2020,
-    "weekNumber": 14,
+    "weekNumber": 11,
     "startDate": "2020-03-14",
     "endDate": "2020-03-20",
     "dateLabel": "14 al 20 de marzo de 2020",
@@ -253,9 +253,9 @@
     }
   },
   {
-    "weekId": "2020-W15",
+    "weekId": "2020-W12",
     "year": 2020,
-    "weekNumber": 15,
+    "weekNumber": 12,
     "startDate": "2020-03-21",
     "endDate": "2020-03-27",
     "dateLabel": "21 al 27 de marzo de 2020",
@@ -276,9 +276,9 @@
     }
   },
   {
-    "weekId": "2020-W12",
+    "weekId": "2020-W13",
     "year": 2020,
-    "weekNumber": 12,
+    "weekNumber": 13,
     "startDate": "2020-03-29",
     "endDate": "2020-04-06",
     "dateLabel": "29 al 6 de marzo de 2020",
@@ -299,9 +299,9 @@
     }
   },
   {
-    "weekId": "2020-W17",
+    "weekId": "2020-W14",
     "year": 2020,
-    "weekNumber": 17,
+    "weekNumber": 14,
     "startDate": "2020-04-04",
     "endDate": "2020-04-10",
     "dateLabel": "4 al 10 de abril de 2020",
@@ -322,9 +322,9 @@
     }
   },
   {
-    "weekId": "2020-W18",
+    "weekId": "2020-W15",
     "year": 2020,
-    "weekNumber": 18,
+    "weekNumber": 15,
     "startDate": "2020-04-11",
     "endDate": "2020-04-17",
     "dateLabel": "11 al 17 de abril de 2020",
@@ -345,9 +345,9 @@
     }
   },
   {
-    "weekId": "2020-W19",
+    "weekId": "2020-W16",
     "year": 2020,
-    "weekNumber": 19,
+    "weekNumber": 16,
     "startDate": "2020-04-18",
     "endDate": "2020-04-24",
     "dateLabel": "18 al 24 de abril de 2020",
@@ -368,9 +368,9 @@
     }
   },
   {
-    "weekId": "2020-W16",
+    "weekId": "2020-W18",
     "year": 2020,
-    "weekNumber": 16,
+    "weekNumber": 18,
     "startDate": "2020-04-28",
     "endDate": "2020-05-03",
     "dateLabel": "28 al 3 de abril de 2020",
@@ -391,9 +391,9 @@
     }
   },
   {
-    "weekId": "2020-W21",
+    "weekId": "2020-W18-2020-05-02",
     "year": 2020,
-    "weekNumber": 21,
+    "weekNumber": 18,
     "startDate": "2020-05-02",
     "endDate": "2020-05-08",
     "dateLabel": "2 al 8 de mayo de 2020",
@@ -414,9 +414,9 @@
     }
   },
   {
-    "weekId": "2020-W22",
+    "weekId": "2020-W19",
     "year": 2020,
-    "weekNumber": 22,
+    "weekNumber": 19,
     "startDate": "2020-05-09",
     "endDate": "2020-05-15",
     "dateLabel": "9 al 15 de mayo de 2020",
@@ -437,9 +437,9 @@
     }
   },
   {
-    "weekId": "2020-W23",
+    "weekId": "2020-W20",
     "year": 2020,
-    "weekNumber": 23,
+    "weekNumber": 20,
     "startDate": "2020-05-16",
     "endDate": "2020-05-22",
     "dateLabel": "16 al 22 de mayo de 2020",
@@ -460,9 +460,9 @@
     }
   },
   {
-    "weekId": "2020-W24",
+    "weekId": "2020-W21",
     "year": 2020,
-    "weekNumber": 24,
+    "weekNumber": 21,
     "startDate": "2020-05-23",
     "endDate": "2020-05-29",
     "dateLabel": "23 al 29 de mayo de 2020",
@@ -483,9 +483,9 @@
     }
   },
   {
-    "weekId": "2020-W20",
+    "weekId": "2020-W22",
     "year": 2020,
-    "weekNumber": 20,
+    "weekNumber": 22,
     "startDate": "2020-05-25",
     "endDate": "2020-06-01",
     "dateLabel": "25 al 1 de mayo de 2020",
@@ -506,9 +506,9 @@
     }
   },
   {
-    "weekId": "2020-W26",
+    "weekId": "2020-W23",
     "year": 2020,
-    "weekNumber": 26,
+    "weekNumber": 23,
     "startDate": "2020-06-06",
     "endDate": "2020-06-12",
     "dateLabel": "6 al 12 de junio de 2020",
@@ -529,9 +529,9 @@
     }
   },
   {
-    "weekId": "2020-W27",
+    "weekId": "2020-W24",
     "year": 2020,
-    "weekNumber": 27,
+    "weekNumber": 24,
     "startDate": "2020-06-13",
     "endDate": "2020-06-19",
     "dateLabel": "13 al 19 de junio de 2020",
@@ -552,9 +552,9 @@
     }
   },
   {
-    "weekId": "2020-W28",
+    "weekId": "2020-W25",
     "year": 2020,
-    "weekNumber": 28,
+    "weekNumber": 25,
     "startDate": "2020-06-20",
     "endDate": "2020-06-26",
     "dateLabel": "20 al 26 de junio de 2020",
@@ -575,9 +575,9 @@
     }
   },
   {
-    "weekId": "2020-W29",
+    "weekId": "2020-W26",
     "year": 2020,
-    "weekNumber": 29,
+    "weekNumber": 26,
     "startDate": "2020-06-27",
     "endDate": "2020-07-03",
     "dateLabel": "27 al 3 de junio de 2020",
@@ -598,9 +598,9 @@
     }
   },
   {
-    "weekId": "2020-W25",
+    "weekId": "2020-W27",
     "year": 2020,
-    "weekNumber": 25,
+    "weekNumber": 27,
     "startDate": "2020-06-30",
     "endDate": "2020-07-05",
     "dateLabel": "30 al 5 de junio de 2020",
@@ -621,9 +621,9 @@
     }
   },
   {
-    "weekId": "2020-W30",
+    "weekId": "2020-W27-2020-07-04",
     "year": 2020,
-    "weekNumber": 30,
+    "weekNumber": 27,
     "startDate": "2020-07-04",
     "endDate": "2020-07-10",
     "dateLabel": "4 al 10 de julio de 2020",
@@ -644,9 +644,9 @@
     }
   },
   {
-    "weekId": "2020-W31",
+    "weekId": "2020-W28",
     "year": 2020,
-    "weekNumber": 31,
+    "weekNumber": 28,
     "startDate": "2020-07-11",
     "endDate": "2020-07-17",
     "dateLabel": "11 al 17 de julio de 2020",
@@ -667,9 +667,9 @@
     }
   },
   {
-    "weekId": "2020-W32",
+    "weekId": "2020-W29",
     "year": 2020,
-    "weekNumber": 32,
+    "weekNumber": 29,
     "startDate": "2020-07-18",
     "endDate": "2020-07-24",
     "dateLabel": "18 al 24 de julio de 2020",
@@ -690,9 +690,9 @@
     }
   },
   {
-    "weekId": "2020-W33",
+    "weekId": "2020-W30",
     "year": 2020,
-    "weekNumber": 33,
+    "weekNumber": 30,
     "startDate": "2020-07-25",
     "endDate": "2020-07-31",
     "dateLabel": "25 al 31 de julio de 2020",
@@ -713,9 +713,9 @@
     }
   },
   {
-    "weekId": "2020-W34",
+    "weekId": "2020-W31",
     "year": 2020,
-    "weekNumber": 34,
+    "weekNumber": 31,
     "startDate": "2020-08-01",
     "endDate": "2020-08-07",
     "dateLabel": "1 al 7 de agosto de 2020",
@@ -736,9 +736,9 @@
     }
   },
   {
-    "weekId": "2020-W35",
+    "weekId": "2020-W32",
     "year": 2020,
-    "weekNumber": 35,
+    "weekNumber": 32,
     "startDate": "2020-08-08",
     "endDate": "2020-08-14",
     "dateLabel": "8 al 14 de agosto de 2020",
@@ -759,9 +759,9 @@
     }
   },
   {
-    "weekId": "2020-W36",
+    "weekId": "2020-W33",
     "year": 2020,
-    "weekNumber": 36,
+    "weekNumber": 33,
     "startDate": "2020-08-15",
     "endDate": "2020-08-21",
     "dateLabel": "15 al 21 de agosto de 2020",
@@ -782,9 +782,9 @@
     }
   },
   {
-    "weekId": "2020-W37",
+    "weekId": "2020-W34",
     "year": 2020,
-    "weekNumber": 37,
+    "weekNumber": 34,
     "startDate": "2020-08-22",
     "endDate": "2020-08-28",
     "dateLabel": "22 al 28 de agosto de 2020",
@@ -805,9 +805,9 @@
     }
   },
   {
-    "weekId": "2020-W39",
+    "weekId": "2020-W36",
     "year": 2020,
-    "weekNumber": 39,
+    "weekNumber": 36,
     "startDate": "2020-09-05",
     "endDate": "2020-09-11",
     "dateLabel": "5 al 11 de septiembre de 2020",
@@ -828,9 +828,9 @@
     }
   },
   {
-    "weekId": "2020-W40",
+    "weekId": "2020-W37",
     "year": 2020,
-    "weekNumber": 40,
+    "weekNumber": 37,
     "startDate": "2020-09-12",
     "endDate": "2020-09-18",
     "dateLabel": "12 al 18 de septiembre de 2020",
@@ -851,9 +851,9 @@
     }
   },
   {
-    "weekId": "2020-W41",
+    "weekId": "2020-W38",
     "year": 2020,
-    "weekNumber": 41,
+    "weekNumber": 38,
     "startDate": "2020-09-19",
     "endDate": "2020-09-25",
     "dateLabel": "19 al 25 de septiembre de 2020",
@@ -874,9 +874,9 @@
     }
   },
   {
-    "weekId": "2020-W42",
+    "weekId": "2020-W39",
     "year": 2020,
-    "weekNumber": 42,
+    "weekNumber": 39,
     "startDate": "2020-09-26",
     "endDate": "2020-10-02",
     "dateLabel": "26 al 2 de septiembre de 2020",
@@ -897,9 +897,9 @@
     }
   },
   {
-    "weekId": "2020-W38",
+    "weekId": "2020-W40",
     "year": 2020,
-    "weekNumber": 38,
+    "weekNumber": 40,
     "startDate": "2020-09-29",
     "endDate": "2020-10-04",
     "dateLabel": "29 al 4 de septiembre de 2020",
@@ -920,9 +920,9 @@
     }
   },
   {
-    "weekId": "2020-W43",
+    "weekId": "2020-W40-2020-10-03",
     "year": 2020,
-    "weekNumber": 43,
+    "weekNumber": 40,
     "startDate": "2020-10-03",
     "endDate": "2020-10-09",
     "dateLabel": "3 al 9 de octubre de 2020",
@@ -943,9 +943,9 @@
     }
   },
   {
-    "weekId": "2020-W44",
+    "weekId": "2020-W41",
     "year": 2020,
-    "weekNumber": 44,
+    "weekNumber": 41,
     "startDate": "2020-10-10",
     "endDate": "2020-10-16",
     "dateLabel": "10 al 16 de octubre de 2020",
@@ -966,9 +966,9 @@
     }
   },
   {
-    "weekId": "2020-W45",
+    "weekId": "2020-W42",
     "year": 2020,
-    "weekNumber": 45,
+    "weekNumber": 42,
     "startDate": "2020-10-17",
     "endDate": "2020-10-23",
     "dateLabel": "17 al 23 de octubre de 2020",
@@ -989,9 +989,9 @@
     }
   },
   {
-    "weekId": "2020-W46",
+    "weekId": "2020-W43",
     "year": 2020,
-    "weekNumber": 46,
+    "weekNumber": 43,
     "startDate": "2020-10-24",
     "endDate": "2020-10-30",
     "dateLabel": "24 al 30 de octubre de 2020",
@@ -1012,9 +1012,9 @@
     }
   },
   {
-    "weekId": "2020-W48",
+    "weekId": "2020-W45",
     "year": 2020,
-    "weekNumber": 48,
+    "weekNumber": 45,
     "startDate": "2020-11-07",
     "endDate": "2020-11-13",
     "dateLabel": "7 al 13 de noviembre de 2020",
@@ -1035,9 +1035,9 @@
     }
   },
   {
-    "weekId": "2020-W49",
+    "weekId": "2020-W46",
     "year": 2020,
-    "weekNumber": 49,
+    "weekNumber": 46,
     "startDate": "2020-11-14",
     "endDate": "2020-11-20",
     "dateLabel": "14 al 20 de noviembre de 2020",
@@ -1058,9 +1058,9 @@
     }
   },
   {
-    "weekId": "2020-W50",
+    "weekId": "2020-W47",
     "year": 2020,
-    "weekNumber": 50,
+    "weekNumber": 47,
     "startDate": "2020-11-21",
     "endDate": "2020-11-27",
     "dateLabel": "21 al 27 de noviembre de 2020",
@@ -1081,9 +1081,9 @@
     }
   },
   {
-    "weekId": "2020-W51",
+    "weekId": "2020-W48",
     "year": 2020,
-    "weekNumber": 51,
+    "weekNumber": 48,
     "startDate": "2020-11-28",
     "endDate": "2020-12-04",
     "dateLabel": "28 al 4 de noviembre de 2020",
@@ -1104,9 +1104,9 @@
     }
   },
   {
-    "weekId": "2020-W47",
+    "weekId": "2020-W49",
     "year": 2020,
-    "weekNumber": 47,
+    "weekNumber": 49,
     "startDate": "2020-11-31",
     "endDate": "2020-12-06",
     "dateLabel": "31 al 6 de noviembre de 2020",
@@ -1127,9 +1127,9 @@
     }
   },
   {
-    "weekId": "2020-W52",
+    "weekId": "2020-W49-2020-12-05",
     "year": 2020,
-    "weekNumber": 52,
+    "weekNumber": 49,
     "startDate": "2020-12-05",
     "endDate": "2020-12-11",
     "dateLabel": "5 al 11 de diciembre de 2020",
@@ -1150,9 +1150,9 @@
     }
   },
   {
-    "weekId": "2020-W01",
+    "weekId": "2020-W50",
     "year": 2020,
-    "weekNumber": 1,
+    "weekNumber": 50,
     "startDate": "2020-12-12",
     "endDate": "2020-12-18",
     "dateLabel": "12 al 18 de diciembre de 2020",
@@ -1173,9 +1173,9 @@
     }
   },
   {
-    "weekId": "2020-W02",
+    "weekId": "2020-W51",
     "year": 2020,
-    "weekNumber": 2,
+    "weekNumber": 51,
     "startDate": "2020-12-19",
     "endDate": "2020-12-25",
     "dateLabel": "19 al 25 de diciembre de 2020",
@@ -1196,9 +1196,9 @@
     }
   },
   {
-    "weekId": "2020-W03",
+    "weekId": "2020-W52",
     "year": 2020,
-    "weekNumber": 3,
+    "weekNumber": 52,
     "startDate": "2020-12-26",
     "endDate": "2021-01-01",
     "dateLabel": "26 al 1 de diciembre de 2020",
@@ -1219,9 +1219,9 @@
     }
   },
   {
-    "weekId": "2021-W04",
-    "year": 2021,
-    "weekNumber": 4,
+    "weekId": "2020-W53",
+    "year": 2020,
+    "weekNumber": 53,
     "startDate": "2021-01-02",
     "endDate": "2021-01-08",
     "dateLabel": "2 al 8 de enero de 2021",
@@ -1242,9 +1242,9 @@
     }
   },
   {
-    "weekId": "2021-W05",
+    "weekId": "2021-W01",
     "year": 2021,
-    "weekNumber": 5,
+    "weekNumber": 1,
     "startDate": "2021-01-09",
     "endDate": "2021-01-15",
     "dateLabel": "9 al 15 de enero de 2021",
@@ -1265,9 +1265,9 @@
     }
   },
   {
-    "weekId": "2021-W06",
+    "weekId": "2021-W02",
     "year": 2021,
-    "weekNumber": 6,
+    "weekNumber": 2,
     "startDate": "2021-01-16",
     "endDate": "2021-01-22",
     "dateLabel": "16 al 22 de enero de 2021",
@@ -1288,9 +1288,9 @@
     }
   },
   {
-    "weekId": "2021-W07",
+    "weekId": "2021-W03",
     "year": 2021,
-    "weekNumber": 7,
+    "weekNumber": 3,
     "startDate": "2021-01-23",
     "endDate": "2021-01-29",
     "dateLabel": "23 al 29 de enero de 2021",
@@ -1311,9 +1311,9 @@
     }
   },
   {
-    "weekId": "2021-W09",
+    "weekId": "2021-W05",
     "year": 2021,
-    "weekNumber": 9,
+    "weekNumber": 5,
     "startDate": "2021-02-06",
     "endDate": "2021-02-12",
     "dateLabel": "6 al 12 de febrero de 2021",
@@ -1334,9 +1334,9 @@
     }
   },
   {
-    "weekId": "2021-W10",
+    "weekId": "2021-W06",
     "year": 2021,
-    "weekNumber": 10,
+    "weekNumber": 6,
     "startDate": "2021-02-13",
     "endDate": "2021-02-19",
     "dateLabel": "13 al 19 de febrero de 2021",
@@ -1357,9 +1357,9 @@
     }
   },
   {
-    "weekId": "2021-W11",
+    "weekId": "2021-W07",
     "year": 2021,
-    "weekNumber": 11,
+    "weekNumber": 7,
     "startDate": "2021-02-20",
     "endDate": "2021-02-26",
     "dateLabel": "20 al 26 de febrero de 2021",
@@ -1380,9 +1380,9 @@
     }
   },
   {
-    "weekId": "2021-W08",
+    "weekId": "2021-W09",
     "year": 2021,
-    "weekNumber": 8,
+    "weekNumber": 9,
     "startDate": "2021-02-30",
     "endDate": "2021-03-05",
     "dateLabel": "30 al 5 de febrero de 2021",
@@ -1403,9 +1403,9 @@
     }
   },
   {
-    "weekId": "2021-W13",
+    "weekId": "2021-W09-2021-03-06",
     "year": 2021,
-    "weekNumber": 13,
+    "weekNumber": 9,
     "startDate": "2021-03-06",
     "endDate": "2021-03-12",
     "dateLabel": "6 al 12 de marzo de 2021",
@@ -1426,9 +1426,9 @@
     }
   },
   {
-    "weekId": "2021-W14",
+    "weekId": "2021-W10",
     "year": 2021,
-    "weekNumber": 14,
+    "weekNumber": 10,
     "startDate": "2021-03-13",
     "endDate": "2021-03-19",
     "dateLabel": "13 al 19 de marzo de 2021",
@@ -1449,9 +1449,9 @@
     }
   },
   {
-    "weekId": "2021-W15",
+    "weekId": "2021-W11",
     "year": 2021,
-    "weekNumber": 15,
+    "weekNumber": 11,
     "startDate": "2021-03-20",
     "endDate": "2021-03-26",
     "dateLabel": "20 al 26 de marzo de 2021",
@@ -1476,29 +1476,6 @@
     "year": 2021,
     "weekNumber": 12,
     "startDate": "2021-03-27",
-    "endDate": "2021-04-05",
-    "dateLabel": "27 al 5 de marzo de 2021",
-    "shortDateLabel": "27-5 MAR",
-    "announcementDate": "2021-03-26",
-    "source": "Ministerio de Industria, Comercio y Mipymes (MICM)",
-    "prices": {
-      "gasolina-premium": 242,
-      "gasolina-regular": 229,
-      "gasoil-optimo": 198,
-      "gasoil-regular": 182,
-      "glp": 128,
-      "gas-natural": 43.97,
-      "avtur": 143,
-      "kerosene": 169,
-      "fuel-oil-6": 125,
-      "fuel-oil-1s": 143
-    }
-  },
-  {
-    "weekId": "2021-W16",
-    "year": 2021,
-    "weekNumber": 16,
-    "startDate": "2021-03-27",
     "endDate": "2021-04-02",
     "dateLabel": "27 al 2 de marzo de 2021",
     "shortDateLabel": "27-2 MAR",
@@ -1518,9 +1495,9 @@
     }
   },
   {
-    "weekId": "2021-W17",
+    "weekId": "2021-W13",
     "year": 2021,
-    "weekNumber": 17,
+    "weekNumber": 13,
     "startDate": "2021-04-03",
     "endDate": "2021-04-09",
     "dateLabel": "3 al 9 de abril de 2021",
@@ -1541,9 +1518,9 @@
     }
   },
   {
-    "weekId": "2021-W18",
+    "weekId": "2021-W14",
     "year": 2021,
-    "weekNumber": 18,
+    "weekNumber": 14,
     "startDate": "2021-04-10",
     "endDate": "2021-04-16",
     "dateLabel": "10 al 16 de abril de 2021",
@@ -1564,9 +1541,9 @@
     }
   },
   {
-    "weekId": "2021-W19",
+    "weekId": "2021-W15",
     "year": 2021,
-    "weekNumber": 19,
+    "weekNumber": 15,
     "startDate": "2021-04-17",
     "endDate": "2021-04-23",
     "dateLabel": "17 al 23 de abril de 2021",
@@ -1587,9 +1564,9 @@
     }
   },
   {
-    "weekId": "2021-W20",
+    "weekId": "2021-W16",
     "year": 2021,
-    "weekNumber": 20,
+    "weekNumber": 16,
     "startDate": "2021-04-24",
     "endDate": "2021-04-30",
     "dateLabel": "24 al 30 de abril de 2021",
@@ -1610,9 +1587,9 @@
     }
   },
   {
-    "weekId": "2021-W21",
+    "weekId": "2021-W17",
     "year": 2021,
-    "weekNumber": 21,
+    "weekNumber": 17,
     "startDate": "2021-05-01",
     "endDate": "2021-05-07",
     "dateLabel": "1 al 7 de mayo de 2021",
@@ -1633,9 +1610,9 @@
     }
   },
   {
-    "weekId": "2021-W22",
+    "weekId": "2021-W18",
     "year": 2021,
-    "weekNumber": 22,
+    "weekNumber": 18,
     "startDate": "2021-05-08",
     "endDate": "2021-05-14",
     "dateLabel": "8 al 14 de mayo de 2021",
@@ -1656,9 +1633,9 @@
     }
   },
   {
-    "weekId": "2021-W23",
+    "weekId": "2021-W19",
     "year": 2021,
-    "weekNumber": 23,
+    "weekNumber": 19,
     "startDate": "2021-05-15",
     "endDate": "2021-05-21",
     "dateLabel": "15 al 21 de mayo de 2021",
@@ -1679,9 +1656,9 @@
     }
   },
   {
-    "weekId": "2021-W24",
+    "weekId": "2021-W20",
     "year": 2021,
-    "weekNumber": 24,
+    "weekNumber": 20,
     "startDate": "2021-05-22",
     "endDate": "2021-05-28",
     "dateLabel": "22 al 28 de mayo de 2021",
@@ -1702,9 +1679,9 @@
     }
   },
   {
-    "weekId": "2021-W26",
+    "weekId": "2021-W22",
     "year": 2021,
-    "weekNumber": 26,
+    "weekNumber": 22,
     "startDate": "2021-06-05",
     "endDate": "2021-06-11",
     "dateLabel": "5 al 11 de junio de 2021",
@@ -1725,9 +1702,9 @@
     }
   },
   {
-    "weekId": "2021-W27",
+    "weekId": "2021-W23",
     "year": 2021,
-    "weekNumber": 27,
+    "weekNumber": 23,
     "startDate": "2021-06-12",
     "endDate": "2021-06-18",
     "dateLabel": "12 al 18 de junio de 2021",
@@ -1748,9 +1725,9 @@
     }
   },
   {
-    "weekId": "2021-W28",
+    "weekId": "2021-W24",
     "year": 2021,
-    "weekNumber": 28,
+    "weekNumber": 24,
     "startDate": "2021-06-19",
     "endDate": "2021-06-25",
     "dateLabel": "19 al 25 de junio de 2021",
@@ -1771,9 +1748,9 @@
     }
   },
   {
-    "weekId": "2021-W29",
+    "weekId": "2021-W25",
     "year": 2021,
-    "weekNumber": 29,
+    "weekNumber": 25,
     "startDate": "2021-06-26",
     "endDate": "2021-07-02",
     "dateLabel": "26 al 2 de junio de 2021",
@@ -1794,9 +1771,9 @@
     }
   },
   {
-    "weekId": "2021-W25",
+    "weekId": "2021-W26",
     "year": 2021,
-    "weekNumber": 25,
+    "weekNumber": 26,
     "startDate": "2021-06-29",
     "endDate": "2021-07-04",
     "dateLabel": "29 al 4 de junio de 2021",
@@ -1817,9 +1794,9 @@
     }
   },
   {
-    "weekId": "2021-W30",
+    "weekId": "2021-W26-2021-07-03",
     "year": 2021,
-    "weekNumber": 30,
+    "weekNumber": 26,
     "startDate": "2021-07-03",
     "endDate": "2021-07-09",
     "dateLabel": "3 al 9 de julio de 2021",
@@ -1840,9 +1817,9 @@
     }
   },
   {
-    "weekId": "2021-W31",
+    "weekId": "2021-W27",
     "year": 2021,
-    "weekNumber": 31,
+    "weekNumber": 27,
     "startDate": "2021-07-10",
     "endDate": "2021-07-16",
     "dateLabel": "10 al 16 de julio de 2021",
@@ -1863,9 +1840,9 @@
     }
   },
   {
-    "weekId": "2021-W32",
+    "weekId": "2021-W28",
     "year": 2021,
-    "weekNumber": 32,
+    "weekNumber": 28,
     "startDate": "2021-07-17",
     "endDate": "2021-07-23",
     "dateLabel": "17 al 23 de julio de 2021",
@@ -1886,9 +1863,9 @@
     }
   },
   {
-    "weekId": "2021-W33",
+    "weekId": "2021-W29",
     "year": 2021,
-    "weekNumber": 33,
+    "weekNumber": 29,
     "startDate": "2021-07-24",
     "endDate": "2021-07-30",
     "dateLabel": "24 al 30 de julio de 2021",
@@ -1909,9 +1886,9 @@
     }
   },
   {
-    "weekId": "2021-W35",
+    "weekId": "2021-W31",
     "year": 2021,
-    "weekNumber": 35,
+    "weekNumber": 31,
     "startDate": "2021-08-07",
     "endDate": "2021-08-13",
     "dateLabel": "7 al 13 de agosto de 2021",
@@ -1932,9 +1909,9 @@
     }
   },
   {
-    "weekId": "2021-W36",
+    "weekId": "2021-W32",
     "year": 2021,
-    "weekNumber": 36,
+    "weekNumber": 32,
     "startDate": "2021-08-14",
     "endDate": "2021-08-20",
     "dateLabel": "14 al 20 de agosto de 2021",
@@ -1955,9 +1932,9 @@
     }
   },
   {
-    "weekId": "2021-W37",
+    "weekId": "2021-W33",
     "year": 2021,
-    "weekNumber": 37,
+    "weekNumber": 33,
     "startDate": "2021-08-21",
     "endDate": "2021-08-27",
     "dateLabel": "21 al 27 de agosto de 2021",
@@ -1978,9 +1955,9 @@
     }
   },
   {
-    "weekId": "2021-W34",
+    "weekId": "2021-W35",
     "year": 2021,
-    "weekNumber": 34,
+    "weekNumber": 35,
     "startDate": "2021-08-31",
     "endDate": "2021-09-06",
     "dateLabel": "31 al 6 de agosto de 2021",
@@ -2001,9 +1978,9 @@
     }
   },
   {
-    "weekId": "2021-W39",
+    "weekId": "2021-W35-2021-09-04",
     "year": 2021,
-    "weekNumber": 39,
+    "weekNumber": 35,
     "startDate": "2021-09-04",
     "endDate": "2021-09-10",
     "dateLabel": "4 al 10 de septiembre de 2021",
@@ -2024,9 +2001,9 @@
     }
   },
   {
-    "weekId": "2021-W40",
+    "weekId": "2021-W36",
     "year": 2021,
-    "weekNumber": 40,
+    "weekNumber": 36,
     "startDate": "2021-09-11",
     "endDate": "2021-09-17",
     "dateLabel": "11 al 17 de septiembre de 2021",
@@ -2047,9 +2024,9 @@
     }
   },
   {
-    "weekId": "2021-W41",
+    "weekId": "2021-W37",
     "year": 2021,
-    "weekNumber": 41,
+    "weekNumber": 37,
     "startDate": "2021-09-18",
     "endDate": "2021-09-24",
     "dateLabel": "18 al 24 de septiembre de 2021",
@@ -2070,9 +2047,9 @@
     }
   },
   {
-    "weekId": "2021-W42",
+    "weekId": "2021-W38",
     "year": 2021,
-    "weekNumber": 42,
+    "weekNumber": 38,
     "startDate": "2021-09-25",
     "endDate": "2021-10-01",
     "dateLabel": "25 al 1 de septiembre de 2021",
@@ -2093,9 +2070,9 @@
     }
   },
   {
-    "weekId": "2021-W38",
+    "weekId": "2021-W39",
     "year": 2021,
-    "weekNumber": 38,
+    "weekNumber": 39,
     "startDate": "2021-09-28",
     "endDate": "2021-10-03",
     "dateLabel": "28 al 3 de septiembre de 2021",
@@ -2116,9 +2093,9 @@
     }
   },
   {
-    "weekId": "2021-W43",
+    "weekId": "2021-W39-2021-10-02",
     "year": 2021,
-    "weekNumber": 43,
+    "weekNumber": 39,
     "startDate": "2021-10-02",
     "endDate": "2021-10-08",
     "dateLabel": "2 al 8 de octubre de 2021",
@@ -2139,9 +2116,9 @@
     }
   },
   {
-    "weekId": "2021-W44",
+    "weekId": "2021-W40",
     "year": 2021,
-    "weekNumber": 44,
+    "weekNumber": 40,
     "startDate": "2021-10-09",
     "endDate": "2021-10-15",
     "dateLabel": "9 al 15 de octubre de 2021",
@@ -2162,9 +2139,9 @@
     }
   },
   {
-    "weekId": "2021-W45",
+    "weekId": "2021-W41",
     "year": 2021,
-    "weekNumber": 45,
+    "weekNumber": 41,
     "startDate": "2021-10-16",
     "endDate": "2021-10-22",
     "dateLabel": "16 al 22 de octubre de 2021",
@@ -2185,9 +2162,9 @@
     }
   },
   {
-    "weekId": "2021-W46",
+    "weekId": "2021-W42",
     "year": 2021,
-    "weekNumber": 46,
+    "weekNumber": 42,
     "startDate": "2021-10-23",
     "endDate": "2021-10-29",
     "dateLabel": "23 al 29 de octubre de 2021",
@@ -2208,9 +2185,9 @@
     }
   },
   {
-    "weekId": "2021-W48",
+    "weekId": "2021-W44",
     "year": 2021,
-    "weekNumber": 48,
+    "weekNumber": 44,
     "startDate": "2021-11-06",
     "endDate": "2021-11-12",
     "dateLabel": "6 al 12 de noviembre de 2021",
@@ -2231,9 +2208,9 @@
     }
   },
   {
-    "weekId": "2021-W49",
+    "weekId": "2021-W45",
     "year": 2021,
-    "weekNumber": 49,
+    "weekNumber": 45,
     "startDate": "2021-11-13",
     "endDate": "2021-11-19",
     "dateLabel": "13 al 19 de noviembre de 2021",
@@ -2254,9 +2231,9 @@
     }
   },
   {
-    "weekId": "2021-W50",
+    "weekId": "2021-W46",
     "year": 2021,
-    "weekNumber": 50,
+    "weekNumber": 46,
     "startDate": "2021-11-20",
     "endDate": "2021-11-26",
     "dateLabel": "20 al 26 de noviembre de 2021",
@@ -2277,9 +2254,9 @@
     }
   },
   {
-    "weekId": "2021-W51",
+    "weekId": "2021-W47",
     "year": 2021,
-    "weekNumber": 51,
+    "weekNumber": 47,
     "startDate": "2021-11-27",
     "endDate": "2021-12-03",
     "dateLabel": "27 al 3 de noviembre de 2021",
@@ -2300,9 +2277,9 @@
     }
   },
   {
-    "weekId": "2021-W47",
+    "weekId": "2021-W48",
     "year": 2021,
-    "weekNumber": 47,
+    "weekNumber": 48,
     "startDate": "2021-11-30",
     "endDate": "2021-12-05",
     "dateLabel": "30 al 5 de noviembre de 2021",
@@ -2323,9 +2300,9 @@
     }
   },
   {
-    "weekId": "2021-W52",
+    "weekId": "2021-W48-2021-12-04",
     "year": 2021,
-    "weekNumber": 52,
+    "weekNumber": 48,
     "startDate": "2021-12-04",
     "endDate": "2021-12-10",
     "dateLabel": "4 al 10 de diciembre de 2021",
@@ -2346,9 +2323,9 @@
     }
   },
   {
-    "weekId": "2021-W01",
+    "weekId": "2021-W49",
     "year": 2021,
-    "weekNumber": 1,
+    "weekNumber": 49,
     "startDate": "2021-12-11",
     "endDate": "2021-12-17",
     "dateLabel": "11 al 17 de diciembre de 2021",
@@ -2369,9 +2346,9 @@
     }
   },
   {
-    "weekId": "2021-W02",
+    "weekId": "2021-W50",
     "year": 2021,
-    "weekNumber": 2,
+    "weekNumber": 50,
     "startDate": "2021-12-18",
     "endDate": "2021-12-24",
     "dateLabel": "18 al 24 de diciembre de 2021",
@@ -2392,9 +2369,9 @@
     }
   },
   {
-    "weekId": "2021-W03",
+    "weekId": "2021-W51",
     "year": 2021,
-    "weekNumber": 3,
+    "weekNumber": 51,
     "startDate": "2021-12-25",
     "endDate": "2021-12-31",
     "dateLabel": "25 al 31 de diciembre de 2021",
@@ -2415,9 +2392,9 @@
     }
   },
   {
-    "weekId": "2022-W04",
-    "year": 2022,
-    "weekNumber": 4,
+    "weekId": "2021-W52",
+    "year": 2021,
+    "weekNumber": 52,
     "startDate": "2022-01-01",
     "endDate": "2022-01-07",
     "dateLabel": "1 al 7 de enero de 2022",
@@ -2438,9 +2415,9 @@
     }
   },
   {
-    "weekId": "2022-W05",
+    "weekId": "2022-W01",
     "year": 2022,
-    "weekNumber": 5,
+    "weekNumber": 1,
     "startDate": "2022-01-08",
     "endDate": "2022-01-14",
     "dateLabel": "8 al 14 de enero de 2022",
@@ -2461,9 +2438,9 @@
     }
   },
   {
-    "weekId": "2022-W06",
+    "weekId": "2022-W02",
     "year": 2022,
-    "weekNumber": 6,
+    "weekNumber": 2,
     "startDate": "2022-01-15",
     "endDate": "2022-01-21",
     "dateLabel": "15 al 21 de enero de 2022",
@@ -2484,9 +2461,9 @@
     }
   },
   {
-    "weekId": "2022-W07",
+    "weekId": "2022-W03",
     "year": 2022,
-    "weekNumber": 7,
+    "weekNumber": 3,
     "startDate": "2022-01-22",
     "endDate": "2022-01-28",
     "dateLabel": "22 al 28 de enero de 2022",
@@ -2507,9 +2484,9 @@
     }
   },
   {
-    "weekId": "2022-W08",
+    "weekId": "2022-W04",
     "year": 2022,
-    "weekNumber": 8,
+    "weekNumber": 4,
     "startDate": "2022-01-29",
     "endDate": "2022-02-04",
     "dateLabel": "29 al 4 de enero de 2022",
@@ -2530,9 +2507,9 @@
     }
   },
   {
-    "weekId": "2022-W09",
+    "weekId": "2022-W05",
     "year": 2022,
-    "weekNumber": 9,
+    "weekNumber": 5,
     "startDate": "2022-02-05",
     "endDate": "2022-02-11",
     "dateLabel": "5 al 11 de febrero de 2022",
@@ -2553,9 +2530,9 @@
     }
   },
   {
-    "weekId": "2022-W10",
+    "weekId": "2022-W06",
     "year": 2022,
-    "weekNumber": 10,
+    "weekNumber": 6,
     "startDate": "2022-02-12",
     "endDate": "2022-02-18",
     "dateLabel": "12 al 18 de febrero de 2022",
@@ -2576,9 +2553,9 @@
     }
   },
   {
-    "weekId": "2022-W11",
+    "weekId": "2022-W07",
     "year": 2022,
-    "weekNumber": 11,
+    "weekNumber": 7,
     "startDate": "2022-02-19",
     "endDate": "2022-02-25",
     "dateLabel": "19 al 25 de febrero de 2022",
@@ -2599,9 +2576,9 @@
     }
   },
   {
-    "weekId": "2022-W12",
+    "weekId": "2022-W08",
     "year": 2022,
-    "weekNumber": 12,
+    "weekNumber": 8,
     "startDate": "2022-02-26",
     "endDate": "2022-03-04",
     "dateLabel": "26 al 4 de febrero de 2022",
@@ -2622,9 +2599,9 @@
     }
   },
   {
-    "weekId": "2022-W13",
+    "weekId": "2022-W09",
     "year": 2022,
-    "weekNumber": 13,
+    "weekNumber": 9,
     "startDate": "2022-03-05",
     "endDate": "2022-03-11",
     "dateLabel": "5 al 11 de marzo de 2022",
@@ -2645,9 +2622,9 @@
     }
   },
   {
-    "weekId": "2022-W14",
+    "weekId": "2022-W10",
     "year": 2022,
-    "weekNumber": 14,
+    "weekNumber": 10,
     "startDate": "2022-03-12",
     "endDate": "2022-03-18",
     "dateLabel": "12 al 18 de marzo de 2022",
@@ -2668,9 +2645,9 @@
     }
   },
   {
-    "weekId": "2022-W15",
+    "weekId": "2022-W11",
     "year": 2022,
-    "weekNumber": 15,
+    "weekNumber": 11,
     "startDate": "2022-03-19",
     "endDate": "2022-03-25",
     "dateLabel": "19 al 25 de marzo de 2022",
@@ -2691,9 +2668,9 @@
     }
   },
   {
-    "weekId": "2022-W16",
+    "weekId": "2022-W12",
     "year": 2022,
-    "weekNumber": 16,
+    "weekNumber": 12,
     "startDate": "2022-03-26",
     "endDate": "2022-04-01",
     "dateLabel": "26 al 1 de marzo de 2022",
@@ -2714,9 +2691,9 @@
     }
   },
   {
-    "weekId": "2022-W17",
+    "weekId": "2022-W13",
     "year": 2022,
-    "weekNumber": 17,
+    "weekNumber": 13,
     "startDate": "2022-04-02",
     "endDate": "2022-04-08",
     "dateLabel": "2 al 8 de abril de 2022",
@@ -2737,9 +2714,9 @@
     }
   },
   {
-    "weekId": "2022-W18",
+    "weekId": "2022-W14",
     "year": 2022,
-    "weekNumber": 18,
+    "weekNumber": 14,
     "startDate": "2022-04-09",
     "endDate": "2022-04-15",
     "dateLabel": "9 al 15 de abril de 2022",
@@ -2760,9 +2737,9 @@
     }
   },
   {
-    "weekId": "2022-W19",
+    "weekId": "2022-W15",
     "year": 2022,
-    "weekNumber": 19,
+    "weekNumber": 15,
     "startDate": "2022-04-16",
     "endDate": "2022-04-22",
     "dateLabel": "16 al 22 de abril de 2022",
@@ -2783,9 +2760,9 @@
     }
   },
   {
-    "weekId": "2022-W20",
+    "weekId": "2022-W16",
     "year": 2022,
-    "weekNumber": 20,
+    "weekNumber": 16,
     "startDate": "2022-04-23",
     "endDate": "2022-04-29",
     "dateLabel": "23 al 29 de abril de 2022",
@@ -2806,9 +2783,9 @@
     }
   },
   {
-    "weekId": "2022-W21",
+    "weekId": "2022-W17",
     "year": 2022,
-    "weekNumber": 21,
+    "weekNumber": 17,
     "startDate": "2022-04-30",
     "endDate": "2022-05-06",
     "dateLabel": "30 al 6 de abril de 2022",
@@ -2829,9 +2806,9 @@
     }
   },
   {
-    "weekId": "2022-W22",
+    "weekId": "2022-W18",
     "year": 2022,
-    "weekNumber": 22,
+    "weekNumber": 18,
     "startDate": "2022-05-07",
     "endDate": "2022-05-13",
     "dateLabel": "7 al 13 de mayo de 2022",
@@ -2852,9 +2829,9 @@
     }
   },
   {
-    "weekId": "2022-W23",
+    "weekId": "2022-W19",
     "year": 2022,
-    "weekNumber": 23,
+    "weekNumber": 19,
     "startDate": "2022-05-14",
     "endDate": "2022-05-20",
     "dateLabel": "14 al 20 de mayo de 2022",
@@ -2875,9 +2852,9 @@
     }
   },
   {
-    "weekId": "2022-W24",
+    "weekId": "2022-W20",
     "year": 2022,
-    "weekNumber": 24,
+    "weekNumber": 20,
     "startDate": "2022-05-21",
     "endDate": "2022-05-27",
     "dateLabel": "21 al 27 de mayo de 2022",
@@ -2898,9 +2875,9 @@
     }
   },
   {
-    "weekId": "2022-W25",
+    "weekId": "2022-W21",
     "year": 2022,
-    "weekNumber": 25,
+    "weekNumber": 21,
     "startDate": "2022-05-28",
     "endDate": "2022-06-03",
     "dateLabel": "28 al 3 de mayo de 2022",
@@ -2921,9 +2898,9 @@
     }
   },
   {
-    "weekId": "2022-W26",
+    "weekId": "2022-W22",
     "year": 2022,
-    "weekNumber": 26,
+    "weekNumber": 22,
     "startDate": "2022-06-04",
     "endDate": "2022-06-10",
     "dateLabel": "4 al 10 de junio de 2022",
@@ -2944,9 +2921,9 @@
     }
   },
   {
-    "weekId": "2022-W27",
+    "weekId": "2022-W23",
     "year": 2022,
-    "weekNumber": 27,
+    "weekNumber": 23,
     "startDate": "2022-06-11",
     "endDate": "2022-06-17",
     "dateLabel": "11 al 17 de junio de 2022",
@@ -2967,9 +2944,9 @@
     }
   },
   {
-    "weekId": "2022-W28",
+    "weekId": "2022-W24",
     "year": 2022,
-    "weekNumber": 28,
+    "weekNumber": 24,
     "startDate": "2022-06-18",
     "endDate": "2022-06-24",
     "dateLabel": "18 al 24 de junio de 2022",
@@ -2990,9 +2967,9 @@
     }
   },
   {
-    "weekId": "2022-W29",
+    "weekId": "2022-W25",
     "year": 2022,
-    "weekNumber": 29,
+    "weekNumber": 25,
     "startDate": "2022-06-25",
     "endDate": "2022-07-01",
     "dateLabel": "25 al 1 de junio de 2022",
@@ -3013,9 +2990,9 @@
     }
   },
   {
-    "weekId": "2022-W30",
+    "weekId": "2022-W26",
     "year": 2022,
-    "weekNumber": 30,
+    "weekNumber": 26,
     "startDate": "2022-07-02",
     "endDate": "2022-07-08",
     "dateLabel": "2 al 8 de julio de 2022",
@@ -3036,9 +3013,9 @@
     }
   },
   {
-    "weekId": "2022-W31",
+    "weekId": "2022-W27",
     "year": 2022,
-    "weekNumber": 31,
+    "weekNumber": 27,
     "startDate": "2022-07-09",
     "endDate": "2022-07-15",
     "dateLabel": "9 al 15 de julio de 2022",
@@ -3059,9 +3036,9 @@
     }
   },
   {
-    "weekId": "2022-W32",
+    "weekId": "2022-W28",
     "year": 2022,
-    "weekNumber": 32,
+    "weekNumber": 28,
     "startDate": "2022-07-16",
     "endDate": "2022-07-22",
     "dateLabel": "16 al 22 de julio de 2022",
@@ -3082,9 +3059,9 @@
     }
   },
   {
-    "weekId": "2022-W33",
+    "weekId": "2022-W29",
     "year": 2022,
-    "weekNumber": 33,
+    "weekNumber": 29,
     "startDate": "2022-07-23",
     "endDate": "2022-07-29",
     "dateLabel": "23 al 29 de julio de 2022",
@@ -3105,9 +3082,9 @@
     }
   },
   {
-    "weekId": "2022-W34",
+    "weekId": "2022-W30",
     "year": 2022,
-    "weekNumber": 34,
+    "weekNumber": 30,
     "startDate": "2022-07-30",
     "endDate": "2022-08-05",
     "dateLabel": "30 al 5 de julio de 2022",
@@ -3128,9 +3105,9 @@
     }
   },
   {
-    "weekId": "2022-W35",
+    "weekId": "2022-W31",
     "year": 2022,
-    "weekNumber": 35,
+    "weekNumber": 31,
     "startDate": "2022-08-06",
     "endDate": "2022-08-12",
     "dateLabel": "6 al 12 de agosto de 2022",
@@ -3151,9 +3128,9 @@
     }
   },
   {
-    "weekId": "2022-W36",
+    "weekId": "2022-W32",
     "year": 2022,
-    "weekNumber": 36,
+    "weekNumber": 32,
     "startDate": "2022-08-13",
     "endDate": "2022-08-19",
     "dateLabel": "13 al 19 de agosto de 2022",
@@ -3174,9 +3151,9 @@
     }
   },
   {
-    "weekId": "2022-W37",
+    "weekId": "2022-W33",
     "year": 2022,
-    "weekNumber": 37,
+    "weekNumber": 33,
     "startDate": "2022-08-20",
     "endDate": "2022-08-26",
     "dateLabel": "20 al 26 de agosto de 2022",
@@ -3197,9 +3174,9 @@
     }
   },
   {
-    "weekId": "2022-W38",
+    "weekId": "2022-W34",
     "year": 2022,
-    "weekNumber": 38,
+    "weekNumber": 34,
     "startDate": "2022-08-27",
     "endDate": "2022-09-02",
     "dateLabel": "27 al 2 de agosto de 2022",
@@ -3220,9 +3197,9 @@
     }
   },
   {
-    "weekId": "2022-W39",
+    "weekId": "2022-W35",
     "year": 2022,
-    "weekNumber": 39,
+    "weekNumber": 35,
     "startDate": "2022-09-03",
     "endDate": "2022-09-09",
     "dateLabel": "3 al 9 de septiembre de 2022",
@@ -3243,9 +3220,9 @@
     }
   },
   {
-    "weekId": "2022-W40",
+    "weekId": "2022-W36",
     "year": 2022,
-    "weekNumber": 40,
+    "weekNumber": 36,
     "startDate": "2022-09-10",
     "endDate": "2022-09-16",
     "dateLabel": "10 al 16 de septiembre de 2022",
@@ -3266,9 +3243,9 @@
     }
   },
   {
-    "weekId": "2022-W41",
+    "weekId": "2022-W37",
     "year": 2022,
-    "weekNumber": 41,
+    "weekNumber": 37,
     "startDate": "2022-09-17",
     "endDate": "2022-09-23",
     "dateLabel": "17 al 23 de septiembre de 2022",
@@ -3289,9 +3266,9 @@
     }
   },
   {
-    "weekId": "2022-W42",
+    "weekId": "2022-W38",
     "year": 2022,
-    "weekNumber": 42,
+    "weekNumber": 38,
     "startDate": "2022-09-24",
     "endDate": "2022-09-30",
     "dateLabel": "24 al 30 de septiembre de 2022",
@@ -3312,9 +3289,9 @@
     }
   },
   {
-    "weekId": "2022-W43",
+    "weekId": "2022-W39",
     "year": 2022,
-    "weekNumber": 43,
+    "weekNumber": 39,
     "startDate": "2022-10-01",
     "endDate": "2022-10-07",
     "dateLabel": "1 al 7 de octubre de 2022",
@@ -3335,9 +3312,9 @@
     }
   },
   {
-    "weekId": "2022-W44",
+    "weekId": "2022-W40",
     "year": 2022,
-    "weekNumber": 44,
+    "weekNumber": 40,
     "startDate": "2022-10-08",
     "endDate": "2022-10-14",
     "dateLabel": "8 al 14 de octubre de 2022",
@@ -3358,9 +3335,9 @@
     }
   },
   {
-    "weekId": "2022-W45",
+    "weekId": "2022-W41",
     "year": 2022,
-    "weekNumber": 45,
+    "weekNumber": 41,
     "startDate": "2022-10-15",
     "endDate": "2022-10-21",
     "dateLabel": "15 al 21 de octubre de 2022",
@@ -3381,9 +3358,9 @@
     }
   },
   {
-    "weekId": "2022-W46",
+    "weekId": "2022-W42",
     "year": 2022,
-    "weekNumber": 46,
+    "weekNumber": 42,
     "startDate": "2022-10-22",
     "endDate": "2022-10-28",
     "dateLabel": "22 al 28 de octubre de 2022",
@@ -3404,9 +3381,9 @@
     }
   },
   {
-    "weekId": "2022-W47",
+    "weekId": "2022-W43",
     "year": 2022,
-    "weekNumber": 47,
+    "weekNumber": 43,
     "startDate": "2022-10-29",
     "endDate": "2022-11-04",
     "dateLabel": "29 al 4 de octubre de 2022",
@@ -3427,9 +3404,9 @@
     }
   },
   {
-    "weekId": "2022-W48",
+    "weekId": "2022-W44",
     "year": 2022,
-    "weekNumber": 48,
+    "weekNumber": 44,
     "startDate": "2022-11-05",
     "endDate": "2022-11-11",
     "dateLabel": "5 al 11 de noviembre de 2022",
@@ -3450,9 +3427,9 @@
     }
   },
   {
-    "weekId": "2022-W49",
+    "weekId": "2022-W45",
     "year": 2022,
-    "weekNumber": 49,
+    "weekNumber": 45,
     "startDate": "2022-11-12",
     "endDate": "2022-11-18",
     "dateLabel": "12 al 18 de noviembre de 2022",
@@ -3473,9 +3450,9 @@
     }
   },
   {
-    "weekId": "2022-W50",
+    "weekId": "2022-W46",
     "year": 2022,
-    "weekNumber": 50,
+    "weekNumber": 46,
     "startDate": "2022-11-19",
     "endDate": "2022-11-25",
     "dateLabel": "19 al 25 de noviembre de 2022",
@@ -3496,9 +3473,9 @@
     }
   },
   {
-    "weekId": "2022-W51",
+    "weekId": "2022-W47",
     "year": 2022,
-    "weekNumber": 51,
+    "weekNumber": 47,
     "startDate": "2022-11-26",
     "endDate": "2022-12-02",
     "dateLabel": "26 al 2 de noviembre de 2022",
@@ -3519,9 +3496,9 @@
     }
   },
   {
-    "weekId": "2022-W52",
+    "weekId": "2022-W48",
     "year": 2022,
-    "weekNumber": 52,
+    "weekNumber": 48,
     "startDate": "2022-12-03",
     "endDate": "2022-12-09",
     "dateLabel": "3 al 9 de diciembre de 2022",
@@ -3542,9 +3519,9 @@
     }
   },
   {
-    "weekId": "2022-W01",
+    "weekId": "2022-W49",
     "year": 2022,
-    "weekNumber": 1,
+    "weekNumber": 49,
     "startDate": "2022-12-10",
     "endDate": "2022-12-16",
     "dateLabel": "10 al 16 de diciembre de 2022",
@@ -3565,9 +3542,9 @@
     }
   },
   {
-    "weekId": "2022-W02",
+    "weekId": "2022-W50",
     "year": 2022,
-    "weekNumber": 2,
+    "weekNumber": 50,
     "startDate": "2022-12-17",
     "endDate": "2022-12-23",
     "dateLabel": "17 al 23 de diciembre de 2022",
@@ -3588,9 +3565,9 @@
     }
   },
   {
-    "weekId": "2022-W03",
+    "weekId": "2022-W51",
     "year": 2022,
-    "weekNumber": 3,
+    "weekNumber": 51,
     "startDate": "2022-12-24",
     "endDate": "2022-12-30",
     "dateLabel": "24 al 30 de diciembre de 2022",
@@ -3611,9 +3588,9 @@
     }
   },
   {
-    "weekId": "2022-W04",
+    "weekId": "2022-W52",
     "year": 2022,
-    "weekNumber": 4,
+    "weekNumber": 52,
     "startDate": "2022-12-31",
     "endDate": "2023-01-06",
     "dateLabel": "31 al 6 de diciembre de 2022",
@@ -3634,9 +3611,9 @@
     }
   },
   {
-    "weekId": "2023-W09",
+    "weekId": "2023-W01",
     "year": 2023,
-    "weekNumber": 9,
+    "weekNumber": 1,
     "startDate": "2023-01-04",
     "endDate": "2023-01-10",
     "dateLabel": "4 al 10 de enero de 2023",
@@ -3657,9 +3634,9 @@
     }
   },
   {
-    "weekId": "2023-W05",
+    "weekId": "2023-W01-2023-01-07",
     "year": 2023,
-    "weekNumber": 5,
+    "weekNumber": 1,
     "startDate": "2023-01-07",
     "endDate": "2023-01-13",
     "dateLabel": "7 al 13 de enero de 2023",
@@ -3680,9 +3657,9 @@
     }
   },
   {
-    "weekId": "2023-W06",
+    "weekId": "2023-W02",
     "year": 2023,
-    "weekNumber": 6,
+    "weekNumber": 2,
     "startDate": "2023-01-14",
     "endDate": "2023-01-20",
     "dateLabel": "14 al 20 de enero de 2023",
@@ -3703,9 +3680,9 @@
     }
   },
   {
-    "weekId": "2023-W07",
+    "weekId": "2023-W03",
     "year": 2023,
-    "weekNumber": 7,
+    "weekNumber": 3,
     "startDate": "2023-01-21",
     "endDate": "2023-01-27",
     "dateLabel": "21 al 27 de enero de 2023",
@@ -3726,9 +3703,9 @@
     }
   },
   {
-    "weekId": "2023-W08",
+    "weekId": "2023-W04",
     "year": 2023,
-    "weekNumber": 8,
+    "weekNumber": 4,
     "startDate": "2023-01-28",
     "endDate": "2023-02-03",
     "dateLabel": "28 al 3 de enero de 2023",
@@ -3749,9 +3726,9 @@
     }
   },
   {
-    "weekId": "2023-W10",
+    "weekId": "2023-W06",
     "year": 2023,
-    "weekNumber": 10,
+    "weekNumber": 6,
     "startDate": "2023-02-11",
     "endDate": "2023-02-17",
     "dateLabel": "11 al 17 de febrero de 2023",
@@ -3772,9 +3749,9 @@
     }
   },
   {
-    "weekId": "2023-W11",
+    "weekId": "2023-W07",
     "year": 2023,
-    "weekNumber": 11,
+    "weekNumber": 7,
     "startDate": "2023-02-18",
     "endDate": "2023-02-24",
     "dateLabel": "18 al 24 de febrero de 2023",
@@ -3795,9 +3772,9 @@
     }
   },
   {
-    "weekId": "2023-W12",
+    "weekId": "2023-W08",
     "year": 2023,
-    "weekNumber": 12,
+    "weekNumber": 8,
     "startDate": "2023-02-25",
     "endDate": "2023-03-03",
     "dateLabel": "25 al 3 de febrero de 2023",
@@ -3818,9 +3795,9 @@
     }
   },
   {
-    "weekId": "2023-W13",
+    "weekId": "2023-W09",
     "year": 2023,
-    "weekNumber": 13,
+    "weekNumber": 9,
     "startDate": "2023-03-04",
     "endDate": "2023-03-10",
     "dateLabel": "4 al 10 de marzo de 2023",
@@ -3841,9 +3818,9 @@
     }
   },
   {
-    "weekId": "2023-W14",
+    "weekId": "2023-W10",
     "year": 2023,
-    "weekNumber": 14,
+    "weekNumber": 10,
     "startDate": "2023-03-11",
     "endDate": "2023-03-17",
     "dateLabel": "11 al 17 de marzo de 2023",
@@ -3864,9 +3841,9 @@
     }
   },
   {
-    "weekId": "2023-W15",
+    "weekId": "2023-W11",
     "year": 2023,
-    "weekNumber": 15,
+    "weekNumber": 11,
     "startDate": "2023-03-18",
     "endDate": "2023-03-24",
     "dateLabel": "18 al 24 de marzo de 2023",
@@ -3887,9 +3864,9 @@
     }
   },
   {
-    "weekId": "2023-W16",
+    "weekId": "2023-W12",
     "year": 2023,
-    "weekNumber": 16,
+    "weekNumber": 12,
     "startDate": "2023-03-25",
     "endDate": "2023-03-31",
     "dateLabel": "25 al 31 de marzo de 2023",
@@ -3910,9 +3887,9 @@
     }
   },
   {
-    "weekId": "2023-W17",
+    "weekId": "2023-W13",
     "year": 2023,
-    "weekNumber": 17,
+    "weekNumber": 13,
     "startDate": "2023-04-01",
     "endDate": "2023-04-07",
     "dateLabel": "1 al 7 de abril de 2023",
@@ -3933,9 +3910,9 @@
     }
   },
   {
-    "weekId": "2023-W18",
+    "weekId": "2023-W14",
     "year": 2023,
-    "weekNumber": 18,
+    "weekNumber": 14,
     "startDate": "2023-04-08",
     "endDate": "2023-04-14",
     "dateLabel": "8 al 14 de abril de 2023",
@@ -3956,9 +3933,9 @@
     }
   },
   {
-    "weekId": "2023-W19",
+    "weekId": "2023-W15",
     "year": 2023,
-    "weekNumber": 19,
+    "weekNumber": 15,
     "startDate": "2023-04-15",
     "endDate": "2023-04-21",
     "dateLabel": "15 al 21 de abril de 2023",
@@ -3979,9 +3956,9 @@
     }
   },
   {
-    "weekId": "2023-W20",
+    "weekId": "2023-W16",
     "year": 2023,
-    "weekNumber": 20,
+    "weekNumber": 16,
     "startDate": "2023-04-22",
     "endDate": "2023-04-28",
     "dateLabel": "22 al 28 de abril de 2023",
@@ -4002,9 +3979,9 @@
     }
   },
   {
-    "weekId": "2023-W21",
+    "weekId": "2023-W17",
     "year": 2023,
-    "weekNumber": 21,
+    "weekNumber": 17,
     "startDate": "2023-04-29",
     "endDate": "2023-05-05",
     "dateLabel": "29 al 5 de abril de 2023",
@@ -4025,9 +4002,9 @@
     }
   },
   {
-    "weekId": "2023-W22",
+    "weekId": "2023-W18",
     "year": 2023,
-    "weekNumber": 22,
+    "weekNumber": 18,
     "startDate": "2023-05-06",
     "endDate": "2023-05-12",
     "dateLabel": "6 al 12 de mayo de 2023",
@@ -4048,9 +4025,9 @@
     }
   },
   {
-    "weekId": "2023-W23",
+    "weekId": "2023-W19",
     "year": 2023,
-    "weekNumber": 23,
+    "weekNumber": 19,
     "startDate": "2023-05-13",
     "endDate": "2023-05-19",
     "dateLabel": "13 al 19 de mayo de 2023",
@@ -4071,9 +4048,9 @@
     }
   },
   {
-    "weekId": "2023-W24",
+    "weekId": "2023-W20",
     "year": 2023,
-    "weekNumber": 24,
+    "weekNumber": 20,
     "startDate": "2023-05-20",
     "endDate": "2023-05-26",
     "dateLabel": "20 al 26 de mayo de 2023",
@@ -4094,9 +4071,9 @@
     }
   },
   {
-    "weekId": "2023-W25",
+    "weekId": "2023-W21",
     "year": 2023,
-    "weekNumber": 25,
+    "weekNumber": 21,
     "startDate": "2023-05-27",
     "endDate": "2023-06-02",
     "dateLabel": "27 al 2 de mayo de 2023",
@@ -4117,9 +4094,9 @@
     }
   },
   {
-    "weekId": "2023-W26",
+    "weekId": "2023-W22",
     "year": 2023,
-    "weekNumber": 26,
+    "weekNumber": 22,
     "startDate": "2023-06-03",
     "endDate": "2023-06-09",
     "dateLabel": "3 al 9 de junio de 2023",
@@ -4140,9 +4117,9 @@
     }
   },
   {
-    "weekId": "2023-W27",
+    "weekId": "2023-W23",
     "year": 2023,
-    "weekNumber": 27,
+    "weekNumber": 23,
     "startDate": "2023-06-10",
     "endDate": "2023-06-16",
     "dateLabel": "10 al 16 de junio de 2023",
@@ -4163,9 +4140,9 @@
     }
   },
   {
-    "weekId": "2023-W28",
+    "weekId": "2023-W24",
     "year": 2023,
-    "weekNumber": 28,
+    "weekNumber": 24,
     "startDate": "2023-06-17",
     "endDate": "2023-06-23",
     "dateLabel": "17 al 23 de junio de 2023",
@@ -4186,9 +4163,9 @@
     }
   },
   {
-    "weekId": "2023-W29",
+    "weekId": "2023-W25",
     "year": 2023,
-    "weekNumber": 29,
+    "weekNumber": 25,
     "startDate": "2023-06-24",
     "endDate": "2023-06-30",
     "dateLabel": "24 al 30 de junio de 2023",
@@ -4209,9 +4186,9 @@
     }
   },
   {
-    "weekId": "2023-W30",
+    "weekId": "2023-W26",
     "year": 2023,
-    "weekNumber": 30,
+    "weekNumber": 26,
     "startDate": "2023-07-01",
     "endDate": "2023-07-07",
     "dateLabel": "1 al 7 de julio de 2023",
@@ -4232,9 +4209,9 @@
     }
   },
   {
-    "weekId": "2023-W31",
+    "weekId": "2023-W27",
     "year": 2023,
-    "weekNumber": 31,
+    "weekNumber": 27,
     "startDate": "2023-07-08",
     "endDate": "2023-07-14",
     "dateLabel": "8 al 14 de julio de 2023",
@@ -4255,9 +4232,9 @@
     }
   },
   {
-    "weekId": "2023-W32",
+    "weekId": "2023-W28",
     "year": 2023,
-    "weekNumber": 32,
+    "weekNumber": 28,
     "startDate": "2023-07-15",
     "endDate": "2023-07-21",
     "dateLabel": "15 al 21 de julio de 2023",
@@ -4278,9 +4255,9 @@
     }
   },
   {
-    "weekId": "2023-W33",
+    "weekId": "2023-W29",
     "year": 2023,
-    "weekNumber": 33,
+    "weekNumber": 29,
     "startDate": "2023-07-22",
     "endDate": "2023-07-28",
     "dateLabel": "22 al 28 de julio de 2023",
@@ -4301,9 +4278,9 @@
     }
   },
   {
-    "weekId": "2023-W34",
+    "weekId": "2023-W30",
     "year": 2023,
-    "weekNumber": 34,
+    "weekNumber": 30,
     "startDate": "2023-07-29",
     "endDate": "2023-08-04",
     "dateLabel": "29 al 4 de julio de 2023",
@@ -4324,9 +4301,9 @@
     }
   },
   {
-    "weekId": "2023-W35",
+    "weekId": "2023-W31",
     "year": 2023,
-    "weekNumber": 35,
+    "weekNumber": 31,
     "startDate": "2023-08-05",
     "endDate": "2023-08-11",
     "dateLabel": "5 al 11 de agosto de 2023",
@@ -4347,9 +4324,9 @@
     }
   },
   {
-    "weekId": "2023-W36",
+    "weekId": "2023-W32",
     "year": 2023,
-    "weekNumber": 36,
+    "weekNumber": 32,
     "startDate": "2023-08-12",
     "endDate": "2023-08-18",
     "dateLabel": "12 al 18 de agosto de 2023",
@@ -4370,9 +4347,9 @@
     }
   },
   {
-    "weekId": "2023-W37",
+    "weekId": "2023-W33",
     "year": 2023,
-    "weekNumber": 37,
+    "weekNumber": 33,
     "startDate": "2023-08-19",
     "endDate": "2023-08-25",
     "dateLabel": "19 al 25 de agosto de 2023",
@@ -4393,9 +4370,9 @@
     }
   },
   {
-    "weekId": "2023-W38",
+    "weekId": "2023-W34",
     "year": 2023,
-    "weekNumber": 38,
+    "weekNumber": 34,
     "startDate": "2023-08-26",
     "endDate": "2023-09-01",
     "dateLabel": "26 al 1 de agosto de 2023",
@@ -4416,9 +4393,9 @@
     }
   },
   {
-    "weekId": "2023-W39",
+    "weekId": "2023-W35",
     "year": 2023,
-    "weekNumber": 39,
+    "weekNumber": 35,
     "startDate": "2023-09-02",
     "endDate": "2023-09-08",
     "dateLabel": "2 al 8 de septiembre de 2023",
@@ -4439,9 +4416,9 @@
     }
   },
   {
-    "weekId": "2023-W40",
+    "weekId": "2023-W36",
     "year": 2023,
-    "weekNumber": 40,
+    "weekNumber": 36,
     "startDate": "2023-09-09",
     "endDate": "2023-09-15",
     "dateLabel": "9 al 15 de septiembre de 2023",
@@ -4462,9 +4439,9 @@
     }
   },
   {
-    "weekId": "2023-W41",
+    "weekId": "2023-W37",
     "year": 2023,
-    "weekNumber": 41,
+    "weekNumber": 37,
     "startDate": "2023-09-16",
     "endDate": "2023-09-22",
     "dateLabel": "16 al 22 de septiembre de 2023",
@@ -4485,9 +4462,9 @@
     }
   },
   {
-    "weekId": "2023-W42",
+    "weekId": "2023-W38",
     "year": 2023,
-    "weekNumber": 42,
+    "weekNumber": 38,
     "startDate": "2023-09-23",
     "endDate": "2023-09-29",
     "dateLabel": "23 al 29 de septiembre de 2023",
@@ -4508,9 +4485,9 @@
     }
   },
   {
-    "weekId": "2023-W43",
+    "weekId": "2023-W39",
     "year": 2023,
-    "weekNumber": 43,
+    "weekNumber": 39,
     "startDate": "2023-09-30",
     "endDate": "2023-10-06",
     "dateLabel": "30 al 6 de septiembre de 2023",
@@ -4531,9 +4508,9 @@
     }
   },
   {
-    "weekId": "2023-W44",
+    "weekId": "2023-W40",
     "year": 2023,
-    "weekNumber": 44,
+    "weekNumber": 40,
     "startDate": "2023-10-07",
     "endDate": "2023-10-13",
     "dateLabel": "7 al 13 de octubre de 2023",
@@ -4554,9 +4531,9 @@
     }
   },
   {
-    "weekId": "2023-W45",
+    "weekId": "2023-W41",
     "year": 2023,
-    "weekNumber": 45,
+    "weekNumber": 41,
     "startDate": "2023-10-14",
     "endDate": "2023-10-20",
     "dateLabel": "14 al 20 de octubre de 2023",
@@ -4577,9 +4554,9 @@
     }
   },
   {
-    "weekId": "2023-W46",
+    "weekId": "2023-W42",
     "year": 2023,
-    "weekNumber": 46,
+    "weekNumber": 42,
     "startDate": "2023-10-21",
     "endDate": "2023-10-27",
     "dateLabel": "21 al 27 de octubre de 2023",
@@ -4600,9 +4577,9 @@
     }
   },
   {
-    "weekId": "2023-W47",
+    "weekId": "2023-W43",
     "year": 2023,
-    "weekNumber": 47,
+    "weekNumber": 43,
     "startDate": "2023-10-28",
     "endDate": "2023-11-03",
     "dateLabel": "28 al 3 de octubre de 2023",
@@ -4623,9 +4600,9 @@
     }
   },
   {
-    "weekId": "2023-W48",
+    "weekId": "2023-W44",
     "year": 2023,
-    "weekNumber": 48,
+    "weekNumber": 44,
     "startDate": "2023-11-04",
     "endDate": "2023-11-10",
     "dateLabel": "4 al 10 de noviembre de 2023",
@@ -4646,9 +4623,9 @@
     }
   },
   {
-    "weekId": "2023-W49",
+    "weekId": "2023-W45",
     "year": 2023,
-    "weekNumber": 49,
+    "weekNumber": 45,
     "startDate": "2023-11-11",
     "endDate": "2023-11-17",
     "dateLabel": "11 al 17 de noviembre de 2023",
@@ -4669,9 +4646,9 @@
     }
   },
   {
-    "weekId": "2023-W50",
+    "weekId": "2023-W46",
     "year": 2023,
-    "weekNumber": 50,
+    "weekNumber": 46,
     "startDate": "2023-11-18",
     "endDate": "2023-11-24",
     "dateLabel": "18 al 24 de noviembre de 2023",
@@ -4692,9 +4669,9 @@
     }
   },
   {
-    "weekId": "2023-W51",
+    "weekId": "2023-W47",
     "year": 2023,
-    "weekNumber": 51,
+    "weekNumber": 47,
     "startDate": "2023-11-25",
     "endDate": "2023-12-01",
     "dateLabel": "25 al 1 de noviembre de 2023",
@@ -4715,9 +4692,9 @@
     }
   },
   {
-    "weekId": "2023-W52",
+    "weekId": "2023-W48",
     "year": 2023,
-    "weekNumber": 52,
+    "weekNumber": 48,
     "startDate": "2023-12-02",
     "endDate": "2023-12-08",
     "dateLabel": "2 al 8 de diciembre de 2023",
@@ -4738,32 +4715,9 @@
     }
   },
   {
-    "weekId": "2023-W01",
+    "weekId": "2023-W49",
     "year": 2023,
-    "weekNumber": 1,
-    "startDate": "2023-12-09",
-    "endDate": "2023-12-15",
-    "dateLabel": "9 al 15 de diciembre de 2023",
-    "shortDateLabel": "9-15 DIC",
-    "announcementDate": "2023-12-08",
-    "source": "Ministerio de Industria, Comercio y Mipymes (MICM)",
-    "prices": {
-      "gasolina-premium": 293,
-      "gasolina-regular": 275,
-      "gasoil-optimo": 239,
-      "gasoil-regular": 222,
-      "glp": 133,
-      "gas-natural": 43.97,
-      "avtur": 218,
-      "kerosene": 249,
-      "fuel-oil-6": 155,
-      "fuel-oil-1s": 174
-    }
-  },
-  {
-    "weekId": "2023-W05",
-    "year": 2023,
-    "weekNumber": 5,
+    "weekNumber": 49,
     "startDate": "2023-12-09",
     "endDate": "2023-12-15",
     "dateLabel": "9 al 15 de diciembre de 2023",
@@ -4784,32 +4738,9 @@
     }
   },
   {
-    "weekId": "2023-W02",
+    "weekId": "2023-W50",
     "year": 2023,
-    "weekNumber": 2,
-    "startDate": "2023-12-16",
-    "endDate": "2023-12-22",
-    "dateLabel": "16 al 22 de diciembre de 2023",
-    "shortDateLabel": "16-22 DIC",
-    "announcementDate": "2023-12-15",
-    "source": "Ministerio de Industria, Comercio y Mipymes (MICM)",
-    "prices": {
-      "gasolina-premium": 293,
-      "gasolina-regular": 275,
-      "gasoil-optimo": 239,
-      "gasoil-regular": 222,
-      "glp": 133,
-      "gas-natural": 43.97,
-      "avtur": 213,
-      "kerosene": 244,
-      "fuel-oil-6": 157,
-      "fuel-oil-1s": 171
-    }
-  },
-  {
-    "weekId": "2023-W06",
-    "year": 2023,
-    "weekNumber": 6,
+    "weekNumber": 50,
     "startDate": "2023-12-16",
     "endDate": "2023-12-22",
     "dateLabel": "16 al 22 de diciembre de 2023",
@@ -4830,32 +4761,9 @@
     }
   },
   {
-    "weekId": "2023-W03",
+    "weekId": "2023-W51",
     "year": 2023,
-    "weekNumber": 3,
-    "startDate": "2023-12-23",
-    "endDate": "2023-12-29",
-    "dateLabel": "23 al 29 de diciembre de 2023",
-    "shortDateLabel": "23-29 DIC",
-    "announcementDate": "2023-12-22",
-    "source": "Ministerio de Industria, Comercio y Mipymes (MICM)",
-    "prices": {
-      "gasolina-premium": 293,
-      "gasolina-regular": 275,
-      "gasoil-optimo": 239,
-      "gasoil-regular": 222,
-      "glp": 133,
-      "gas-natural": 43.97,
-      "avtur": 201,
-      "kerosene": 231,
-      "fuel-oil-6": 155,
-      "fuel-oil-1s": 168
-    }
-  },
-  {
-    "weekId": "2023-W07",
-    "year": 2023,
-    "weekNumber": 7,
+    "weekNumber": 51,
     "startDate": "2023-12-23",
     "endDate": "2023-12-29",
     "dateLabel": "23 al 29 de diciembre de 2023",
@@ -4876,9 +4784,9 @@
     }
   },
   {
-    "weekId": "2023-W04",
+    "weekId": "2023-W52",
     "year": 2023,
-    "weekNumber": 4,
+    "weekNumber": 52,
     "startDate": "2023-12-30",
     "endDate": "2024-01-05",
     "dateLabel": "30 al 5 de diciembre de 2023",
@@ -4899,9 +4807,9 @@
     }
   },
   {
-    "weekId": "2024-W09",
+    "weekId": "2024-W01",
     "year": 2024,
-    "weekNumber": 9,
+    "weekNumber": 1,
     "startDate": "2024-01-06",
     "endDate": "2024-01-12",
     "dateLabel": "6 al 12 de enero de 2024",
@@ -4922,9 +4830,9 @@
     }
   },
   {
-    "weekId": "2024-W10",
+    "weekId": "2024-W02",
     "year": 2024,
-    "weekNumber": 10,
+    "weekNumber": 2,
     "startDate": "2024-01-13",
     "endDate": "2024-01-19",
     "dateLabel": "13 al 19 de enero de 2024",
@@ -4945,9 +4853,9 @@
     }
   },
   {
-    "weekId": "2024-W11",
+    "weekId": "2024-W03",
     "year": 2024,
-    "weekNumber": 11,
+    "weekNumber": 3,
     "startDate": "2024-01-20",
     "endDate": "2024-01-26",
     "dateLabel": "20 al 26 de enero de 2024",
@@ -4968,9 +4876,9 @@
     }
   },
   {
-    "weekId": "2024-W12",
+    "weekId": "2024-W04",
     "year": 2024,
-    "weekNumber": 12,
+    "weekNumber": 4,
     "startDate": "2024-01-27",
     "endDate": "2024-02-02",
     "dateLabel": "27 al 2 de enero de 2024",
@@ -4991,9 +4899,9 @@
     }
   },
   {
-    "weekId": "2024-W08",
+    "weekId": "2024-W05",
     "year": 2024,
-    "weekNumber": 8,
+    "weekNumber": 5,
     "startDate": "2024-01-30",
     "endDate": "2024-02-05",
     "dateLabel": "30 al 5 de enero de 2024",
@@ -5014,9 +4922,9 @@
     }
   },
   {
-    "weekId": "2024-W13",
+    "weekId": "2024-W05-2024-02-03",
     "year": 2024,
-    "weekNumber": 13,
+    "weekNumber": 5,
     "startDate": "2024-02-03",
     "endDate": "2024-02-09",
     "dateLabel": "3 al 9 de febrero de 2024",
@@ -5037,9 +4945,9 @@
     }
   },
   {
-    "weekId": "2024-W14",
+    "weekId": "2024-W06",
     "year": 2024,
-    "weekNumber": 14,
+    "weekNumber": 6,
     "startDate": "2024-02-10",
     "endDate": "2024-02-16",
     "dateLabel": "10 al 16 de febrero de 2024",
@@ -5060,9 +4968,9 @@
     }
   },
   {
-    "weekId": "2024-W15",
+    "weekId": "2024-W07",
     "year": 2024,
-    "weekNumber": 15,
+    "weekNumber": 7,
     "startDate": "2024-02-17",
     "endDate": "2024-02-23",
     "dateLabel": "17 al 23 de febrero de 2024",
@@ -5083,9 +4991,9 @@
     }
   },
   {
-    "weekId": "2024-W16",
+    "weekId": "2024-W08",
     "year": 2024,
-    "weekNumber": 16,
+    "weekNumber": 8,
     "startDate": "2024-02-24",
     "endDate": "2024-03-01",
     "dateLabel": "24 al 1 de febrero de 2024",
@@ -5106,9 +5014,9 @@
     }
   },
   {
-    "weekId": "2024-W17",
+    "weekId": "2024-W09",
     "year": 2024,
-    "weekNumber": 17,
+    "weekNumber": 9,
     "startDate": "2024-03-02",
     "endDate": "2024-03-08",
     "dateLabel": "2 al 8 de marzo de 2024",
@@ -5129,9 +5037,9 @@
     }
   },
   {
-    "weekId": "2024-W18",
+    "weekId": "2024-W10",
     "year": 2024,
-    "weekNumber": 18,
+    "weekNumber": 10,
     "startDate": "2024-03-09",
     "endDate": "2024-03-15",
     "dateLabel": "9 al 15 de marzo de 2024",
@@ -5152,9 +5060,9 @@
     }
   },
   {
-    "weekId": "2024-W19",
+    "weekId": "2024-W11",
     "year": 2024,
-    "weekNumber": 19,
+    "weekNumber": 11,
     "startDate": "2024-03-16",
     "endDate": "2024-03-22",
     "dateLabel": "16 al 22 de marzo de 2024",
@@ -5175,9 +5083,9 @@
     }
   },
   {
-    "weekId": "2024-W20",
+    "weekId": "2024-W12",
     "year": 2024,
-    "weekNumber": 20,
+    "weekNumber": 12,
     "startDate": "2024-03-23",
     "endDate": "2024-03-29",
     "dateLabel": "23 al 29 de marzo de 2024",
@@ -5198,9 +5106,9 @@
     }
   },
   {
-    "weekId": "2024-W22",
+    "weekId": "2024-W14",
     "year": 2024,
-    "weekNumber": 22,
+    "weekNumber": 14,
     "startDate": "2024-04-06",
     "endDate": "2024-04-12",
     "dateLabel": "6 al 12 de abril de 2024",
@@ -5221,9 +5129,9 @@
     }
   },
   {
-    "weekId": "2024-W23",
+    "weekId": "2024-W15",
     "year": 2024,
-    "weekNumber": 23,
+    "weekNumber": 15,
     "startDate": "2024-04-13",
     "endDate": "2024-04-19",
     "dateLabel": "13 al 19 de abril de 2024",
@@ -5244,9 +5152,9 @@
     }
   },
   {
-    "weekId": "2024-W24",
+    "weekId": "2024-W16",
     "year": 2024,
-    "weekNumber": 24,
+    "weekNumber": 16,
     "startDate": "2024-04-20",
     "endDate": "2024-04-26",
     "dateLabel": "20 al 26 de abril de 2024",
@@ -5267,9 +5175,9 @@
     }
   },
   {
-    "weekId": "2024-W25",
+    "weekId": "2024-W17",
     "year": 2024,
-    "weekNumber": 25,
+    "weekNumber": 17,
     "startDate": "2024-04-27",
     "endDate": "2024-05-03",
     "dateLabel": "27 al 3 de abril de 2024",
@@ -5290,9 +5198,9 @@
     }
   },
   {
-    "weekId": "2024-W21",
+    "weekId": "2024-W18",
     "year": 2024,
-    "weekNumber": 21,
+    "weekNumber": 18,
     "startDate": "2024-04-30",
     "endDate": "2024-05-05",
     "dateLabel": "30 al 5 de abril de 2024",
@@ -5313,9 +5221,9 @@
     }
   },
   {
-    "weekId": "2024-W26",
+    "weekId": "2024-W18-2024-05-04",
     "year": 2024,
-    "weekNumber": 26,
+    "weekNumber": 18,
     "startDate": "2024-05-04",
     "endDate": "2024-05-10",
     "dateLabel": "4 al 10 de mayo de 2024",
@@ -5336,9 +5244,9 @@
     }
   },
   {
-    "weekId": "2024-W27",
+    "weekId": "2024-W19",
     "year": 2024,
-    "weekNumber": 27,
+    "weekNumber": 19,
     "startDate": "2024-05-11",
     "endDate": "2024-05-17",
     "dateLabel": "11 al 17 de mayo de 2024",
@@ -5359,9 +5267,9 @@
     }
   },
   {
-    "weekId": "2024-W28",
+    "weekId": "2024-W20",
     "year": 2024,
-    "weekNumber": 28,
+    "weekNumber": 20,
     "startDate": "2024-05-18",
     "endDate": "2024-05-24",
     "dateLabel": "18 al 24 de mayo de 2024",
@@ -5382,9 +5290,9 @@
     }
   },
   {
-    "weekId": "2024-W29",
+    "weekId": "2024-W21",
     "year": 2024,
-    "weekNumber": 29,
+    "weekNumber": 21,
     "startDate": "2024-05-25",
     "endDate": "2024-05-31",
     "dateLabel": "25 al 31 de mayo de 2024",
@@ -5405,9 +5313,9 @@
     }
   },
   {
-    "weekId": "2024-W30",
+    "weekId": "2024-W22",
     "year": 2024,
-    "weekNumber": 30,
+    "weekNumber": 22,
     "startDate": "2024-06-01",
     "endDate": "2024-06-07",
     "dateLabel": "1 al 7 de junio de 2024",
@@ -5428,9 +5336,9 @@
     }
   },
   {
-    "weekId": "2024-W31",
+    "weekId": "2024-W23",
     "year": 2024,
-    "weekNumber": 31,
+    "weekNumber": 23,
     "startDate": "2024-06-08",
     "endDate": "2024-06-14",
     "dateLabel": "8 al 14 de junio de 2024",
@@ -5451,9 +5359,9 @@
     }
   },
   {
-    "weekId": "2024-W32",
+    "weekId": "2024-W24",
     "year": 2024,
-    "weekNumber": 32,
+    "weekNumber": 24,
     "startDate": "2024-06-15",
     "endDate": "2024-06-21",
     "dateLabel": "15 al 21 de junio de 2024",
@@ -5474,9 +5382,9 @@
     }
   },
   {
-    "weekId": "2024-W33",
+    "weekId": "2024-W25",
     "year": 2024,
-    "weekNumber": 33,
+    "weekNumber": 25,
     "startDate": "2024-06-22",
     "endDate": "2024-06-28",
     "dateLabel": "22 al 28 de junio de 2024",
@@ -5497,9 +5405,9 @@
     }
   },
   {
-    "weekId": "2024-W35",
+    "weekId": "2024-W27",
     "year": 2024,
-    "weekNumber": 35,
+    "weekNumber": 27,
     "startDate": "2024-07-06",
     "endDate": "2024-07-12",
     "dateLabel": "6 al 12 de julio de 2024",
@@ -5520,9 +5428,9 @@
     }
   },
   {
-    "weekId": "2024-W36",
+    "weekId": "2024-W28",
     "year": 2024,
-    "weekNumber": 36,
+    "weekNumber": 28,
     "startDate": "2024-07-13",
     "endDate": "2024-07-19",
     "dateLabel": "13 al 19 de julio de 2024",
@@ -5543,9 +5451,9 @@
     }
   },
   {
-    "weekId": "2024-W37",
+    "weekId": "2024-W29",
     "year": 2024,
-    "weekNumber": 37,
+    "weekNumber": 29,
     "startDate": "2024-07-20",
     "endDate": "2024-07-26",
     "dateLabel": "20 al 26 de julio de 2024",
@@ -5566,9 +5474,9 @@
     }
   },
   {
-    "weekId": "2024-W34",
+    "weekId": "2024-W31",
     "year": 2024,
-    "weekNumber": 34,
+    "weekNumber": 31,
     "startDate": "2024-07-29",
     "endDate": "2024-08-05",
     "dateLabel": "29 al 5 de julio de 2024",
@@ -5589,9 +5497,9 @@
     }
   },
   {
-    "weekId": "2024-W38",
+    "weekId": "2024-W31-2024-08-03",
     "year": 2024,
-    "weekNumber": 38,
+    "weekNumber": 31,
     "startDate": "2024-08-03",
     "endDate": "2024-08-09",
     "dateLabel": "3 al 9 de agosto de 2024",
@@ -5612,9 +5520,9 @@
     }
   },
   {
-    "weekId": "2024-W39",
+    "weekId": "2024-W32",
     "year": 2024,
-    "weekNumber": 39,
+    "weekNumber": 32,
     "startDate": "2024-08-10",
     "endDate": "2024-08-16",
     "dateLabel": "10 al 16 de agosto de 2024",
@@ -5635,9 +5543,9 @@
     }
   },
   {
-    "weekId": "2024-W40",
+    "weekId": "2024-W33",
     "year": 2024,
-    "weekNumber": 40,
+    "weekNumber": 33,
     "startDate": "2024-08-17",
     "endDate": "2024-08-23",
     "dateLabel": "17 al 23 de agosto de 2024",
@@ -5658,9 +5566,9 @@
     }
   },
   {
-    "weekId": "2024-W41",
+    "weekId": "2024-W34",
     "year": 2024,
-    "weekNumber": 41,
+    "weekNumber": 34,
     "startDate": "2024-08-24",
     "endDate": "2024-08-30",
     "dateLabel": "24 al 30 de agosto de 2024",
@@ -5681,9 +5589,9 @@
     }
   },
   {
-    "weekId": "2024-W43",
+    "weekId": "2024-W36",
     "year": 2024,
-    "weekNumber": 43,
+    "weekNumber": 36,
     "startDate": "2024-09-07",
     "endDate": "2024-09-13",
     "dateLabel": "7 al 13 de septiembre de 2024",
@@ -5704,9 +5612,9 @@
     }
   },
   {
-    "weekId": "2024-W44",
+    "weekId": "2024-W37",
     "year": 2024,
-    "weekNumber": 44,
+    "weekNumber": 37,
     "startDate": "2024-09-14",
     "endDate": "2024-09-20",
     "dateLabel": "14 al 20 de septiembre de 2024",
@@ -5727,9 +5635,9 @@
     }
   },
   {
-    "weekId": "2024-W45",
+    "weekId": "2024-W38",
     "year": 2024,
-    "weekNumber": 45,
+    "weekNumber": 38,
     "startDate": "2024-09-21",
     "endDate": "2024-09-27",
     "dateLabel": "21 al 27 de septiembre de 2024",
@@ -5750,9 +5658,9 @@
     }
   },
   {
-    "weekId": "2024-W42",
+    "weekId": "2024-W40",
     "year": 2024,
-    "weekNumber": 42,
+    "weekNumber": 40,
     "startDate": "2024-09-31",
     "endDate": "2024-10-06",
     "dateLabel": "31 al 6 de septiembre de 2024",
@@ -5773,9 +5681,9 @@
     }
   },
   {
-    "weekId": "2024-W47",
+    "weekId": "2024-W40-2024-10-05",
     "year": 2024,
-    "weekNumber": 47,
+    "weekNumber": 40,
     "startDate": "2024-10-05",
     "endDate": "2024-10-11",
     "dateLabel": "5 al 11 de octubre de 2024",
@@ -5796,9 +5704,9 @@
     }
   },
   {
-    "weekId": "2024-W48",
+    "weekId": "2024-W41",
     "year": 2024,
-    "weekNumber": 48,
+    "weekNumber": 41,
     "startDate": "2024-10-12",
     "endDate": "2024-10-18",
     "dateLabel": "12 al 18 de octubre de 2024",
@@ -5819,9 +5727,9 @@
     }
   },
   {
-    "weekId": "2024-W49",
+    "weekId": "2024-W42",
     "year": 2024,
-    "weekNumber": 49,
+    "weekNumber": 42,
     "startDate": "2024-10-19",
     "endDate": "2024-10-25",
     "dateLabel": "19 al 25 de octubre de 2024",
@@ -5842,9 +5750,9 @@
     }
   },
   {
-    "weekId": "2024-W46",
+    "weekId": "2024-W44",
     "year": 2024,
-    "weekNumber": 46,
+    "weekNumber": 44,
     "startDate": "2024-10-28",
     "endDate": "2024-11-04",
     "dateLabel": "28 al 4 de octubre de 2024",
@@ -5865,9 +5773,9 @@
     }
   },
   {
-    "weekId": "2024-W51",
+    "weekId": "2024-W44-2024-11-02",
     "year": 2024,
-    "weekNumber": 51,
+    "weekNumber": 44,
     "startDate": "2024-11-02",
     "endDate": "2024-11-08",
     "dateLabel": "2 al 8 de noviembre de 2024",
@@ -5888,9 +5796,9 @@
     }
   },
   {
-    "weekId": "2024-W52",
+    "weekId": "2024-W45",
     "year": 2024,
-    "weekNumber": 52,
+    "weekNumber": 45,
     "startDate": "2024-11-09",
     "endDate": "2024-11-15",
     "dateLabel": "9 al 15 de noviembre de 2024",
@@ -5911,9 +5819,9 @@
     }
   },
   {
-    "weekId": "2024-W01",
+    "weekId": "2024-W46",
     "year": 2024,
-    "weekNumber": 1,
+    "weekNumber": 46,
     "startDate": "2024-11-16",
     "endDate": "2024-11-22",
     "dateLabel": "16 al 22 de noviembre de 2024",
@@ -5934,9 +5842,9 @@
     }
   },
   {
-    "weekId": "2024-W02",
+    "weekId": "2024-W47",
     "year": 2024,
-    "weekNumber": 2,
+    "weekNumber": 47,
     "startDate": "2024-11-23",
     "endDate": "2024-11-29",
     "dateLabel": "23 al 29 de noviembre de 2024",
@@ -5957,9 +5865,9 @@
     }
   },
   {
-    "weekId": "2024-W50",
+    "weekId": "2024-W48",
     "year": 2024,
-    "weekNumber": 50,
+    "weekNumber": 48,
     "startDate": "2024-11-26",
     "endDate": "2024-12-01",
     "dateLabel": "26 al 1 de noviembre de 2024",
@@ -5980,9 +5888,9 @@
     }
   },
   {
-    "weekId": "2024-W04",
+    "weekId": "2024-W49",
     "year": 2024,
-    "weekNumber": 4,
+    "weekNumber": 49,
     "startDate": "2024-12-07",
     "endDate": "2024-12-13",
     "dateLabel": "7 al 13 de diciembre de 2024",
@@ -6003,9 +5911,9 @@
     }
   },
   {
-    "weekId": "2024-W05",
+    "weekId": "2024-W50",
     "year": 2024,
-    "weekNumber": 5,
+    "weekNumber": 50,
     "startDate": "2024-12-14",
     "endDate": "2024-12-20",
     "dateLabel": "14 al 20 de diciembre de 2024",
@@ -6026,9 +5934,9 @@
     }
   },
   {
-    "weekId": "2024-W06",
+    "weekId": "2024-W51",
     "year": 2024,
-    "weekNumber": 6,
+    "weekNumber": 51,
     "startDate": "2024-12-21",
     "endDate": "2024-12-27",
     "dateLabel": "21 al 27 de diciembre de 2024",
@@ -6049,9 +5957,9 @@
     }
   },
   {
-    "weekId": "2024-W07",
+    "weekId": "2024-W52",
     "year": 2024,
-    "weekNumber": 7,
+    "weekNumber": 52,
     "startDate": "2024-12-28",
     "endDate": "2025-01-03",
     "dateLabel": "28 al 3 de diciembre de 2024",
@@ -6072,9 +5980,9 @@
     }
   },
   {
-    "weekId": "2024-W03",
-    "year": 2024,
-    "weekNumber": 3,
+    "weekId": "2025-W01",
+    "year": 2025,
+    "weekNumber": 1,
     "startDate": "2024-12-30",
     "endDate": "2025-01-06",
     "dateLabel": "30 al 6 de diciembre de 2024",
@@ -6095,9 +6003,9 @@
     }
   },
   {
-    "weekId": "2025-W08",
+    "weekId": "2025-W01-2025-01-04",
     "year": 2025,
-    "weekNumber": 8,
+    "weekNumber": 1,
     "startDate": "2025-01-04",
     "endDate": "2025-01-10",
     "dateLabel": "4 al 10 de enero de 2025",
@@ -6118,9 +6026,9 @@
     }
   },
   {
-    "weekId": "2025-W09",
+    "weekId": "2025-W02",
     "year": 2025,
-    "weekNumber": 9,
+    "weekNumber": 2,
     "startDate": "2025-01-11",
     "endDate": "2025-01-17",
     "dateLabel": "11 al 17 de enero de 2025",
@@ -6141,9 +6049,9 @@
     }
   },
   {
-    "weekId": "2025-W10",
+    "weekId": "2025-W03",
     "year": 2025,
-    "weekNumber": 10,
+    "weekNumber": 3,
     "startDate": "2025-01-18",
     "endDate": "2025-01-24",
     "dateLabel": "18 al 24 de enero de 2025",
@@ -6164,9 +6072,9 @@
     }
   },
   {
-    "weekId": "2025-W11",
+    "weekId": "2025-W04",
     "year": 2025,
-    "weekNumber": 11,
+    "weekNumber": 4,
     "startDate": "2025-01-25",
     "endDate": "2025-01-31",
     "dateLabel": "25 al 31 de enero de 2025",
@@ -6187,9 +6095,9 @@
     }
   },
   {
-    "weekId": "2025-W12",
+    "weekId": "2025-W05",
     "year": 2025,
-    "weekNumber": 12,
+    "weekNumber": 5,
     "startDate": "2025-02-01",
     "endDate": "2025-02-07",
     "dateLabel": "1 al 7 de febrero de 2025",
@@ -6210,9 +6118,9 @@
     }
   },
   {
-    "weekId": "2025-W13",
+    "weekId": "2025-W06",
     "year": 2025,
-    "weekNumber": 13,
+    "weekNumber": 6,
     "startDate": "2025-02-08",
     "endDate": "2025-02-14",
     "dateLabel": "8 al 14 de febrero de 2025",
@@ -6233,9 +6141,9 @@
     }
   },
   {
-    "weekId": "2025-W14",
+    "weekId": "2025-W07",
     "year": 2025,
-    "weekNumber": 14,
+    "weekNumber": 7,
     "startDate": "2025-02-15",
     "endDate": "2025-02-21",
     "dateLabel": "15 al 21 de febrero de 2025",
@@ -6256,9 +6164,9 @@
     }
   },
   {
-    "weekId": "2025-W15",
+    "weekId": "2025-W08",
     "year": 2025,
-    "weekNumber": 15,
+    "weekNumber": 8,
     "startDate": "2025-02-22",
     "endDate": "2025-02-28",
     "dateLabel": "22 al 28 de febrero de 2025",
@@ -6279,9 +6187,9 @@
     }
   },
   {
-    "weekId": "2025-W16",
+    "weekId": "2025-W09",
     "year": 2025,
-    "weekNumber": 16,
+    "weekNumber": 9,
     "startDate": "2025-03-01",
     "endDate": "2025-03-07",
     "dateLabel": "1 al 7 de marzo de 2025",
@@ -6302,9 +6210,9 @@
     }
   },
   {
-    "weekId": "2025-W17",
+    "weekId": "2025-W10",
     "year": 2025,
-    "weekNumber": 17,
+    "weekNumber": 10,
     "startDate": "2025-03-08",
     "endDate": "2025-03-14",
     "dateLabel": "8 al 14 de marzo de 2025",
@@ -6325,9 +6233,9 @@
     }
   },
   {
-    "weekId": "2025-W18",
+    "weekId": "2025-W11",
     "year": 2025,
-    "weekNumber": 18,
+    "weekNumber": 11,
     "startDate": "2025-03-15",
     "endDate": "2025-03-21",
     "dateLabel": "15 al 21 de marzo de 2025",
@@ -6348,9 +6256,9 @@
     }
   },
   {
-    "weekId": "2025-W19",
+    "weekId": "2025-W12",
     "year": 2025,
-    "weekNumber": 19,
+    "weekNumber": 12,
     "startDate": "2025-03-22",
     "endDate": "2025-03-28",
     "dateLabel": "22 al 28 de marzo de 2025",
@@ -6371,9 +6279,9 @@
     }
   },
   {
-    "weekId": "2025-W21",
+    "weekId": "2025-W14",
     "year": 2025,
-    "weekNumber": 21,
+    "weekNumber": 14,
     "startDate": "2025-04-05",
     "endDate": "2025-04-11",
     "dateLabel": "5 al 11 de abril de 2025",
@@ -6394,9 +6302,9 @@
     }
   },
   {
-    "weekId": "2025-W22",
+    "weekId": "2025-W15",
     "year": 2025,
-    "weekNumber": 22,
+    "weekNumber": 15,
     "startDate": "2025-04-12",
     "endDate": "2025-04-18",
     "dateLabel": "12 al 18 de abril de 2025",
@@ -6417,9 +6325,9 @@
     }
   },
   {
-    "weekId": "2025-W23",
+    "weekId": "2025-W16",
     "year": 2025,
-    "weekNumber": 23,
+    "weekNumber": 16,
     "startDate": "2025-04-19",
     "endDate": "2025-04-25",
     "dateLabel": "19 al 25 de abril de 2025",
@@ -6440,9 +6348,9 @@
     }
   },
   {
-    "weekId": "2025-W24",
+    "weekId": "2025-W17",
     "year": 2025,
-    "weekNumber": 24,
+    "weekNumber": 17,
     "startDate": "2025-04-26",
     "endDate": "2025-05-02",
     "dateLabel": "26 al 2 de abril de 2025",
@@ -6463,9 +6371,9 @@
     }
   },
   {
-    "weekId": "2025-W20",
+    "weekId": "2025-W18",
     "year": 2025,
-    "weekNumber": 20,
+    "weekNumber": 18,
     "startDate": "2025-04-29",
     "endDate": "2025-05-04",
     "dateLabel": "29 al 4 de abril de 2025",
@@ -6486,9 +6394,9 @@
     }
   },
   {
-    "weekId": "2025-W25",
+    "weekId": "2025-W18-2025-05-03",
     "year": 2025,
-    "weekNumber": 25,
+    "weekNumber": 18,
     "startDate": "2025-05-03",
     "endDate": "2025-05-09",
     "dateLabel": "3 al 9 de mayo de 2025",
@@ -6509,9 +6417,9 @@
     }
   },
   {
-    "weekId": "2025-W26",
+    "weekId": "2025-W19",
     "year": 2025,
-    "weekNumber": 26,
+    "weekNumber": 19,
     "startDate": "2025-05-10",
     "endDate": "2025-05-16",
     "dateLabel": "10 al 16 de mayo de 2025",
@@ -6532,9 +6440,9 @@
     }
   },
   {
-    "weekId": "2025-W27",
+    "weekId": "2025-W20",
     "year": 2025,
-    "weekNumber": 27,
+    "weekNumber": 20,
     "startDate": "2025-05-17",
     "endDate": "2025-05-23",
     "dateLabel": "17 al 23 de mayo de 2025",
@@ -6555,9 +6463,9 @@
     }
   },
   {
-    "weekId": "2025-W28",
+    "weekId": "2025-W21",
     "year": 2025,
-    "weekNumber": 28,
+    "weekNumber": 21,
     "startDate": "2025-05-24",
     "endDate": "2025-05-30",
     "dateLabel": "24 al 30 de mayo de 2025",
@@ -6578,9 +6486,9 @@
     }
   },
   {
-    "weekId": "2025-W30",
+    "weekId": "2025-W23",
     "year": 2025,
-    "weekNumber": 30,
+    "weekNumber": 23,
     "startDate": "2025-06-07",
     "endDate": "2025-06-13",
     "dateLabel": "7 al 13 de junio de 2025",
@@ -6601,9 +6509,9 @@
     }
   },
   {
-    "weekId": "2025-W31",
+    "weekId": "2025-W24",
     "year": 2025,
-    "weekNumber": 31,
+    "weekNumber": 24,
     "startDate": "2025-06-14",
     "endDate": "2025-06-20",
     "dateLabel": "14 al 20 de junio de 2025",
@@ -6624,9 +6532,9 @@
     }
   },
   {
-    "weekId": "2025-W32",
+    "weekId": "2025-W25",
     "year": 2025,
-    "weekNumber": 32,
+    "weekNumber": 25,
     "startDate": "2025-06-21",
     "endDate": "2025-06-27",
     "dateLabel": "21 al 27 de junio de 2025",
@@ -6647,9 +6555,9 @@
     }
   },
   {
-    "weekId": "2025-W29",
+    "weekId": "2025-W27",
     "year": 2025,
-    "weekNumber": 29,
+    "weekNumber": 27,
     "startDate": "2025-06-31",
     "endDate": "2025-07-06",
     "dateLabel": "31 al 6 de junio de 2025",
@@ -6670,9 +6578,9 @@
     }
   },
   {
-    "weekId": "2025-W34",
+    "weekId": "2025-W27-2025-07-05",
     "year": 2025,
-    "weekNumber": 34,
+    "weekNumber": 27,
     "startDate": "2025-07-05",
     "endDate": "2025-07-11",
     "dateLabel": "5 al 11 de julio de 2025",
@@ -6693,9 +6601,9 @@
     }
   },
   {
-    "weekId": "2025-W35",
+    "weekId": "2025-W28",
     "year": 2025,
-    "weekNumber": 35,
+    "weekNumber": 28,
     "startDate": "2025-07-12",
     "endDate": "2025-07-18",
     "dateLabel": "12 al 18 de julio de 2025",
@@ -6716,9 +6624,9 @@
     }
   },
   {
-    "weekId": "2025-W36",
+    "weekId": "2025-W29",
     "year": 2025,
-    "weekNumber": 36,
+    "weekNumber": 29,
     "startDate": "2025-07-19",
     "endDate": "2025-07-25",
     "dateLabel": "19 al 25 de julio de 2025",
@@ -6739,9 +6647,9 @@
     }
   },
   {
-    "weekId": "2025-W33",
+    "weekId": "2025-W31",
     "year": 2025,
-    "weekNumber": 33,
+    "weekNumber": 31,
     "startDate": "2025-07-28",
     "endDate": "2025-08-04",
     "dateLabel": "28 al 4 de julio de 2025",
@@ -6762,9 +6670,9 @@
     }
   },
   {
-    "weekId": "2025-W38",
+    "weekId": "2025-W31-2025-08-02",
     "year": 2025,
-    "weekNumber": 38,
+    "weekNumber": 31,
     "startDate": "2025-08-02",
     "endDate": "2025-08-08",
     "dateLabel": "2 al 8 de agosto de 2025",
@@ -6785,9 +6693,9 @@
     }
   },
   {
-    "weekId": "2025-W39",
+    "weekId": "2025-W32",
     "year": 2025,
-    "weekNumber": 39,
+    "weekNumber": 32,
     "startDate": "2025-08-09",
     "endDate": "2025-08-15",
     "dateLabel": "9 al 15 de agosto de 2025",
@@ -6808,9 +6716,9 @@
     }
   },
   {
-    "weekId": "2025-W40",
+    "weekId": "2025-W33",
     "year": 2025,
-    "weekNumber": 40,
+    "weekNumber": 33,
     "startDate": "2025-08-16",
     "endDate": "2025-08-22",
     "dateLabel": "16 al 22 de agosto de 2025",
@@ -6831,9 +6739,9 @@
     }
   },
   {
-    "weekId": "2025-W41",
+    "weekId": "2025-W34",
     "year": 2025,
-    "weekNumber": 41,
+    "weekNumber": 34,
     "startDate": "2025-08-23",
     "endDate": "2025-08-29",
     "dateLabel": "23 al 29 de agosto de 2025",
@@ -6854,9 +6762,9 @@
     }
   },
   {
-    "weekId": "2025-W37",
+    "weekId": "2025-W35",
     "year": 2025,
-    "weekNumber": 37,
+    "weekNumber": 35,
     "startDate": "2025-08-26",
     "endDate": "2025-09-01",
     "dateLabel": "26 al 1 de agosto de 2025",
@@ -6877,9 +6785,9 @@
     }
   },
   {
-    "weekId": "2025-W43",
+    "weekId": "2025-W36",
     "year": 2025,
-    "weekNumber": 43,
+    "weekNumber": 36,
     "startDate": "2025-09-06",
     "endDate": "2025-09-12",
     "dateLabel": "6 al 12 de septiembre de 2025",
@@ -6900,9 +6808,9 @@
     }
   },
   {
-    "weekId": "2025-W44",
+    "weekId": "2025-W37",
     "year": 2025,
-    "weekNumber": 44,
+    "weekNumber": 37,
     "startDate": "2025-09-13",
     "endDate": "2025-09-19",
     "dateLabel": "13 al 19 de septiembre de 2025",
@@ -6923,9 +6831,9 @@
     }
   },
   {
-    "weekId": "2025-W45",
+    "weekId": "2025-W38",
     "year": 2025,
-    "weekNumber": 45,
+    "weekNumber": 38,
     "startDate": "2025-09-20",
     "endDate": "2025-09-26",
     "dateLabel": "20 al 26 de septiembre de 2025",
@@ -6946,9 +6854,9 @@
     }
   },
   {
-    "weekId": "2025-W42",
+    "weekId": "2025-W40",
     "year": 2025,
-    "weekNumber": 42,
+    "weekNumber": 40,
     "startDate": "2025-09-30",
     "endDate": "2025-10-05",
     "dateLabel": "30 al 5 de septiembre de 2025",
@@ -6969,9 +6877,9 @@
     }
   },
   {
-    "weekId": "2025-W47",
+    "weekId": "2025-W40-2025-10-04",
     "year": 2025,
-    "weekNumber": 47,
+    "weekNumber": 40,
     "startDate": "2025-10-04",
     "endDate": "2025-10-10",
     "dateLabel": "4 al 10 de octubre de 2025",
@@ -6992,9 +6900,9 @@
     }
   },
   {
-    "weekId": "2025-W48",
+    "weekId": "2025-W41",
     "year": 2025,
-    "weekNumber": 48,
+    "weekNumber": 41,
     "startDate": "2025-10-11",
     "endDate": "2025-10-17",
     "dateLabel": "11 al 17 de octubre de 2025",
@@ -7015,9 +6923,9 @@
     }
   },
   {
-    "weekId": "2025-W49",
+    "weekId": "2025-W42",
     "year": 2025,
-    "weekNumber": 49,
+    "weekNumber": 42,
     "startDate": "2025-10-18",
     "endDate": "2025-10-24",
     "dateLabel": "18 al 24 de octubre de 2025",
@@ -7038,9 +6946,9 @@
     }
   },
   {
-    "weekId": "2025-W50",
+    "weekId": "2025-W43",
     "year": 2025,
-    "weekNumber": 50,
+    "weekNumber": 43,
     "startDate": "2025-10-25",
     "endDate": "2025-10-31",
     "dateLabel": "25 al 31 de octubre de 2025",
@@ -7061,9 +6969,9 @@
     }
   },
   {
-    "weekId": "2025-W46",
+    "weekId": "2025-W44",
     "year": 2025,
-    "weekNumber": 46,
+    "weekNumber": 44,
     "startDate": "2025-10-27",
     "endDate": "2025-11-03",
     "dateLabel": "27 al 3 de octubre de 2025",
@@ -7084,9 +6992,9 @@
     }
   },
   {
-    "weekId": "2025-W51",
+    "weekId": "2025-W44-2025-11-01",
     "year": 2025,
-    "weekNumber": 51,
+    "weekNumber": 44,
     "startDate": "2025-11-01",
     "endDate": "2025-11-07",
     "dateLabel": "1 al 7 de noviembre de 2025",
@@ -7107,9 +7015,9 @@
     }
   },
   {
-    "weekId": "2025-W52",
+    "weekId": "2025-W45",
     "year": 2025,
-    "weekNumber": 52,
+    "weekNumber": 45,
     "startDate": "2025-11-08",
     "endDate": "2025-11-14",
     "dateLabel": "8 al 14 de noviembre de 2025",
@@ -7130,9 +7038,9 @@
     }
   },
   {
-    "weekId": "2025-W01",
+    "weekId": "2025-W46",
     "year": 2025,
-    "weekNumber": 1,
+    "weekNumber": 46,
     "startDate": "2025-11-15",
     "endDate": "2025-11-21",
     "dateLabel": "15 al 21 de noviembre de 2025",
@@ -7153,9 +7061,9 @@
     }
   },
   {
-    "weekId": "2025-W02",
+    "weekId": "2025-W47",
     "year": 2025,
-    "weekNumber": 2,
+    "weekNumber": 47,
     "startDate": "2025-11-22",
     "endDate": "2025-11-28",
     "dateLabel": "22 al 28 de noviembre de 2025",
@@ -7176,9 +7084,9 @@
     }
   },
   {
-    "weekId": "2025-W04",
+    "weekId": "2025-W49",
     "year": 2025,
-    "weekNumber": 4,
+    "weekNumber": 49,
     "startDate": "2025-12-06",
     "endDate": "2025-12-12",
     "dateLabel": "6 al 12 de diciembre de 2025",
@@ -7199,9 +7107,9 @@
     }
   },
   {
-    "weekId": "2025-W05",
+    "weekId": "2025-W50",
     "year": 2025,
-    "weekNumber": 5,
+    "weekNumber": 50,
     "startDate": "2025-12-13",
     "endDate": "2025-12-19",
     "dateLabel": "13 al 19 de diciembre de 2025",
@@ -7222,9 +7130,9 @@
     }
   },
   {
-    "weekId": "2025-W06",
+    "weekId": "2025-W51",
     "year": 2025,
-    "weekNumber": 6,
+    "weekNumber": 51,
     "startDate": "2025-12-20",
     "endDate": "2025-12-26",
     "dateLabel": "20 al 26 de diciembre de 2025",
@@ -7245,9 +7153,9 @@
     }
   },
   {
-    "weekId": "2025-W03",
-    "year": 2025,
-    "weekNumber": 3,
+    "weekId": "2026-W01",
+    "year": 2026,
+    "weekNumber": 1,
     "startDate": "2025-12-29",
     "endDate": "2026-01-05",
     "dateLabel": "29 al 5 de diciembre de 2025",
@@ -7268,9 +7176,9 @@
     }
   },
   {
-    "weekId": "2026-W08",
+    "weekId": "2026-W01-2026-01-03",
     "year": 2026,
-    "weekNumber": 8,
+    "weekNumber": 1,
     "startDate": "2026-01-03",
     "endDate": "2026-01-09",
     "dateLabel": "3 al 9 de enero de 2026",
@@ -7291,9 +7199,9 @@
     }
   },
   {
-    "weekId": "2026-W09",
+    "weekId": "2026-W02",
     "year": 2026,
-    "weekNumber": 9,
+    "weekNumber": 2,
     "startDate": "2026-01-10",
     "endDate": "2026-01-16",
     "dateLabel": "10 al 16 de enero de 2026",
@@ -7314,9 +7222,9 @@
     }
   },
   {
-    "weekId": "2026-W10",
+    "weekId": "2026-W03",
     "year": 2026,
-    "weekNumber": 10,
+    "weekNumber": 3,
     "startDate": "2026-01-17",
     "endDate": "2026-01-23",
     "dateLabel": "17 al 23 de enero de 2026",
@@ -7337,9 +7245,9 @@
     }
   },
   {
-    "weekId": "2026-W11",
+    "weekId": "2026-W04",
     "year": 2026,
-    "weekNumber": 11,
+    "weekNumber": 4,
     "startDate": "2026-01-24",
     "endDate": "2026-01-30",
     "dateLabel": "24 al 30 de enero de 2026",
@@ -7360,9 +7268,9 @@
     }
   },
   {
-    "weekId": "2026-W07",
+    "weekId": "2026-W05",
     "year": 2026,
-    "weekNumber": 7,
+    "weekNumber": 5,
     "startDate": "2026-01-27",
     "endDate": "2026-02-02",
     "dateLabel": "27 al 2 de enero de 2026",
@@ -7383,9 +7291,9 @@
     }
   },
   {
-    "weekId": "2026-W13",
+    "weekId": "2026-W06",
     "year": 2026,
-    "weekNumber": 13,
+    "weekNumber": 6,
     "startDate": "2026-02-07",
     "endDate": "2026-02-13",
     "dateLabel": "7 al 13 de febrero de 2026",
@@ -7406,9 +7314,9 @@
     }
   },
   {
-    "weekId": "2026-W14",
+    "weekId": "2026-W07",
     "year": 2026,
-    "weekNumber": 14,
+    "weekNumber": 7,
     "startDate": "2026-02-14",
     "endDate": "2026-02-20",
     "dateLabel": "14 al 20 de febrero de 2026",
@@ -7429,9 +7337,9 @@
     }
   },
   {
-    "weekId": "2026-W15",
+    "weekId": "2026-W08",
     "year": 2026,
-    "weekNumber": 15,
+    "weekNumber": 8,
     "startDate": "2026-02-21",
     "endDate": "2026-02-27",
     "dateLabel": "21 al 27 de febrero de 2026",
@@ -7452,9 +7360,9 @@
     }
   },
   {
-    "weekId": "2026-W12",
+    "weekId": "2026-W10",
     "year": 2026,
-    "weekNumber": 12,
+    "weekNumber": 10,
     "startDate": "2026-02-31",
     "endDate": "2026-03-06",
     "dateLabel": "31 al 6 de febrero de 2026",
@@ -7475,9 +7383,9 @@
     }
   },
   {
-    "weekId": "2026-W17",
+    "weekId": "2026-W10-2026-03-07",
     "year": 2026,
-    "weekNumber": 17,
+    "weekNumber": 10,
     "startDate": "2026-03-07",
     "endDate": "2026-03-13",
     "dateLabel": "7 al 13 de marzo de 2026",
@@ -7498,9 +7406,9 @@
     }
   },
   {
-    "weekId": "2026-W18",
+    "weekId": "2026-W11",
     "year": 2026,
-    "weekNumber": 18,
+    "weekNumber": 11,
     "startDate": "2026-03-14",
     "endDate": "2026-03-20",
     "dateLabel": "14 al 20 de marzo de 2026",
@@ -7521,9 +7429,9 @@
     }
   },
   {
-    "weekId": "2026-W19",
+    "weekId": "2026-W12",
     "year": 2026,
-    "weekNumber": 19,
+    "weekNumber": 12,
     "startDate": "2026-03-21",
     "endDate": "2026-03-27",
     "dateLabel": "21 al 27 de marzo de 2026",
@@ -7544,9 +7452,9 @@
     }
   },
   {
-    "weekId": "2026-W16",
+    "weekId": "2026-W13",
     "year": 2026,
-    "weekNumber": 16,
+    "weekNumber": 13,
     "startDate": "2026-03-28",
     "endDate": "2026-04-06",
     "dateLabel": "28 al 6 de marzo de 2026",
@@ -7567,9 +7475,9 @@
     }
   },
   {
-    "weekId": "2026-W21",
+    "weekId": "2026-W14",
     "year": 2026,
-    "weekNumber": 21,
+    "weekNumber": 14,
     "startDate": "2026-04-04",
     "endDate": "2026-04-10",
     "dateLabel": "4 al 10 de abril de 2026",
@@ -7590,9 +7498,9 @@
     }
   },
   {
-    "weekId": "2026-W22",
+    "weekId": "2026-W15",
     "year": 2026,
-    "weekNumber": 22,
+    "weekNumber": 15,
     "startDate": "2026-04-11",
     "endDate": "2026-04-17",
     "dateLabel": "11 al 17 de abril de 2026",
@@ -7613,9 +7521,9 @@
     }
   },
   {
-    "weekId": "2026-W23",
+    "weekId": "2026-W16",
     "year": 2026,
-    "weekNumber": 23,
+    "weekNumber": 16,
     "startDate": "2026-04-18",
     "endDate": "2026-04-24",
     "dateLabel": "18 al 24 de abril de 2026",
@@ -7636,9 +7544,9 @@
     }
   },
   {
-    "weekId": "2026-W20",
+    "weekId": "2026-W18",
     "year": 2026,
-    "weekNumber": 20,
+    "weekNumber": 18,
     "startDate": "2026-04-28",
     "endDate": "2026-05-03",
     "dateLabel": "28 al 3 de abril de 2026",
@@ -7659,9 +7567,9 @@
     }
   },
   {
-    "weekId": "2026-W25",
+    "weekId": "2026-W18-2026-05-02",
     "year": 2026,
-    "weekNumber": 25,
+    "weekNumber": 18,
     "startDate": "2026-05-02",
     "endDate": "2026-05-08",
     "dateLabel": "2 al 8 de mayo de 2026",
@@ -7682,9 +7590,9 @@
     }
   },
   {
-    "weekId": "2026-W26",
+    "weekId": "2026-W19",
     "year": 2026,
-    "weekNumber": 26,
+    "weekNumber": 19,
     "startDate": "2026-05-09",
     "endDate": "2026-05-15",
     "dateLabel": "9 al 15 de mayo de 2026",
@@ -7705,9 +7613,9 @@
     }
   },
   {
-    "weekId": "2026-W27",
+    "weekId": "2026-W20",
     "year": 2026,
-    "weekNumber": 27,
+    "weekNumber": 20,
     "startDate": "2026-05-16",
     "endDate": "2026-05-22",
     "dateLabel": "16 al 22 de mayo de 2026",
@@ -7728,9 +7636,9 @@
     }
   },
   {
-    "weekId": "2026-W28",
+    "weekId": "2026-W21",
     "year": 2026,
-    "weekNumber": 28,
+    "weekNumber": 21,
     "startDate": "2026-05-23",
     "endDate": "2026-05-29",
     "dateLabel": "23 al 29 de mayo de 2026",
@@ -7751,9 +7659,9 @@
     }
   },
   {
-    "weekId": "2026-W24",
+    "weekId": "2026-W22",
     "year": 2026,
-    "weekNumber": 24,
+    "weekNumber": 22,
     "startDate": "2026-05-25",
     "endDate": "2026-06-01",
     "dateLabel": "25 al 1 de mayo de 2026",
@@ -7774,9 +7682,9 @@
     }
   },
   {
-    "weekId": "2026-W30",
+    "weekId": "2026-W23",
     "year": 2026,
-    "weekNumber": 30,
+    "weekNumber": 23,
     "startDate": "2026-06-06",
     "endDate": "2026-06-12",
     "dateLabel": "6 al 12 de junio de 2026",
@@ -7797,9 +7705,9 @@
     }
   },
   {
-    "weekId": "2026-W31",
+    "weekId": "2026-W24",
     "year": 2026,
-    "weekNumber": 31,
+    "weekNumber": 24,
     "startDate": "2026-06-13",
     "endDate": "2026-06-19",
     "dateLabel": "13 al 19 de junio de 2026",
@@ -7820,9 +7728,9 @@
     }
   },
   {
-    "weekId": "2026-W32",
+    "weekId": "2026-W25",
     "year": 2026,
-    "weekNumber": 32,
+    "weekNumber": 25,
     "startDate": "2026-06-20",
     "endDate": "2026-06-26",
     "dateLabel": "20 al 26 de junio de 2026",
@@ -7843,9 +7751,9 @@
     }
   },
   {
-    "weekId": "2026-W29",
+    "weekId": "2026-W27",
     "year": 2026,
-    "weekNumber": 29,
+    "weekNumber": 27,
     "startDate": "2026-06-30",
     "endDate": "2026-07-05",
     "dateLabel": "30 al 5 de junio de 2026",
@@ -7866,9 +7774,9 @@
     }
   },
   {
-    "weekId": "2026-W34",
+    "weekId": "2026-W27-2026-07-04",
     "year": 2026,
-    "weekNumber": 34,
+    "weekNumber": 27,
     "startDate": "2026-07-04",
     "endDate": "2026-07-10",
     "dateLabel": "4 al 10 de julio de 2026",
@@ -7889,9 +7797,9 @@
     }
   },
   {
-    "weekId": "2026-W35",
+    "weekId": "2026-W28",
     "year": 2026,
-    "weekNumber": 35,
+    "weekNumber": 28,
     "startDate": "2026-07-11",
     "endDate": "2026-07-17",
     "dateLabel": "11 al 17 de julio de 2026",
@@ -7912,9 +7820,9 @@
     }
   },
   {
-    "weekId": "2026-W36",
+    "weekId": "2026-W29",
     "year": 2026,
-    "weekNumber": 36,
+    "weekNumber": 29,
     "startDate": "2026-07-18",
     "endDate": "2026-07-24",
     "dateLabel": "18 al 24 de julio de 2026",
@@ -7935,9 +7843,9 @@
     }
   },
   {
-    "weekId": "2026-W37",
+    "weekId": "2026-W30",
     "year": 2026,
-    "weekNumber": 37,
+    "weekNumber": 30,
     "startDate": "2026-07-25",
     "endDate": "2026-07-31",
     "dateLabel": "25 al 31 de julio de 2026",
@@ -7958,9 +7866,9 @@
     }
   },
   {
-    "weekId": "2026-W33",
+    "weekId": "2026-W31",
     "year": 2026,
-    "weekNumber": 33,
+    "weekNumber": 31,
     "startDate": "2026-07-27",
     "endDate": "2026-08-03",
     "dateLabel": "27 al 3 de julio de 2026",
@@ -7981,9 +7889,9 @@
     }
   },
   {
-    "weekId": "2026-W38",
+    "weekId": "2026-W31-2026-08-01",
     "year": 2026,
-    "weekNumber": 38,
+    "weekNumber": 31,
     "startDate": "2026-08-01",
     "endDate": "2026-08-07",
     "dateLabel": "1 al 7 de agosto de 2026",
@@ -8004,9 +7912,9 @@
     }
   },
   {
-    "weekId": "2026-W39",
+    "weekId": "2026-W32",
     "year": 2026,
-    "weekNumber": 39,
+    "weekNumber": 32,
     "startDate": "2026-08-08",
     "endDate": "2026-08-14",
     "dateLabel": "8 al 14 de agosto de 2026",
@@ -8027,9 +7935,9 @@
     }
   },
   {
-    "weekId": "2026-W40",
+    "weekId": "2026-W33",
     "year": 2026,
-    "weekNumber": 40,
+    "weekNumber": 33,
     "startDate": "2026-08-15",
     "endDate": "2026-08-21",
     "dateLabel": "15 al 21 de agosto de 2026",
@@ -8050,9 +7958,9 @@
     }
   },
   {
-    "weekId": "2026-W41",
+    "weekId": "2026-W34",
     "year": 2026,
-    "weekNumber": 41,
+    "weekNumber": 34,
     "startDate": "2026-08-22",
     "endDate": "2026-08-28",
     "dateLabel": "22 al 28 de agosto de 2026",

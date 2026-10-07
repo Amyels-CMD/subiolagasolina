@@ -23,6 +23,16 @@ const MONTH_NAMES = [
   "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
 ];
 
+function getIsoWeek(dateStr) {
+  const [y, m, d] = dateStr.split("-").map(Number);
+  const date = new Date(Date.UTC(y, m - 1, d));
+  const dayNum = date.getUTCDay() || 7;
+  date.setUTCDate(date.getUTCDate() + 4 - dayNum);
+  const yearStart = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+  const weekNo = Math.ceil(((date.getTime() - yearStart.getTime()) / 86400000 + 1) / 7);
+  return { year: date.getUTCFullYear(), week: weekNo };
+}
+
 async function main() {
   console.log("Fetching official MICM fuel dataset...");
   const res = await fetch(CSV_URL);
@@ -34,7 +44,7 @@ async function main() {
   const header = rawLines[0].split(";").map(h => h.trim());
   console.log(`Found ${rawLines.length} lines. Headers:`, header.length);
 
-  const records = [];
+  const recordsMap = new Map();
 
   // Parse lines starting from index 1
   for (let i = 1; i < rawLines.length; i++) {
@@ -67,17 +77,15 @@ async function main() {
 
     if (prem === 0 && reg === 0) continue;
 
-    // Approximate ISO start date
+    // Accurate ISO start date
     const startMonth = mesNum;
     const padDiaDesde = String(diaDesde).padStart(2, "0");
     const padDiaHasta = String(diaHasta).padStart(2, "0");
 
     const startDate = `${anio}-${startMonth}-${padDiaDesde}`;
-    // Compute endDate
     let endMonth = startMonth;
     let endYear = anio;
     if (diaHasta < diaDesde) {
-      // Crossed into next month
       const nextMes = (mesIndex + 1) % 12;
       endMonth = String(nextMes + 1).padStart(2, "0");
       if (nextMes === 0) endYear = anio + 1;
@@ -87,15 +95,13 @@ async function main() {
     const dateLabel = `${diaDesde} al ${diaHasta} de ${MONTH_NAMES[mesIndex]} de ${anio}`;
     const shortDateLabel = `${diaDesde}-${diaHasta} ${MONTH_NAMES[mesIndex].slice(0, 3).toUpperCase()}`;
 
-    // Estimated announcement date: Friday before start date
-    // (Saturday is start date, Friday is announcement date)
-    const weekNumber = Math.ceil(((i % 52) + 1));
-    const weekId = `${anio}-W${String(weekNumber).padStart(2, "0")}`;
+    const iso = getIsoWeek(startDate);
+    const weekId = `${iso.year}-W${String(iso.week).padStart(2, "0")}`;
 
-    records.push({
+    recordsMap.set(startDate, {
       weekId,
-      year: anio,
-      weekNumber,
+      year: iso.year,
+      weekNumber: iso.week,
       startDate,
       endDate,
       dateLabel,
@@ -265,20 +271,27 @@ async function main() {
     },
   ];
 
-  // Append or replace
+  // Insert or overwrite exact recent records
   for (const w of septemberAndOctoberWeeks) {
-    const existingIdx = records.findIndex(r => r.startDate === w.startDate);
-    if (existingIdx >= 0) {
-      records[existingIdx] = w;
-    } else {
-      records.push(w);
+    recordsMap.set(w.startDate, w);
+  }
+
+  // Convert map to array and sort chronologically
+  const records = Array.from(recordsMap.values()).sort((a, b) =>
+    a.startDate.localeCompare(b.startDate)
+  );
+
+  // Guarantee every weekId is globally unique
+  const seenWeekIds = new Map();
+  for (const r of records) {
+    const count = (seenWeekIds.get(r.weekId) || 0) + 1;
+    seenWeekIds.set(r.weekId, count);
+    if (count > 1) {
+      r.weekId = `${r.weekId}-${r.startDate}`;
     }
   }
 
-  // Sort chronologically ascending
-  records.sort((a, b) => a.startDate.localeCompare(b.startDate));
-
-  console.log(`Final records count: ${records.length}`);
+  console.log(`Final unique records count: ${records.length}`);
   console.log("Latest record:", records[records.length - 1]);
 
   const outDir = path.resolve("src", "data");
