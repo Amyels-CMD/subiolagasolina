@@ -8,9 +8,9 @@ export const FAQS = [
       "El Ministerio de Industria, Comercio y Mipymes (MICM) emite la resolución oficial cada viernes alrededor de la 1:00 PM (13:00 AST). Los nuevos precios entran en vigencia a las 00:00 horas del sábado y se mantienen hasta las 23:59 horas del viernes siguiente.",
   },
   {
-    question: "¿Por qué el gobierno dominicano congela o subsidia los precios de los combustibles?",
+    question: "¿Cuándo conviene llenar el tanque si van a cambiar los precios?",
     answer:
-      "Conforme al Decreto 625-11 y las políticas de mitigación económica ante fluctuaciones del petróleo WTI y derivados en el Golfo de México, el Estado dominicano absorbe una porción de las alzas mediante subsidios directos para evitar que la inflación internacional afecte el transporte de pasajeros, de carga y la canasta básica familiar.",
+      "Si los precios van a subir, te conviene llenar el tanque antes de la medianoche del viernes (23:59 AST), momento en que finaliza la tarifa actual. Si van a bajar, conviene esperar al sábado en la mañana para repostar con la rebaja oficial aplicada.",
   },
   {
     question: "¿Cómo se calculan oficialmente los precios según la Ley 112-00?",

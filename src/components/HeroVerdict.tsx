@@ -53,7 +53,7 @@ export function HeroVerdict({ summary }: HeroVerdictProps) {
           {subVerdict}
         </p>
 
-        {/* Resolution dates & Subsidies card */}
+        {/* Resolution dates & Regulatory info */}
         <div className="w-full max-w-2xl grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
           {/* Card 1: Período oficial */}
           <div className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/70 border border-white/10 text-left">
