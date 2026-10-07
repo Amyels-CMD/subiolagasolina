@@ -1,10 +1,41 @@
 "use client";
 
 import React, { useState } from "react";
-import { Calculator, Sparkles, Fuel, Car, Info } from "lucide-react";
+import {
+  Calculator,
+  Car,
+  Truck,
+  Bike,
+  Flame,
+  Home,
+  Building2,
+  Info,
+} from "lucide-react";
 import { WeeklyFuelRecord, FuelId } from "@/lib/types/fuel";
 import { CONSUMER_FUELS, FUELS_META, VEHICLE_TANKS } from "@/lib/constants/fuels";
 import { formatCurrency, formatDelta } from "@/lib/utils/format";
+
+function VehicleSvgIcon({ iconKey, isSelected }: { iconKey: string; isSelected: boolean }) {
+  const cls = `w-4 h-4 ${isSelected ? "text-slate-950" : "text-blue-400"}`;
+  switch (iconKey) {
+    case "car":
+    case "compact":
+      return <Car className={cls} />;
+    case "suv":
+    case "truck":
+      return <Truck className={cls} />;
+    case "bike":
+      return <Bike className={cls} />;
+    case "cylinder25":
+      return <Flame className={cls} />;
+    case "cylinder50":
+      return <Home className={cls} />;
+    case "cylinder100":
+      return <Building2 className={cls} />;
+    default:
+      return <Car className={cls} />;
+  }
+}
 
 interface TankCalculatorProps {
   currentWeek: WeeklyFuelRecord;
@@ -89,19 +120,30 @@ export function TankCalculator({ currentWeek, previousWeek }: TankCalculatorProp
                       key={preset.label}
                       type="button"
                       onClick={() => setGallons(preset.gallons)}
-                      className={`p-2.5 rounded-xl text-left border transition-all ${
+                      className={`p-2.5 rounded-xl text-left border transition-all flex flex-col justify-between ${
                         isSelected
                           ? "bg-white text-slate-950 border-white font-bold shadow-md"
                           : "bg-slate-800/60 border-white/5 text-slate-300 hover:border-white/20"
                       }`}
                     >
-                      <div className="text-base mb-1">{preset.icon}</div>
-                      <span className="block text-xs font-semibold leading-snug truncate">
-                        {preset.label}
-                      </span>
-                      <span className="block text-[11px] text-slate-400 font-mono">
-                        {preset.gallons} {selectedFuel === "gas-natural" ? "m³" : "gal"}
-                      </span>
+                      <div
+                        className={`p-1.5 rounded-lg w-fit mb-2 ${
+                          isSelected ? "bg-slate-200" : "bg-white/5"
+                        }`}
+                      >
+                        <VehicleSvgIcon
+                          iconKey={preset.iconKey}
+                          isSelected={isSelected}
+                        />
+                      </div>
+                      <div>
+                        <span className="block text-xs font-semibold leading-snug truncate">
+                          {preset.label}
+                        </span>
+                        <span className="block text-[11px] text-slate-400 font-mono mt-0.5">
+                          {preset.gallons} {selectedFuel === "gas-natural" ? "m³" : "gal"}
+                        </span>
+                      </div>
                     </button>
                   );
                 })}

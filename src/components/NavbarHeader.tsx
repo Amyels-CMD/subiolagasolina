@@ -1,5 +1,6 @@
 import React from "react";
 import { Fuel, ShieldCheck } from "lucide-react";
+import { DominicanFlag } from "@/components/DominicanFlag";
 
 export function NavbarHeader() {
   return (
@@ -15,8 +16,9 @@ export function NavbarHeader() {
               <span className="font-black text-lg tracking-tight text-white">
                 Subió<span className="text-blue-400">LaGasolina</span>
               </span>
-              <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30">
-                RD 🇩🇴
+              <span className="inline-flex items-center gap-1.5 text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-blue-500/15 text-blue-300 border border-blue-500/30">
+                <DominicanFlag className="w-3.5 h-2.5 rounded-[1px] shadow-sm" />
+                <span>RD</span>
               </span>
             </div>
             <p className="text-[11px] text-slate-400 hidden sm:block">

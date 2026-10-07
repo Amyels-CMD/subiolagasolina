@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { NavbarHeader } from "@/components/NavbarHeader";
+import { DominicanFlag } from "@/components/DominicanFlag";
 import { getBaseUrl } from "@/lib/utils/url";
 
 const baseUrl = getBaseUrl();
@@ -80,8 +81,9 @@ export default function RootLayout({
         <footer className="w-full border-t border-white/10 bg-[#06090f] py-12 px-4 sm:px-6 mt-16 text-xs text-slate-400">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
             <div>
-              <p className="font-bold text-white text-sm">
-                Subió<span className="text-blue-400">LaGasolina</span> 🇩🇴
+              <p className="font-bold text-white text-sm flex items-center gap-1.5 justify-center md:justify-start">
+                <span>Subió<span className="text-blue-400">LaGasolina</span></span>
+                <DominicanFlag className="w-4 h-3 rounded-[1px] shadow-sm" />
               </p>
               <p className="text-slate-500 mt-1">
                 La forma más simple y rápida de consultar combustibles en República Dominicana.

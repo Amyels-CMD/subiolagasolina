@@ -190,12 +190,12 @@ export const INDUSTRIAL_FUELS: FuelId[] = [
 ];
 
 export const VEHICLE_TANKS = [
-  { label: "Sedán / Hatchback Pequeño", gallons: 10, icon: "🚗" },
-  { label: "Sedán Mediano / Compacto", gallons: 13, icon: "🚘" },
-  { label: "SUV / Crossover Familiar", gallons: 17, icon: "🚙" },
-  { label: "Camioneta / Pickup 4x4", gallons: 22, icon: "🛻" },
-  { label: "Motocicleta / Pasola", gallons: 2.5, icon: "🛵" },
-  { label: "Cilindro GLP Hogar 25 lbs (5.8 gal)", gallons: 5.8, icon: "🍳" },
-  { label: "Cilindro GLP Hogar 50 lbs (11.7 gal)", gallons: 11.7, icon: "🏠" },
-  { label: "Cilindro GLP 100 lbs (23.5 gal)", gallons: 23.5, icon: "🏢" },
+  { label: "Sedán / Hatchback Pequeño", gallons: 10, iconKey: "car" },
+  { label: "Sedán Mediano / Compacto", gallons: 13, iconKey: "compact" },
+  { label: "SUV / Crossover Familiar", gallons: 17, iconKey: "suv" },
+  { label: "Camioneta / Pickup 4x4", gallons: 22, iconKey: "truck" },
+  { label: "Motocicleta / Pasola", gallons: 2.5, iconKey: "bike" },
+  { label: "Cilindro GLP Hogar 25 lbs (5.8 gal)", gallons: 5.8, iconKey: "cylinder25" },
+  { label: "Cilindro GLP Hogar 50 lbs (11.7 gal)", gallons: 11.7, iconKey: "cylinder50" },
+  { label: "Cilindro GLP 100 lbs (23.5 gal)", gallons: 23.5, iconKey: "cylinder100" },
 ];
