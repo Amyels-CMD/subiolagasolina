@@ -1,0 +1,51 @@
+name: Sincronización Semanal de Precios (MICM)
+
+on:
+  schedule:
+    # República Dominicana: Viernes 1:05 PM AST (17:05 UTC) y reintento 1:35 PM AST (17:35 UTC)
+    - cron: '5 17 * * 5'
+    - cron: '35 17 * * 5'
+  workflow_dispatch: # Permite ejecución manual desde GitHub con 1 clic
+
+jobs:
+  sync-fuel-prices:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Necesario para hacer commit y push automático
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Ejecutar script de sincronización oficial
+        run: node scripts/weekly-sync.mjs
+
+      - name: Ejecutar pruebas unitarias de integridad
+        run: npm test
+
+      - name: Verificar cambios en los datos
+        id: git-check
+        run: |
+          if git status --porcelain src/data/fuel-history.json | grep -q "src/data/fuel-history.json"; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Guardar y desplegar nueva semana en producción
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git config --global user.name "SubioLaGasolina Bot"
+          git config --global user.email "bot@subiolagasolina.com"
+          git add src/data/fuel-history.json
+          git commit -m "chore(data): auto-update precios oficiales MICM para nueva semana [skip ci]"
+          git push

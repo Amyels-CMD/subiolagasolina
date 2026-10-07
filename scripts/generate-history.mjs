@@ -134,7 +134,6 @@ async function main() {
       dateLabel: "29 de agosto al 4 de septiembre de 2026",
       shortDateLabel: "29 AGO - 4 SEP",
       announcementDate: "2026-08-28",
-      subsidyMillionDop: 1250.0,
       source: "Ministerio de Industria, Comercio y Mipymes (MICM)",
       prices: {
         "gasolina-premium": 341.10,
@@ -158,7 +157,6 @@ async function main() {
       dateLabel: "5 al 11 de septiembre de 2026",
       shortDateLabel: "5-11 SEP",
       announcementDate: "2026-09-04",
-      subsidyMillionDop: 1294.5,
       source: "Ministerio de Industria, Comercio y Mipymes (MICM)",
       prices: {
         "gasolina-premium": 341.10,
@@ -182,7 +180,6 @@ async function main() {
       dateLabel: "12 al 18 de septiembre de 2026",
       shortDateLabel: "12-18 SEP",
       announcementDate: "2026-09-11",
-      subsidyMillionDop: 1631.5,
       source: "Ministerio de Industria, Comercio y Mipymes (MICM)",
       prices: {
         "gasolina-premium": 341.10,
@@ -206,7 +203,6 @@ async function main() {
       dateLabel: "19 al 25 de septiembre de 2026",
       shortDateLabel: "19-25 SEP",
       announcementDate: "2026-09-18",
-      subsidyMillionDop: 1540.2,
       source: "Ministerio de Industria, Comercio y Mipymes (MICM)",
       prices: {
         "gasolina-premium": 350.10,
@@ -230,7 +226,6 @@ async function main() {
       dateLabel: "26 de septiembre al 2 de octubre de 2026",
       shortDateLabel: "26 SEP - 2 OCT",
       announcementDate: "2026-09-25",
-      subsidyMillionDop: 1770.65,
       source: "Ministerio de Industria, Comercio y Mipymes (MICM)",
       prices: {
         "gasolina-premium": 353.10,
@@ -254,7 +249,6 @@ async function main() {
       dateLabel: "3 al 9 de octubre de 2026",
       shortDateLabel: "3-9 OCT",
       announcementDate: "2026-10-02",
-      subsidyMillionDop: 1490.9,
       source: "Ministerio de Industria, Comercio y Mipymes (MICM)",
       prices: {
         "gasolina-premium": 353.10,

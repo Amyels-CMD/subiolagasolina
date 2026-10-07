@@ -9,7 +9,7 @@ Inspirado en la filosofía visual y de presentación de datos de **isaiprofitabl
 
 ## 🚀 Características Principales
 
-- **Respuesta Instantánea (Verdict Hero):** Responde en 1 segundo a la pregunta clave: **"NO, SE MANTUVO"**, **"¡BAJÓ!"** o **"SÍ, SUBIÓ"**, con el detalle de si el gobierno aplicó subsidios extraordinarios.
+- **Respuesta Instantánea (Verdict Hero):** Responde en 1 segundo a la pregunta clave: **"NO, SE MANTUVO"**, **"¡BAJÓ!"** o **"SÍ, SUBIÓ"**, con el detalle exacto de las resoluciones semanales.
 - **Precios de Consumo Masivo:** Tarjetas con números grandes para:
   - Gasolina Premium (`RD$ 353.10 / gal`)
   - Gasolina Regular (`RD$ 317.50 / gal`)

@@ -12,7 +12,6 @@ export async function GET() {
 ## Estado de la Semana (${currentWeek.dateLabel})
 - ¿Subió la gasolina?: ${headlineVerdict}
 - Resumen: ${subVerdict}
-- Subsidio oficial del Estado: RD$ ${currentWeek.subsidyMillionDop ?? 0} millones
 
 ## Precios Oficiales Vigentes
 ${consumerItems

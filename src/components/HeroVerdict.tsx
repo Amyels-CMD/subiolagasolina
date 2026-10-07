@@ -70,36 +70,20 @@ export function HeroVerdict({ summary }: HeroVerdictProps) {
             </div>
           </div>
 
-          {/* Card 2: Subsidio estatal extraordinario */}
-          {currentWeek.subsidyMillionDop ? (
-            <div className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/70 border border-white/10 text-left">
-              <div className="w-9 h-9 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
-                <Sparkles className="w-4 h-4" />
-              </div>
-              <div>
-                <span className="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold">
-                  Subsidio Gubernamental
-                </span>
-                <span className="text-sm font-bold text-amber-300">
-                  RD$ {currentWeek.subsidyMillionDop.toLocaleString("es-DO")} millones
-                </span>
-              </div>
+          {/* Card 2: Fuente oficial reguladora */}
+          <div className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/70 border border-white/10 text-left">
+            <div className="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
+              <CheckCircle2 className="w-4 h-4" />
             </div>
-          ) : (
-            <div className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/70 border border-white/10 text-left">
-              <div className="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
-                <CheckCircle2 className="w-4 h-4" />
-              </div>
-              <div>
-                <span className="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold">
-                  Fuente Reguladora
-                </span>
-                <span className="text-sm font-semibold text-white">
-                  Ley 112-00 de Hidrocarburos
-                </span>
-              </div>
+            <div>
+              <span className="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold">
+                Fuente Reguladora Oficial
+              </span>
+              <span className="text-sm font-semibold text-white">
+                MICM • Ley 112-00
+              </span>
             </div>
-          )}
+          </div>
         </div>
 
         {/* Live Countdown to Next Resolution */}

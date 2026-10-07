@@ -41,7 +41,6 @@ export interface FuelPriceItem {
   percentageChange: number;
   trend: TrendDirection;
   unit: "galón" | "m³";
-  subsidized?: boolean;
 }
 
 export interface WeeklyFuelRecord {
@@ -54,7 +53,6 @@ export interface WeeklyFuelRecord {
   shortDateLabel: string; // "3-9 Oct 2026"
   resolutionNumber?: string;
   announcementDate: string; // ISO "2026-10-02" (Viernes previo)
-  subsidyMillionDop?: number; // RD$ millones subsidiados
   source: string; // "Ministerio de Industria, Comercio y Mipymes (MICM)"
   officialBulletinUrl?: string;
   prices: Record<FuelId, number>;
@@ -72,7 +70,6 @@ export interface WeeklySummary {
   items: FuelPriceItem[];
   consumerItems: FuelPriceItem[];
   industrialItems: FuelPriceItem[];
-  totalSubsidyDopFormatted?: string;
   nextUpdateDate: string; // ISO timestamp
 }
 

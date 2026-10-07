@@ -42,7 +42,6 @@ export function HistoricalTable({ history }: HistoricalTableProps) {
       "Gasoil Regular (DOP)",
       "GLP (DOP)",
       "Gas Natural (DOP)",
-      "Subsidio Millones (DOP)",
     ];
 
     const rows = history.map((r) => [
@@ -56,7 +55,6 @@ export function HistoricalTable({ history }: HistoricalTableProps) {
       r.prices["gasoil-regular"],
       r.prices["glp"],
       r.prices["gas-natural"],
-      r.subsidyMillionDop ?? "",
     ]);
 
     const csvContent =
@@ -122,8 +120,8 @@ export function HistoricalTable({ history }: HistoricalTableProps) {
                 <th className="py-3 px-3">Premium</th>
                 <th className="py-3 px-3">Regular</th>
                 <th className="py-3 px-3">Gasoil Ópt.</th>
+                <th className="py-3 px-3 hidden sm:table-cell">Gasoil Reg.</th>
                 <th className="py-3 px-3">GLP</th>
-                <th className="py-3 px-3 hidden md:table-cell">Subsidio</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5 font-mono">
@@ -141,13 +139,11 @@ export function HistoricalTable({ history }: HistoricalTableProps) {
                   <td className="py-3 px-3 text-slate-300">
                     RD$ {rec.prices["gasoil-optimo"]?.toFixed(2)}
                   </td>
+                  <td className="py-3 px-3 hidden sm:table-cell text-slate-300">
+                    RD$ {rec.prices["gasoil-regular"]?.toFixed(2)}
+                  </td>
                   <td className="py-3 px-3 text-slate-300">
                     RD$ {rec.prices["glp"]?.toFixed(2)}
-                  </td>
-                  <td className="py-3 px-3 hidden md:table-cell font-sans text-slate-400">
-                    {rec.subsidyMillionDop
-                      ? `RD$ ${rec.subsidyMillionDop}M`
-                      : "Regulado"}
                   </td>
                 </tr>
               ))}

@@ -66,7 +66,6 @@ function calculateFuelItem(
     percentageChange,
     trend,
     unit: meta?.unit ?? "galón",
-    subsidized: true,
   };
 }
 
@@ -107,11 +106,7 @@ export function getWeeklySummary(): WeeklySummary {
     badgeTone = "success";
   } else {
     headlineVerdict = "NO, SE MANTUVO";
-    if (current.subsidyMillionDop) {
-      subVerdict = `El gobierno destinó un subsidio de RD$ ${current.subsidyMillionDop.toLocaleString("es-DO")} millones para congelar las alzas internacionales.`;
-    } else {
-      subVerdict = "El Ministerio de Industria y Comercio mantuvo sin cambios los precios vigentes para la semana.";
-    }
+    subVerdict = "El Ministerio de Industria y Comercio mantuvo congelados los precios de los combustibles de consumo masivo.";
     badgeTone = "neutral";
   }
 
@@ -129,9 +124,6 @@ export function getWeeklySummary(): WeeklySummary {
     items: allItems,
     consumerItems,
     industrialItems,
-    totalSubsidyDopFormatted: current.subsidyMillionDop
-      ? formatMillions(current.subsidyMillionDop)
-      : undefined,
     nextUpdateDate: nextUpdate.toISOString(),
   };
 }
