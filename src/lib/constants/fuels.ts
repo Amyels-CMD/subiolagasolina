@@ -1,0 +1,201 @@
+import { FuelId, FuelMeta } from "@/lib/types/fuel";
+
+export const FUELS_META: Record<FuelId, FuelMeta> = {
+  "gasolina-premium": {
+    id: "gasolina-premium",
+    name: "Gasolina Premium",
+    shortName: "Premium",
+    category: "consumer",
+    unit: "galón",
+    octaneOrSpec: "95 Octanos",
+    description: "Combustible de alto octanaje recomendado para vehículos modernos con inyección directa o turbo.",
+    commonUsage: "Vehículos de pasajeros, SUVs y motores de alta compresión.",
+    color: {
+      primary: "#2563eb", // Vibrant Blue
+      border: "#93c5fd",
+      badgeBg: "rgba(37, 99, 235, 0.12)",
+      badgeText: "#1d4ed8",
+      chartColor: "#2563eb",
+    },
+  },
+  "gasolina-regular": {
+    id: "gasolina-regular",
+    name: "Gasolina Regular",
+    shortName: "Regular",
+    category: "consumer",
+    unit: "galón",
+    octaneOrSpec: "89 Octanos",
+    description: "Combustible estándar para la mayoría de vehículos particulares, motocicletas y transporte liviano.",
+    commonUsage: "Sedanes, motores estándar y motocicletas.",
+    color: {
+      primary: "#0284c7", // Sky blue
+      border: "#7dd3fc",
+      badgeBg: "rgba(2, 132, 199, 0.12)",
+      badgeText: "#0369a1",
+      chartColor: "#0284c7",
+    },
+  },
+  "gasoil-optimo": {
+    id: "gasoil-optimo",
+    name: "Gasoil Óptimo",
+    shortName: "Gasoil Óptimo",
+    category: "consumer",
+    unit: "galón",
+    octaneOrSpec: "Ultra Bajo Azufre (ULSD)",
+    description: "Diésel de alta pureza con bajo contenido de azufre para motores diésel con filtro DPF y Common Rail.",
+    commonUsage: "Camionetas modernas, SUVs diésel y transporte premium.",
+    color: {
+      primary: "#059669", // Emerald Green
+      border: "#6ee7b7",
+      badgeBg: "rgba(5, 150, 105, 0.12)",
+      badgeText: "#047857",
+      chartColor: "#059669",
+    },
+  },
+  "gasoil-regular": {
+    id: "gasoil-regular",
+    name: "Gasoil Regular",
+    shortName: "Gasoil Regular",
+    category: "consumer",
+    unit: "galón",
+    octaneOrSpec: "Diésel Comercial",
+    description: "Diésel para transporte de carga pesada, autobuses, generadores eléctricos y maquinaria agrícola.",
+    commonUsage: "Camiones de carga, autobuses y plantas eléctricas.",
+    color: {
+      primary: "#d97706", // Amber
+      border: "#fcd34d",
+      badgeBg: "rgba(217, 119, 6, 0.12)",
+      badgeText: "#b45309",
+      chartColor: "#d97706",
+    },
+  },
+  "glp": {
+    id: "glp",
+    name: "Gas Licuado de Petróleo (GLP)",
+    shortName: "GLP",
+    category: "consumer",
+    unit: "galón",
+    octaneOrSpec: "Propano / Butano",
+    description: "Gas utilizado tanto para transporte público y privado como para uso doméstico en hogares dominicanos.",
+    commonUsage: "Taxis, carros públicos (conchos), cocinas y cilindros residenciales.",
+    color: {
+      primary: "#8b5cf6", // Purple
+      border: "#c4b5fd",
+      badgeBg: "rgba(139, 92, 246, 0.12)",
+      badgeText: "#7c3aed",
+      chartColor: "#8b5cf6",
+    },
+  },
+  "gas-natural": {
+    id: "gas-natural",
+    name: "Gas Natural Vehicular (GNV)",
+    shortName: "Gas Natural",
+    category: "consumer",
+    unit: "m³",
+    octaneOrSpec: "Metano Comprimido",
+    description: "Combustible gaseoso alternativo, comercializado por metro cúbico (m³), de combustión limpia.",
+    commonUsage: "Flotillas comerciales y vehículos adaptados a GNV.",
+    color: {
+      primary: "#10b981", // Teal/Mint
+      border: "#a7f3d0",
+      badgeBg: "rgba(16, 185, 129, 0.12)",
+      badgeText: "#065f46",
+      chartColor: "#10b981",
+    },
+  },
+  "avtur": {
+    id: "avtur",
+    name: "Avtur (Combustible de Aviación)",
+    shortName: "Avtur",
+    category: "industrial",
+    unit: "galón",
+    octaneOrSpec: "Jet A-1",
+    description: "Queroseno especializado para turbinas de aviones comerciales y aviación civil.",
+    commonUsage: "Aeropuertos y aeronaves a reacción.",
+    color: {
+      primary: "#64748b",
+      border: "#cbd5e1",
+      badgeBg: "rgba(100, 116, 139, 0.12)",
+      badgeText: "#475569",
+      chartColor: "#64748b",
+    },
+  },
+  "kerosene": {
+    id: "kerosene",
+    name: "Kerosene",
+    shortName: "Kerosene",
+    category: "industrial",
+    unit: "galón",
+    octaneOrSpec: "Queroseno Industrial",
+    description: "Combustible para iluminación, calefacción y aplicaciones industriales específicas.",
+    commonUsage: "Procesos térmicos e industriales.",
+    color: {
+      primary: "#475569",
+      border: "#94a3b8",
+      badgeBg: "rgba(71, 85, 105, 0.12)",
+      badgeText: "#334155",
+      chartColor: "#475569",
+    },
+  },
+  "fuel-oil-6": {
+    id: "fuel-oil-6",
+    name: "Fuel Oíl #6",
+    shortName: "Fuel Oíl #6",
+    category: "industrial",
+    unit: "galón",
+    octaneOrSpec: "Bunker C",
+    description: "Combustible residual pesado para plantas generadoras eléctricas y calderas de gran capacidad.",
+    commonUsage: "Generación de electricidad y buques marítimos.",
+    color: {
+      primary: "#334155",
+      border: "#64748b",
+      badgeBg: "rgba(51, 65, 85, 0.12)",
+      badgeText: "#1e293b",
+      chartColor: "#334155",
+    },
+  },
+  "fuel-oil-1s": {
+    id: "fuel-oil-1s",
+    name: "Fuel Oíl 1% Azufre (FO6 1%S)",
+    shortName: "Fuel Oíl 1%S",
+    category: "industrial",
+    unit: "galón",
+    octaneOrSpec: "Bajo Azufre",
+    description: "Combustible pesado con emisión reducida de azufre para generación eléctrica conforme a normativas ambientales.",
+    commonUsage: "Plantas de energía e industria pesada.",
+    color: {
+      primary: "#1e293b",
+      border: "#475569",
+      badgeBg: "rgba(30, 41, 59, 0.12)",
+      badgeText: "#0f172a",
+      chartColor: "#1e293b",
+    },
+  },
+};
+
+export const CONSUMER_FUELS: FuelId[] = [
+  "gasolina-premium",
+  "gasolina-regular",
+  "gasoil-optimo",
+  "gasoil-regular",
+  "glp",
+  "gas-natural",
+];
+
+export const INDUSTRIAL_FUELS: FuelId[] = [
+  "avtur",
+  "kerosene",
+  "fuel-oil-6",
+  "fuel-oil-1s",
+];
+
+export const VEHICLE_TANKS = [
+  { label: "Sedán / Hatchback Pequeño", gallons: 10, icon: "🚗" },
+  { label: "Sedán Mediano / Compacto", gallons: 13, icon: "🚘" },
+  { label: "SUV / Crossover Familiar", gallons: 17, icon: "🚙" },
+  { label: "Camioneta / Pickup 4x4", gallons: 22, icon: "🛻" },
+  { label: "Motocicleta / Pasola", gallons: 2.5, icon: "🛵" },
+  { label: "Cilindro GLP Hogar 25 lbs (5.8 gal)", gallons: 5.8, icon: "🍳" },
+  { label: "Cilindro GLP Hogar 50 lbs (11.7 gal)", gallons: 11.7, icon: "🏠" },
+  { label: "Cilindro GLP 100 lbs (23.5 gal)", gallons: 23.5, icon: "🏢" },
+];
