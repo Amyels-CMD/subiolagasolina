@@ -58,6 +58,14 @@ export interface WeeklyFuelRecord {
   prices: Record<FuelId, number>;
 }
 
+export interface WtiBenchmark {
+  priceUsd: number;
+  changeUsd: number;
+  percentageChange: number;
+  trend: TrendDirection;
+  label: string;
+}
+
 export interface WeeklySummary {
   currentWeek: WeeklyFuelRecord;
   previousWeek: WeeklyFuelRecord;
@@ -71,6 +79,7 @@ export interface WeeklySummary {
   consumerItems: FuelPriceItem[];
   industrialItems: FuelPriceItem[];
   nextUpdateDate: string; // ISO timestamp
+  wti?: WtiBenchmark;
 }
 
 export interface TankCalculationResult {

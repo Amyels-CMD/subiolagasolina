@@ -9,7 +9,6 @@ import {
   Flame,
   Home,
   Building2,
-  Info,
 } from "lucide-react";
 import { WeeklyFuelRecord, FuelId } from "@/lib/types/fuel";
 import { CONSUMER_FUELS, FUELS_META, VEHICLE_TANKS } from "@/lib/constants/fuels";
@@ -55,8 +54,8 @@ export function TankCalculator({ currentWeek, previousWeek }: TankCalculatorProp
   const differenceCost = Math.round((totalCurrentCost - totalPreviousCost) * 100) / 100;
 
   return (
-    <section id="calculadora" className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
-      <div className="data-card p-5 sm:p-8 bg-gradient-to-br from-slate-900/90 via-slate-900/70 to-slate-950">
+    <section id="calculadora" className="max-w-6xl mx-auto px-4 sm:px-6 py-6">
+      <div className="py-6 border-b border-white/10">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
           <div>
             <div className="flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-wider mb-1">

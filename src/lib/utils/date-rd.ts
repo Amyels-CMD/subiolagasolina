@@ -16,7 +16,6 @@ export function getNextAnnouncementDate(referenceDate: Date = new Date()): Date 
 
   const dayOfWeek = domDate.getDay(); // 0 = Domingo, 5 = Viernes, 6 = Sábado
   const hours = domDate.getHours();
-  const minutes = domDate.getMinutes();
 
   // Viernes objetivo:
   // Si hoy es viernes antes de la 1:00 PM (13:00), el objetivo es hoy a las 13:00.
@@ -84,3 +83,71 @@ export function getTimeUntilAnnouncement(targetDate: Date, currentDate: Date = n
     isPastOrImminent: diff < 30 * 60 * 1000, // Menos de 30 mins
   };
 }
+
+export type AnnouncementPhase =
+  | "countdown" // Normal countdown (Saturday to Friday 12:59 PM)
+  | "waiting_official" // Friday 1:00 PM AST while government resolution is pending
+  | "effective_tonight"; // Friday afternoon/evening once newly announced, before Saturday 00:00 AST
+
+export function getDominicanNow(referenceDate: Date = new Date()): {
+  year: number;
+  month: number;
+  day: number;
+  dayOfWeek: number;
+  hours: number;
+  minutes: number;
+  isoDate: string;
+} {
+  const utc = referenceDate.getTime() + referenceDate.getTimezoneOffset() * 60000;
+  const domDate = new Date(utc + 3600000 * AST_OFFSET_HOURS);
+  const year = domDate.getFullYear();
+  const month = domDate.getMonth() + 1;
+  const day = domDate.getDate();
+  const dayOfWeek = domDate.getDay();
+  const hours = domDate.getHours();
+  const minutes = domDate.getMinutes();
+  const isoDate = `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+  return { year, month, day, dayOfWeek, hours, minutes, isoDate };
+}
+
+export function getAnnouncementLifecycle(
+  announcementDateStr: string,
+  targetDate: Date,
+  currentDate: Date = new Date()
+): {
+  phase: AnnouncementPhase;
+  timeLeft: TimeUntilAnnouncement;
+  isFriday: boolean;
+  hoursUntilMidnight: number;
+} {
+  const domNow = getDominicanNow(currentDate);
+  const isFriday = domNow.dayOfWeek === 5;
+  const timeLeft = getTimeUntilAnnouncement(targetDate, currentDate);
+
+  if (isFriday) {
+    if (domNow.hours >= 13) {
+      if (announcementDateStr === domNow.isoDate) {
+        return {
+          phase: "effective_tonight",
+          timeLeft,
+          isFriday,
+          hoursUntilMidnight: 24 - domNow.hours,
+        };
+      }
+      return {
+        phase: "waiting_official",
+        timeLeft,
+        isFriday,
+        hoursUntilMidnight: 24 - domNow.hours,
+      };
+    }
+  }
+
+  return {
+    phase: "countdown",
+    timeLeft,
+    isFriday,
+    hoursUntilMidnight: 0,
+  };
+}
+

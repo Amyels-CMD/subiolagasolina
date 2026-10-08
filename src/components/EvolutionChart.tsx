@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { TrendingUp, Calendar, LineChart as ChartIcon, Sparkles } from "lucide-react";
+import { LineChart as ChartIcon, Info } from "lucide-react";
 import { WeeklyFuelRecord, FuelId } from "@/lib/types/fuel";
 import { CONSUMER_FUELS, FUELS_META } from "@/lib/constants/fuels";
 import { formatCurrency, formatDelta, formatPercentage } from "@/lib/utils/format";
@@ -103,8 +103,8 @@ export function EvolutionChart({ history, initialFuelId = "gasolina-premium" }: 
   const primaryColor = fuelMeta?.color.primary ?? "#3b82f6";
 
   return (
-    <section id="grafica" className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
-      <div className="data-card p-5 sm:p-7 overflow-hidden">
+    <section id="grafica" className="max-w-6xl mx-auto px-4 sm:px-6 py-6">
+      <div className="py-6 border-b border-white/10">
         {/* Header & Controls */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-white/10">
           <div>
@@ -118,13 +118,13 @@ export function EvolutionChart({ history, initialFuelId = "gasolina-premium" }: 
           </div>
 
           {/* Timeframe selector pills */}
-          <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-slate-900/90 border border-white/10">
+          <div className="flex items-center gap-1 sm:gap-1.5 p-1 rounded-xl bg-slate-900/90 border border-white/10 overflow-x-auto max-w-full scrollbar-none shrink-0">
             {TIME_RANGES.map((r) => (
               <button
                 key={r.value}
                 type="button"
                 onClick={() => setWeeksLimit(r.value)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-[11px] sm:text-xs font-semibold whitespace-nowrap transition-all ${
                   weeksLimit === r.value
                     ? "bg-blue-600 text-white shadow-md shadow-blue-600/30"
                     : "text-slate-400 hover:text-slate-200"
@@ -162,8 +162,8 @@ export function EvolutionChart({ history, initialFuelId = "gasolina-premium" }: 
           })}
         </div>
 
-        {/* Range Stat Summary Banner */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 my-4 p-4 rounded-xl bg-slate-900/80 border border-white/5">
+        {/* Range Stat Summary Banner (Unboxed, clean border dividers) */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 my-4 py-4 border-y border-white/10">
           <div>
             <span className="block text-[11px] text-slate-400 uppercase font-semibold">
               Precio Seleccionado
@@ -217,11 +217,21 @@ export function EvolutionChart({ history, initialFuelId = "gasolina-premium" }: 
           </div>
         </div>
 
+        {/* Historical Context Note for Multi-Year Ranges */}
+        {weeksLimit > 26 && (
+          <div className="mb-4 px-3.5 py-2.5 rounded-xl bg-blue-500/10 border border-blue-500/20 text-xs text-blue-200 flex items-start sm:items-center gap-2.5 leading-relaxed">
+            <Info className="w-4 h-4 text-blue-400 shrink-0 mt-0.5 sm:mt-0" />
+            <span>
+              <strong className="text-white">Contexto del subsidio estatal:</strong> En República Dominicana, el Gobierno implementó desde 2021 una política extraordinaria de subsidios a los combustibles que, especialmente entre 2022 y 2025, permitió mantener sin variaciones durante largos períodos los precios de los principales combustibles de consumo doméstico, absorbiendo parte del impacto de las fuertes fluctuaciones internacionales y buscando contener su efecto sobre la inflación (con más de RD$ 35,500 millones en 2022 y más de RD$ 85,000 millones acumulados a mediados de 2025).
+            </span>
+          </div>
+        )}
+
         {/* SVG Interactive Chart */}
-        <div className="relative w-full aspect-[21/9] sm:aspect-[24/9] min-h-[220px] max-h-[340px] mt-2">
+        <div className="relative w-full aspect-[21/9] sm:aspect-[24/9] min-h-[220px] max-h-[340px] mt-2 overflow-hidden">
           <svg
             viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-            className="w-full h-full overflow-visible"
+            className="w-full h-full"
             onMouseLeave={() => setHoveredIndex(null)}
           >
             <defs>

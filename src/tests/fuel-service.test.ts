@@ -3,7 +3,6 @@ import assert from "node:assert/strict";
 import {
   getAllHistory,
   getCurrentWeekRecord,
-  getPreviousWeekRecord,
   getWeeklySummary,
   calculateTankCost,
   getFuelTimeSeries,

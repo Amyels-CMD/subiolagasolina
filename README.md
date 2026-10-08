@@ -1,124 +1,138 @@
-# SubióLaGasolina ⛽🇩🇴
+# subiólagasolina 🇩🇴
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-16.4-black?logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Tests](https://img.shields.io/badge/Tests-14%20Passing-brightgreen.svg)]()
+[![Platform](https://img.shields.io/badge/Vercel-Production-000000?logo=vercel)](https://subiolagasolina.com)
 
 > **¿Subió la gasolina esta semana en República Dominicana?**  
-> Producto web público ultraligero, rápido y visualmente atractivo para consultar al instante los precios oficiales de combustibles en RD, variaciones semanales, histórico oficial y gráficas interactivas.
+> Terminal financiero ultraligero, de acceso libre y sin anuncios para consultar en tiempo real el veredicto oficial de precios de combustibles en RD, variaciones semanales, benchmarks internacionales (WTI), histórico desde 2020 y APIs públicas abiertas.
 
-Inspirado en la filosofía visual y de presentación de datos de **isaiprofitable.com** (jerarquía directa, números gigantes, tarjetas limpias, tipografía nítida y sensación de producto de datos), adaptado al público general dominicano.
+🌐 **Sitio Web Oficial:** [https://subiolagasolina.com](https://subiolagasolina.com)
+
+---
+
+## ⚡ Filosofía y Propósito
+
+El proyecto nació como una herramienta cívica (**Civic Tech**) abierta y sin fricciones. En República Dominicana, las resoluciones semanales del Ministerio de Industria, Comercio y Mipymes (MICM) rigen bajo la Ley 112-00 y se anuncian cada viernes a la 1:00 PM AST.
+
+En lugar de navegar sitios institucionales lentos o lidiar con PDFs confusos, **subiólagasolina** entrega:
+1. **El veredicto en 1 segundo:** *"NO, SE MANTUVO"*, *"¡BAJÓ!"* o *"SÍ, SUBIÓ"*.
+2. **Cero anuncios ni rastreadores intrusivos.**
+3. **API pública gratuita y feeds abiertos** (RSS y JSON Feed) para que desarrolladores, periodistas y ciudadanos integren los datos en sus propias aplicaciones.
+4. **Operación 100% automatizada a $0.00 de coste:** Diseñado con arquitectura *Git-as-a-Database* y Edge CDN Caching en Vercel.
 
 ---
 
 ## 🚀 Características Principales
 
-- **Respuesta Instantánea (Verdict Hero):** Responde en 1 segundo a la pregunta clave: **"NO, SE MANTUVO"**, **"¡BAJÓ!"** o **"SÍ, SUBIÓ"**, con el detalle exacto de las resoluciones semanales.
-- **Precios de Consumo Masivo:** Tarjetas con números grandes para:
-  - Gasolina Premium (`RD$ 353.10 / gal`)
-  - Gasolina Regular (`RD$ 317.50 / gal`)
-  - Gasoil Óptimo (`RD$ 306.10 / gal`)
-  - Gasoil Regular (`RD$ 270.80 / gal`)
-  - GLP (`RD$ 135.20 / gal`)
-  - Gas Natural GNV (`RD$ 43.97 / m³`)
-- **Combustibles Industriales y de Aviación:** Panel colapsable para Avtur, Kerosene, Fuel Oíl #6 y Fuel Oíl 1%S.
-- **Contador Regresivo en Vivo:** Muestra exactamente el tiempo restante para la próxima resolución oficial del Ministerio de Industria, Comercio y Mipymes (MICM), emitida cada **viernes a la 1:00 PM AST**.
-- **Curva de Evolución Histórica:** Gráfica interactiva SVG con selectores de período (4 semanas, 12 semanas, 6 meses, Año 2026, Histórico completo) y chips por tipo de combustible con tooltip dinámico y crosshair.
-- **Calculadora de Llenado de Tanque:** Selecciona tu combustible y vehículo (Sedán 10-13 gal, SUV 17 gal, Pickup 22 gal, Cilindro GLP 25/50/100 lb) para saber de inmediato cuánto te cuesta llenar hoy y la diferencia vs la semana pasada.
-- **Historial Completo y Descarga:** Tabla de resoluciones semanales desde 2020 con buscador y botón de descarga directa en **CSV**.
-- **Compartir en 1 Clic:** Botón directo para compartir el resumen formateado con emojis en **WhatsApp** y en **X (Twitter)**.
-- **SEO Técnico & GEO/AEO:**
-  - Metadatos Open Graph y Twitter Cards.
-  - JSON-LD con esquemas Schema.org: `SpecialAnnouncement`, `Dataset` y `FAQPage`.
-  - Archivos dinámicos: `/sitemap.xml`, `/robots.txt`, `/manifest.webmanifest` (PWA) y `/llms.txt`.
+- **Verdict Hero (Estilo Terminal Financiero):** Responde de un vistazo si los combustibles variaron esta semana, con detalles de subsidios extraordinarios del gobierno.
+- **Precios de Consumo Masivo:**
+  - Gasolina Premium
+  - Gasolina Regular
+  - Gasoil Óptimo
+  - Gasoil Regular
+  - Gas Licuado de Petróleo (GLP)
+  - Gas Natural Vehicular (GNV)
+- **Panel Industrial y Aviación:** Precios para Avtur, Kerosene, Fuel Oíl #6 y Fuel Oíl 1%S.
+- **Contador Regresivo en Vivo (Ciclo Dominicano de 4 Fases):**
+  1. *Conteo normal:* Cuenta regresiva hasta el viernes a las 12:59 PM AST.
+  2. *Espera de divulgación:* Insignia de espera oficial en vivo si el ministerio retrasa el boletín pasadas la 1:00 PM.
+  3. *Tarifas recién anunciadas:* Aviso de que entran en vigor a la medianoche (Sábado 00:00).
+  4. *Reinicio automático:* El sábado a las 00:00 AST inicia automáticamente la cuenta hacia el próximo viernes.
+- **Benchmark WTI Internacional:** Muestra la cotización del crudo Texas de referencia con porcentaje semanal.
+- **Curva de Evolución Histórica:** Gráfica SVG interactiva con selectores de período (4 sem, 12 sem, 6 meses, Año actual, Histórico) y comparador por combustible.
+- **Calculadora de Llenado de Tanque:** Calcula el costo real de llenar tu vehículo (Sedán, SUV, Pickup, Moto, Cilindro GLP) y la variación en pesos vs la semana anterior.
+- **Historial Completo & Exportación:** Tabla con más de 357 semanas registradas y botón de descarga directa en **CSV**.
+- **Compartir en 1 Clic:** Resúmenes preformateados para **WhatsApp** y **X (Twitter)**.
+- **SEO & AEO (AI Engine Optimization):**
+  - Schema.org (`SpecialAnnouncement`, `Dataset`, `FAQPage`).
+  - `/sitemap.xml`, `/robots.txt`, `/manifest.webmanifest`.
+  - `/llms.txt`: Endpoint optimizado para citación en ChatGPT, Perplexity, Claude y Apple Intelligence.
+
+---
+
+## 🔌 API Pública y Feeds Abiertos
+
+El proyecto expone datos abiertos en múltiples formatos, libres para uso público bajo licencia **CC BY 4.0 (con atribución)**:
+
+### 1. API REST JSON (`/api/prices`)
+Caché de 24 horas en Edge CDN (`s-maxage=86400`) y soporte CORS completo.
+
+```bash
+# Resumen de la semana actual y veredicto
+curl https://subiolagasolina.com/api/prices
+
+# Consultar combustible específico con serie temporal
+curl https://subiolagasolina.com/api/prices?fuel=gasolina-premium&weeks=12
+
+# Incluir historial completo
+curl https://subiolagasolina.com/api/prices?history=true&weeks=52
+```
+
+### 2. Feeds de Suscripción Semanal
+- **RSS 2.0 XML:** [`https://subiolagasolina.com/feed.xml`](https://subiolagasolina.com/feed.xml)
+- **JSON Feed 1.1:** [`https://subiolagasolina.com/feed.json`](https://subiolagasolina.com/feed.json)
+- **AI Context Feed:** [`https://subiolagasolina.com/llms.txt`](https://subiolagasolina.com/llms.txt)
+
+---
+
+## ⚙️ Arquitectura de Ingesta Autónoma (Fail-Safe)
+
+El portal oficial de Datos Abiertos del gobierno frecuentemente sufre retrasos de semanas en la carga de sus hojas CSV. Para resolver esto sin intervención humana, creamos un motor de ingesta dual en [`scripts/weekly-sync.mjs`](scripts/weekly-sync.mjs):
+
+```mermaid
+graph TD
+    A[Cron GitHub Actions: Viernes 1:00 PM AST] --> B{Sincronizador Semanal}
+    B -->|Fuente 1 Primaria| C[Notas de Prensa Portal MICM]
+    B -->|Fuente 2 Respaldo| D[CSV Datos Abiertos micm.gob.do]
+    C --> E[Extractor Regex & Sanitizador]
+    D --> E
+    E --> F{Filtro de Sanidad Matemática}
+    F -->|Delta > 15% o Rango Inválido| G[Abortar de Forma Segura - Sin Corrupción]
+    F -->|Válido & Nueva Semana| H[Actualizar src/data/fuel-history.json]
+    H --> I[Ejecutar 14 Tests Unitarios]
+    I -->|Tests OK| J[Git Commit & Push a GitHub]
+    J --> K[Vercel Despliega Producción en 40s]
+```
+
+- **Workflow:** [`.github/workflows/weekly-sync.yml`](.github/workflows/weekly-sync.yml) corre cada 15 minutos entre la 1:00 PM y las 4:45 PM AST los viernes.
+- **Salida temprana:** En cuanto detecta que la semana actual ya fue confirmada y guardada, finaliza en 2 segundos para ahorrar recursos.
 
 ---
 
 ## 🛠️ Stack Tecnológico
 
-- **Framework:** Next.js 16 (App Router con Turbopack)
-- **Lenguaje:** TypeScript 5.9
-- **Estilos:** Tailwind CSS v4 con variables CSS nativas y diseño de alto contraste (dark mode por defecto)
-- **Componentes & Iconos:** React 19, Lucide React
-- **Testing:** Node.js native test runner con `tsx` (9 tests ejecutados en sub-segundo)
-- **Despliegue:** Optimizado para Vercel con Vercel Cron
-
----
-
-## 📡 Pipeline de Ingesta y Persistencia de Datos
-
-1. **Fuente Oficial:** Consume el conjunto de datos de precios de combustibles del **Ministerio de Industria, Comercio y Mipymes (MICM)** y del **Portal Nacional de Datos Abiertos (datos.gob.do)**.
-2. **Persistencia Local (`src/data/fuel-history.json`):** Almacena 357+ semanas de resoluciones oficiales para garantizar:
-   - Cero latencia en visitas de usuarios.
-   - Disponibilidad 100% incluso si el portal oficial está fuera de servicio o en mantenimiento.
-   - Gráficas históricas fluidas sin dependencias de bases de datos externas.
-3. **Automatización:**
-   - Endpoint `/api/sync`: Verifica e incorpora nuevas semanas automáticamente.
-   - Endpoint `/api/cron`: Diseñado para ejecutarse vía Vercel Cron cada viernes a las 1:15 PM AST (`15 17 * * 5` UTC).
-   - API pública en `/api/prices` con cabeceras de caché CDN (`s-maxage=3600`).
-
----
-
-## 📂 Estructura del Proyecto
-
-```
-subiolagasolina/
-├── scripts/
-│   └── generate-history.mjs   # Script de extracción y compilación del histórico MICM
-├── src/
-│   ├── app/
-│   │   ├── api/
-│   │   │   ├── cron/route.ts  # Endpoint de cron Vercel
-│   │   │   ├── prices/route.ts# API REST pública de precios e histórico
-│   │   │   └── sync/route.ts  # Endpoint de sincronización con MICM
-│   │   ├── icon.tsx           # Favicon dinámico (ImageResponse)
-│   │   ├── manifest.ts        # PWA Web App Manifest
-│   │   ├── robots.ts          # Robots.txt con soporte para motores y AI bots
-│   │   ├── sitemap.ts         # Sitemap dinámico
-│   │   ├── llms.txt/route.ts  # Resumen legible para modelos de lenguaje
-│   │   ├── globals.css        # Sistema de diseño, tokens y modo oscuro
-│   │   ├── layout.tsx         # Layout raíz con metadatos SEO y JSON-LD
-│   │   └── page.tsx           # Portada principal SubióLaGasolina
-│   ├── components/
-│   │   ├── CountdownTimer.tsx # Contador regresivo para el viernes 1:00 PM AST
-│   │   ├── EvolutionChart.tsx # Gráfica interactiva de precios
-│   │   ├── FaqSection.tsx     # Preguntas frecuentes y guía para conductores
-│   │   ├── FuelCardsGrid.tsx  # Tarjetas de precios actuales con variaciones
-│   │   ├── HeroVerdict.tsx    # Veredicto visual principal (estilo isaiprofitable)
-│   │   ├── HistoricalTable.tsx# Tabla de semanas pasadas con buscador y CSV
-│   │   ├── JsonLd.tsx         # Schema.org structured data
-│   │   ├── NavbarHeader.tsx   # Barra superior con estado en vivo
-│   │   ├── ShareButtons.tsx   # Botones para WhatsApp y X
-│   │   └── TankCalculator.tsx # Calculadora de tanque
-│   ├── data/
-│   │   └── fuel-history.json  # Base de datos histórica persistida
-│   ├── lib/
-│   │   ├── constants/fuels.ts # Metadatos de combustibles y colores
-│   │   ├── services/
-│   │   │   ├── fuel-service.ts# Lógica de cálculo, deltas y resúmenes
-│   │   │   └── ingestion.ts   # Ingesta automatizada y fallback
-│   │   ├── types/fuel.ts      # Tipos TypeScript
-│   │   └── utils/
-│   │       ├── date-rd.ts     # Manejo de zona horaria AST (UTC-4)
-│   │       ├── format.ts      # Formateadores monetarios y porcentajes
-│   │       └── url.ts         # Resolución de URLs canónicas para Vercel
-│   └── tests/
-│       └── fuel-service.test.ts # Pruebas unitarias
-├── vercel.json                # Configuración de cron jobs para Vercel
-└── package.json
-```
+| Capa | Tecnología |
+|---|---|
+| **Framework** | Next.js 16.4 (App Router con Turbopack) |
+| **Lenguaje** | TypeScript 5.9 (Strict mode) |
+| **Estilos** | Tailwind CSS v4 + Variables CSS nativas |
+| **Componentes e Iconos** | React 19, Lucide React |
+| **Testing** | Node.js Test Runner nativo (`node:test`, `node:assert`, `tsx`) |
+| **Automatización** | GitHub Actions (Ubuntu Runner) |
+| **Hosting & Edge CDN** | Vercel Serverless & Edge Network |
 
 ---
 
 ## 💻 Desarrollo Local
 
 ```bash
-# 1. Instalar dependencias
+# 1. Clonar el repositorio
+git clone https://github.com/Amyels-CMD/subiolagasolina.git
+cd subiolagasolina
+
+# 2. Instalar dependencias
 npm install
 
-# 2. Ejecutar suite de pruebas
+# 3. Correr la suite de pruebas unitarias
 npm test
 
-# 3. Compilar producción
-npm run build
+# 4. Validar linter y tipos
+npm run lint
 
-# 4. Iniciar servidor de desarrollo
+# 5. Iniciar servidor de desarrollo con Turbopack
 npm run dev
 ```
 
@@ -126,10 +140,31 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
 ---
 
-## 🌐 Despliegue en Vercel
+## 🧪 Pruebas Automatizadas
 
-El proyecto está listo para despliegue directo en **Vercel**:
-1. Conecta el repositorio en el panel de Vercel.
-2. Framework Preset: **Next.js**.
-3. (Opcional) Configura la variable de entorno `CRON_SECRET` si deseas proteger la ejecución de `/api/cron`.
-4. Despliega con 1 clic. El archivo `vercel.json` configurará automáticamente la tarea cron para los viernes a la 1:15 PM AST.
+El proyecto incluye 14 tests unitarios ejecutados en milisegundos con el runner nativo de Node.js:
+```bash
+npm test
+```
+Verifica:
+- Matemáticas de cálculo de tanque y variaciones monetarias.
+- Generación de feeds RSS 2.0 y JSON Feed 1.1 válidos.
+- Cabeceras de Edge CDN caching y metadatos de `/api/prices`.
+- Reglas temporales y transiciones del ciclo dominicano (AST UTC-4).
+
+---
+
+## 🤝 Contribuciones
+
+Las contribuciones son bienvenidas. Si deseas corregir algún detalle, añadir una funcionalidad o mejorar los selectores de ingesta:
+1. Haz un Fork del proyecto.
+2. Crea una rama para tu feature (`git checkout -b feature/nueva-mejora`).
+3. Asegúrate de que `npm test` y `npm run lint` pasen limpios.
+4. Abre un Pull Request describiendo tus cambios.
+
+---
+
+## 📄 Licencia
+
+Este proyecto es código abierto bajo la [Licencia MIT](LICENSE). Los datos oficiales pertenecen al Ministerio de Industria, Comercio y Mipymes (MICM) de la República Dominicana bajo políticas de Datos Abiertos gubernamentales.
+

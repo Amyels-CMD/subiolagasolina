@@ -6,7 +6,7 @@ import { EvolutionChart } from "@/components/EvolutionChart";
 import { TankCalculator } from "@/components/TankCalculator";
 import { HistoricalTable } from "@/components/HistoricalTable";
 import { FaqSection } from "@/components/FaqSection";
-import { ShareButtons } from "@/components/ShareButtons";
+import { FuelSupportSection } from "@/components/FuelSupportSection";
 import { QuickFactsSummary } from "@/components/QuickFactsSummary";
 import { JsonLd } from "@/components/JsonLd";
 
@@ -18,15 +18,10 @@ export default async function HomePage() {
     <>
       <JsonLd summary={summary} />
 
-      {/* Hero Section with Verdict */}
+      {/* Hero Section with Verdict & Share Bar */}
       <HeroVerdict summary={summary} />
 
-      {/* 1-Click WhatsApp & Social Share Bar */}
-      <div className="max-w-4xl mx-auto px-4">
-        <ShareButtons summary={summary} />
-      </div>
-
-      {/* Executive Quick Facts / BLUF for Voice & AI Crawlers */}
+      {/* Unboxed Financial Terminal Ribbon */}
       <QuickFactsSummary summary={summary} />
 
       {/* Current Prices Cards Grid */}
@@ -49,6 +44,12 @@ export default async function HomePage() {
 
       {/* SEO FAQ & Dominican Guide */}
       <FaqSection />
+
+      {/* Buy Me a Coffee / Invítame un Galón */}
+      <FuelSupportSection
+        premiumPrice={summary.currentWeek.prices["gasolina-premium"]}
+        regularPrice={summary.currentWeek.prices["gasolina-regular"]}
+      />
     </>
   );
 }

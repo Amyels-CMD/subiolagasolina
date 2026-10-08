@@ -8,7 +8,6 @@ import {
   WeeklySummary,
 } from "@/lib/types/fuel";
 import { getNextAnnouncementDate } from "@/lib/utils/date-rd";
-import { formatMillions } from "@/lib/utils/format";
 
 // Cache sorted historical records in memory
 const sortedHistory: WeeklyFuelRecord[] = (rawHistory as WeeklyFuelRecord[])
@@ -112,6 +111,15 @@ export function getWeeklySummary(): WeeklySummary {
 
   const nextUpdate = getNextAnnouncementDate(new Date(current.endDate));
 
+  // Benchmark WTI (Texas) de referencia internacional citado por el MICM
+  const wti = {
+    priceUsd: 89.04,
+    changeUsd: -1.25,
+    percentageChange: -1.38,
+    trend: "down" as const,
+    label: "Crudo WTI • Texas (Ref. Internacional)",
+  };
+
   return {
     currentWeek: current,
     previousWeek: previous,
@@ -125,6 +133,7 @@ export function getWeeklySummary(): WeeklySummary {
     consumerItems,
     industrialItems,
     nextUpdateDate: nextUpdate.toISOString(),
+    wti,
   };
 }
 

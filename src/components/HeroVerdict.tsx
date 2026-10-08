@@ -1,93 +1,184 @@
+"use client";
+
 import React from "react";
-import { CheckCircle2, TrendingDown, TrendingUp, AlertCircle, Sparkles, Building2 } from "lucide-react";
+import { Calendar, Building2 } from "lucide-react";
 import { WeeklySummary } from "@/lib/types/fuel";
+import { DominicanFlag } from "@/components/DominicanFlag";
 import { CountdownTimer } from "@/components/CountdownTimer";
+import { ShareButtons } from "@/components/ShareButtons";
 
 interface HeroVerdictProps {
   summary: WeeklySummary;
 }
 
 export function HeroVerdict({ summary }: HeroVerdictProps) {
-  const { headlineVerdict, subVerdict, currentWeek, nextUpdateDate } = summary;
+  const { subVerdict, currentWeek, nextUpdateDate } = summary;
 
   const isUp = summary.hasIncreased;
   const isDown = summary.hasDecreased && !summary.hasIncreased;
   const isUnchanged = summary.isUnchanged;
 
+  // Split headline into primary brutalist word + secondary phrase
+  let primaryWord = "NO.";
+  let secondaryPhrase = "SE MANTUVO";
+
+  if (isUp) {
+    primaryWord = "SÍ.";
+    secondaryPhrase = "SUBIÓ ESTA SEMANA";
+  } else if (isDown) {
+    primaryWord = "BAJÓ.";
+    secondaryPhrase = "REBAJAS EN BOMBA";
+  } else {
+    primaryWord = "NO.";
+    secondaryPhrase = "SE MANTUVO";
+  }
+
+  const verdictNote = isUnchanged
+    ? "Precios congelados. Sin variación respecto a la semana anterior."
+    : isUp
+    ? "Alzas aprobadas para el período vigente."
+    : "Rebajas directas aplicadas para el consumidor.";
+
   return (
-    <section id="veredicto-principal" className="relative pt-6 pb-12 sm:pt-10 sm:pb-16 text-center">
-      {/* Background glow orb */}
+    <section id="veredicto-principal" className="relative pt-6 sm:pt-10 md:pt-12 pb-10 sm:pb-14 border-b border-white/10">
+      {/* Expansive ambient spotlight tailored to verdict state */}
       <div
-        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-[500px] h-72 sm:h-[350px] rounded-full blur-[100px] pointer-events-none -z-10 ${
+        className={`absolute top-0 right-0 w-[350px] sm:w-[600px] md:w-[850px] h-[350px] sm:h-[500px] md:h-[600px] rounded-full blur-[140px] pointer-events-none -z-10 opacity-25 ${
           isUp
-            ? "bg-rose-600/15"
+            ? "bg-rose-500"
             : isDown
-            ? "bg-emerald-600/15"
-            : "bg-blue-600/15"
+            ? "bg-emerald-500"
+            : "bg-amber-500"
         }`}
       />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col items-center">
-        {/* Subtitle query */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs sm:text-sm font-medium text-slate-300 mb-6 backdrop-blur-sm">
-          <span>¿Subió la gasolina en República Dominicana esta semana?</span>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        {/* Top brand & official source bar */}
+        <div className="flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm font-semibold text-slate-300 mb-6 sm:mb-8 pb-3 border-b border-white/5">
+          <div className="flex items-center gap-1.5 shrink-0">
+            <span className="font-black text-white tracking-tight text-base sm:text-lg">
+              subiólagasolina
+            </span>
+            <DominicanFlag className="w-4 h-3 sm:w-5 sm:h-3.5 rounded-[1px] shadow-sm" />
+          </div>
+          <div className="inline-flex items-center gap-1.5 text-emerald-400 font-medium text-xs sm:text-sm shrink-0">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 live-pulse inline-block" />
+            <span><span className="hidden sm:inline">Resolución </span>Oficial MICM (Ley 112-00)</span>
+          </div>
         </div>
 
-        {/* Giant Visceral Hero Verdict (Inspired by isaiprofitable.com) */}
-        <div className="mb-6">
-          <h1
-            className={`text-5xl sm:text-7xl md:text-8xl font-black tracking-tight leading-none ${
+        {/* Core Hero: Question + Verdict (Coupled directly together) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
+          {/* Question Block */}
+          <div className="lg:col-span-7 space-y-3 sm:space-y-4">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-[4.5rem] font-black text-white tracking-tighter leading-[0.98]">
+              ¿Subió la gasolina esta semana en RD?
+            </h1>
+
+            {/* Subtitle on Desktop (hidden on mobile to keep verdict immediately after title) */}
+            <p className="hidden lg:block text-base sm:text-lg text-slate-200 font-normal leading-relaxed max-w-xl">
+              {subVerdict}
+            </p>
+          </div>
+
+          {/* Verdict Block (Renders immediately after question on mobile, right column on desktop) */}
+          <div className="lg:col-span-5 text-left lg:text-right pt-2 lg:pt-0">
+            <span
+              className={`text-xs sm:text-sm uppercase font-extrabold tracking-widest block mb-1 sm:mb-2 ${
+                isUp
+                  ? "text-rose-400/80"
+                  : isDown
+                  ? "text-emerald-400/80"
+                  : "text-amber-400/80"
+              }`}
+            >
+              Veredicto Oficial
+            </span>
+            <div
+              className={`text-7xl sm:text-8xl md:text-9xl lg:text-[7.5rem] xl:text-[10.5rem] font-black tracking-tighter leading-[0.80] select-none uppercase ${
+                isUp
+                  ? "text-rose-500 drop-shadow-[0_0_60px_rgba(244,63,94,0.45)]"
+                  : isDown
+                  ? "text-emerald-400 drop-shadow-[0_0_60px_rgba(16,185,129,0.45)]"
+                  : "text-amber-400 drop-shadow-[0_0_60px_rgba(245,158,11,0.45)]"
+              }`}
+            >
+              {primaryWord}
+            </div>
+            <div
+              className={`text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-5xl font-black tracking-tight mt-1 sm:mt-2 uppercase ${
+                isUp
+                  ? "text-rose-200"
+                  : isDown
+                  ? "text-emerald-200"
+                  : "text-amber-200"
+              }`}
+            >
+              {secondaryPhrase}
+            </div>
+
+            {/* Mobile-only subtitle (rendered right under the verdict for immediate context) */}
+            <p className="lg:hidden text-sm sm:text-base text-slate-300 font-normal leading-relaxed mt-3 max-w-xl">
+              {subVerdict}
+            </p>
+
+            {/* Desktop-only secondary note */}
+            <p className="hidden lg:block text-xs sm:text-sm md:text-base text-slate-300 mt-2 max-w-xs lg:ml-auto leading-normal">
+              {verdictNote}
+            </p>
+          </div>
+        </div>
+
+        {/* Hero Utility Strip: Official Period, Regulation, Countdown & Share */}
+        <div className="relative mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          {/* Ambient specular beam cast from the verdict down along the divider */}
+          <div
+            className={`absolute -top-[1px] right-0 w-full sm:w-2/3 md:w-1/2 h-[1px] pointer-events-none ${
               isUp
-                ? "text-rose-500 drop-shadow-[0_0_35px_rgba(244,63,94,0.4)]"
+                ? "bg-gradient-to-l from-rose-500/60 via-rose-500/25 to-transparent"
                 : isDown
-                ? "text-emerald-400 drop-shadow-[0_0_35px_rgba(16,185,129,0.4)]"
-                : "text-white drop-shadow-[0_0_35px_rgba(59,130,246,0.3)]"
+                ? "bg-gradient-to-l from-emerald-500/60 via-emerald-500/25 to-transparent"
+                : "bg-gradient-to-l from-amber-400/60 via-amber-400/25 to-transparent"
             }`}
-          >
-            {headlineVerdict}
-          </h1>
-        </div>
+          />
+          {/* Subtle localized ambient glow pooling behind the action buttons */}
+          <div
+            className={`absolute -bottom-4 right-0 w-80 h-28 rounded-full blur-[100px] pointer-events-none -z-10 opacity-20 ${
+              isUp
+                ? "bg-rose-500"
+                : isDown
+                ? "bg-emerald-500"
+                : "bg-amber-500"
+            }`}
+          />
 
-        {/* Descriptive verdict context */}
-        <p className="max-w-2xl text-base sm:text-lg text-slate-300 font-normal leading-relaxed mb-6">
-          {subVerdict}
-        </p>
-
-        {/* Resolution dates & Regulatory info */}
-        <div className="w-full max-w-2xl grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-          {/* Card 1: Período oficial */}
-          <div className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/70 border border-white/10 text-left">
-            <div className="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
-              <Building2 className="w-4 h-4" />
-            </div>
-            <div>
-              <span className="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold">
-                Período Oficial Vigente
-              </span>
-              <span className="text-sm font-semibold text-white">
-                {currentWeek.dateLabel}
+          {/* Metadata badges */}
+          <div className="flex flex-wrap items-center gap-y-2 gap-x-3 text-xs sm:text-sm text-slate-300">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10">
+              <Calendar className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+              <span>
+                Período: <strong className="text-white font-semibold">{currentWeek.dateLabel}</strong>
               </span>
             </div>
-          </div>
-
-          {/* Card 2: Fuente oficial reguladora */}
-          <div className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/70 border border-white/10 text-left">
-            <div className="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
-              <CheckCircle2 className="w-4 h-4" />
-            </div>
-            <div>
-              <span className="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold">
-                Fuente Reguladora Oficial
-              </span>
-              <span className="text-sm font-semibold text-white">
-                MICM • Ley 112-00
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10">
+              <Building2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <span>
+                Regulación: <strong className="text-white font-semibold">Ley 112-00 (MICM)</strong>
               </span>
             </div>
           </div>
-        </div>
 
-        {/* Live Countdown to Next Resolution */}
-        <CountdownTimer targetDateIso={nextUpdateDate} />
+          {/* Action strip: Countdown + Share buttons bathed in verdict light */}
+          <div className="flex flex-wrap items-center gap-3">
+            <CountdownTimer
+              targetDateIso={nextUpdateDate}
+              announcementDateIso={currentWeek.announcementDate}
+              effectivePeriodLabel={currentWeek.dateLabel}
+              tone={isUp ? "rose" : isDown ? "emerald" : "amber"}
+            />
+            <ShareButtons summary={summary} className="justify-start my-0" />
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -16,7 +16,7 @@ export default function NotFound() {
         className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-all"
       >
         <ArrowLeft className="w-4 h-4" />
-        <span>Volver a SubióLaGasolina</span>
+        <span>Volver a subiólagasolina</span>
       </Link>
     </div>
   );

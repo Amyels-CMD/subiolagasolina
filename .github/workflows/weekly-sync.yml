@@ -2,9 +2,8 @@ name: Sincronización Semanal de Precios (MICM)
 
 on:
   schedule:
-    # República Dominicana: Viernes 1:05 PM AST (17:05 UTC) y reintento 1:35 PM AST (17:35 UTC)
-    - cron: '5 17 * * 5'
-    - cron: '35 17 * * 5'
+    # República Dominicana: Viernes de 1:00 PM a 4:45 PM AST (17:00 a 20:45 UTC) cada 15 min
+    - cron: '*/15 17-20 * * 5'
   workflow_dispatch: # Permite ejecución manual desde GitHub con 1 clic
 
 jobs:
@@ -47,5 +46,6 @@ jobs:
           git config --global user.name "SubioLaGasolina Bot"
           git config --global user.email "bot@subiolagasolina.com"
           git add src/data/fuel-history.json
-          git commit -m "chore(data): auto-update precios oficiales MICM para nueva semana [skip ci]"
+          git commit -m "chore(data): auto-update precios oficiales MICM para nueva semana"
           git push
+

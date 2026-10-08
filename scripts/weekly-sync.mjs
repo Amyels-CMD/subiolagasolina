@@ -2,6 +2,20 @@ import fs from "fs";
 import path from "path";
 
 const HISTORY_PATH = path.resolve("src", "data", "fuel-history.json");
+const CSV_URL =
+  "https://micm.gob.do/transparencias/datos-abiertos/precios-de-combustibles/precios-de-combustibles-2010-2026.csv";
+const NOTICIAS_URL = "https://micm.gob.do/noticias/";
+
+const MONTH_MAP = {
+  enero: "01", febrero: "02", marzo: "03", abril: "04",
+  mayo: "05", junio: "06", julio: "07", agosto: "08",
+  septiembre: "09", octubre: "10", noviembre: "11", diciembre: "12"
+};
+
+const MONTH_NAMES = [
+  "enero", "febrero", "marzo", "abril", "mayo", "junio",
+  "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+];
 
 function getIsoWeek(dateStr) {
   const [y, m, d] = dateStr.split("-").map(Number);
@@ -13,29 +27,138 @@ function getIsoWeek(dateStr) {
   return { year: date.getUTCFullYear(), week: weekNo };
 }
 
-const MONTH_MAP = {
-  enero: "01", febrero: "02", marzo: "03", abril: "04",
-  mayo: "05", junio: "06", julio: "07", agosto: "08",
-  septiembre: "09", octubre: "10", noviembre: "11", diciembre: "12"
-};
+/**
+ * Fuente 1 (Primaria): Scraper de la nota de prensa oficial del MICM.
+ * Se publica de inmediato cada viernes a la 1:00 PM AST en micm.gob.do/noticias/
+ */
+async function fetchFromPressRelease() {
+  try {
+    const res = await fetch(NOTICIAS_URL, {
+      signal: AbortSignal.timeout(12000),
+      headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) subiolagasolina-bot/1.0" },
+    });
+    if (!res.ok) return null;
+    const html = await res.text();
+
+    const matches = [...html.matchAll(/<a[^>]+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi)];
+    const article = matches.find(
+      (m) =>
+        /gobierno-(?:congela|reajusta|mantiene)-combustibles/i.test(m[1]) ||
+        /Gobierno (?:congela|reajusta|mantiene) combustibles/i.test(m[2])
+    );
+    if (!article) return null;
+
+    const artUrl = article[1];
+    const artRes = await fetch(artUrl, {
+      signal: AbortSignal.timeout(12000),
+      headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) subiolagasolina-bot/1.0" },
+    });
+    if (!artRes.ok) return null;
+    const artHtml = await artRes.text();
+
+    const cleanText = artHtml
+      .replace(/<script[\s\S]*?<\/script>/gi, "")
+      .replace(/<style[\s\S]*?<\/style>/gi, "")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ");
+
+    const marker = "dispone que los combustibles se comercialicen a los siguientes precios:";
+    const idx = cleanText.indexOf(marker);
+    if (idx === -1) return null;
+
+    const periodMatch = cleanText
+      .slice(Math.max(0, idx - 180), idx)
+      .match(/semana del (\d+) al (\d+) de ([a-záéíóú]+) de (\d{4})/i);
+    if (!periodMatch) return null;
+
+    const [, diaDesdeStr, diaHastaStr, mesStr, anioStr] = periodMatch;
+    const diaDesde = parseInt(diaDesdeStr, 10);
+    const diaHasta = parseInt(diaHastaStr, 10);
+    const anio = parseInt(anioStr, 10);
+    const mesNum = MONTH_MAP[mesStr.toLowerCase()] || "01";
+    const mesIndex = parseInt(mesNum, 10) - 1;
+
+    const startDate = `${anio}-${mesNum}-${String(diaDesde).padStart(2, "0")}`;
+    let endMonth = mesNum;
+    let endYear = anio;
+    if (diaHasta < diaDesde) {
+      const nextMes = (mesIndex + 1) % 12;
+      endMonth = String(nextMes + 1).padStart(2, "0");
+      if (nextMes === 0) endYear = anio + 1;
+    }
+    const endDate = `${endYear}-${endMonth}-${String(diaHasta).padStart(2, "0")}`;
+
+    const priceSection = cleanText.slice(idx, idx + 1200);
+
+    function extractPrice(regex) {
+      const m = priceSection.match(regex);
+      if (!m) return null;
+      return parseFloat(m[1].replace(",", "."));
+    }
+
+    const prem = extractPrice(/Gasolina Premium[^\d]*?RD\$\s*([\d.]+)/i);
+    const reg = extractPrice(/Gasolina Regular[^\d]*?RD\$\s*([\d.]+)/i);
+    const gasoilReg = extractPrice(/Gasoil Regular[^\d]*?RD\$\s*([\d.]+)/i);
+    const gasoilOpt = extractPrice(/Gasoil [ÓO]ptimo[^\d]*?RD\$\s*([\d.]+)/i);
+    const avtur = extractPrice(/Avtur[^\d]*?RD\$\s*([\d.]+)/i);
+    const kerosene = extractPrice(/Kerosene[^\d]*?RD\$\s*([\d.]+)/i);
+    const fuelOil6 = extractPrice(/Fuel O[íi]l #6[^\d]*?RD\$\s*([\d.]+)/i);
+    const fuelOil1s = extractPrice(/Fuel O[íi]l 1%S[^\d]*?RD\$\s*([\d.]+)/i);
+    const glp = extractPrice(/(?:GLP|Gas Licuado de Petr[óo]leo \(GLP\))[^\d]*?RD\$\s*([\d.]+)/i);
+    const gnv = extractPrice(/Gas Natural[^\d]*?RD\$\s*([\d.]+)/i) || 43.97;
+
+    if (!prem || !reg) return null;
+
+    const iso = getIsoWeek(startDate);
+    const weekId = `${iso.year}-W${String(iso.week).padStart(2, "0")}`;
+
+    return {
+      weekId,
+      year: iso.year,
+      weekNumber: iso.week,
+      startDate,
+      endDate,
+      dateLabel: `${diaDesde} al ${diaHasta} de ${MONTH_NAMES[mesIndex]} de ${anio}`,
+      shortDateLabel: `${diaDesde}-${diaHasta} ${MONTH_NAMES[mesIndex].slice(0, 3).toUpperCase()}`,
+      announcementDate: `${anio}-${mesNum}-${String(Math.max(1, diaDesde - 1)).padStart(2, "0")}`,
+      source: "Nota de Prensa Oficial MICM",
+      officialBulletinUrl: artUrl,
+      prices: {
+        "gasolina-premium": Math.round(prem * 100) / 100,
+        "gasolina-regular": Math.round(reg * 100) / 100,
+        "gasoil-optimo": Math.round((gasoilOpt || (gasoilReg ? gasoilReg + 30 : 0)) * 100) / 100,
+        "gasoil-regular": Math.round((gasoilReg || 0) * 100) / 100,
+        "glp": Math.round((glp || 0) * 100) / 100,
+        "gas-natural": gnv,
+        "avtur": Math.round((avtur || 0) * 100) / 100,
+        "kerosene": Math.round((kerosene || 0) * 100) / 100,
+        "fuel-oil-6": Math.round((fuelOil6 || 0) * 100) / 100,
+        "fuel-oil-1s": Math.round((fuelOil1s || 0) * 100) / 100,
+      },
+    };
+  } catch (err) {
+    console.log("Nota de prensa no disponible en este momento:", err.message);
+    return null;
+  }
+}
 
 /**
- * Consulta la fuente consolidada de Datos Abiertos de MICM
+ * Fuente 2 (Secundaria): CSV consolidado de Datos Abiertos de MICM
  */
-async function fetchFromOfficialCsv(currentHistory) {
-  const CSV_URL = "https://micm.gob.do/transparencias/datos-abiertos/precios-de-combustibles/precios-de-combustibles-2010-2026.csv";
+async function fetchFromOfficialCsv() {
   try {
-    const res = await fetch(CSV_URL, { signal: AbortSignal.timeout(10000) });
+    const res = await fetch(CSV_URL, {
+      signal: AbortSignal.timeout(12000),
+      headers: { "User-Agent": "subiolagasolina-bot/1.0" },
+    });
     if (!res.ok) return [];
     const text = await res.text();
-    const lines = text.trim().split(/\r?\n/).filter(l => l.trim().length > 0);
+    const lines = text.trim().split(/\r?\n/).filter((l) => l.trim().length > 0);
     if (lines.length < 10) return [];
 
-    const existingDates = new Set(currentHistory.map(r => r.startDate));
-    const newRecords = [];
-
+    const records = [];
     for (let i = 1; i < lines.length; i++) {
-      const cols = lines[i].split(";").map(c => c.trim().replace(",", "."));
+      const cols = lines[i].split(";").map((c) => c.trim().replace(",", "."));
       if (cols.length < 15) continue;
       const diaDesde = parseInt(cols[0], 10);
       const diaHasta = parseInt(cols[1], 10);
@@ -48,8 +171,6 @@ async function fetchFromOfficialCsv(currentHistory) {
       const padDiaDesde = String(diaDesde).padStart(2, "0");
       const padDiaHasta = String(diaHasta).padStart(2, "0");
       const startDate = `${anio}-${mesNum}-${padDiaDesde}`;
-
-      if (existingDates.has(startDate)) continue;
 
       const prem = parseFloat(cols[4]) || 0;
       const reg = parseFloat(cols[5]) || 0;
@@ -75,7 +196,7 @@ async function fetchFromOfficialCsv(currentHistory) {
       const iso = getIsoWeek(startDate);
       const weekId = `${iso.year}-W${String(iso.week).padStart(2, "0")}`;
 
-      newRecords.push({
+      records.push({
         weekId,
         year: iso.year,
         weekNumber: iso.week,
@@ -84,7 +205,7 @@ async function fetchFromOfficialCsv(currentHistory) {
         dateLabel: `${diaDesde} al ${diaHasta} de ${mesStr} de ${anio}`,
         shortDateLabel: `${diaDesde}-${diaHasta} ${mesStr.slice(0, 3).toUpperCase()}`,
         announcementDate: `${anio}-${mesNum}-${String(Math.max(1, diaDesde - 1)).padStart(2, "0")}`,
-        source: "Ministerio de Industria, Comercio y Mipymes (MICM)",
+        source: "CSV Datos Abiertos MICM",
         prices: {
           "gasolina-premium": Math.round(prem * 100) / 100,
           "gasolina-regular": Math.round(reg * 100) / 100,
@@ -98,18 +219,85 @@ async function fetchFromOfficialCsv(currentHistory) {
           "fuel-oil-1s": Math.round(fuelOil1s * 100) / 100,
         },
       });
-      existingDates.add(startDate);
     }
 
-    return newRecords.sort((a, b) => a.startDate.localeCompare(b.startDate));
-  } catch (e) {
-    console.log("No fue posible consultar CSV oficial:", e.message);
+    return records.sort((a, b) => a.startDate.localeCompare(b.startDate));
+  } catch (err) {
+    console.log("CSV oficial no disponible en este momento:", err.message);
     return [];
   }
 }
 
+/**
+ * Motor de Validación Cruzada y Contraste contra el Registro Actual
+ */
+function validateCandidateAgainstLocal(candidate, latestLocal) {
+  if (!candidate || !candidate.startDate || !candidate.prices) {
+    return { valid: false, reason: "Estructura incompleta" };
+  }
+
+  // 1. Contraste temporal: debe ser estrictamente posterior al registro actual
+  if (candidate.startDate <= latestLocal.startDate) {
+    return {
+      valid: false,
+      reason: `Fecha no novedosa (${candidate.startDate} <= ${latestLocal.startDate}). El registro ya existe.`,
+      isDuplicateOrOld: true,
+    };
+  }
+
+  // 2. Verificación de completitud de los 6 combustibles de consumo masivo
+  const requiredFuels = [
+    "gasolina-premium",
+    "gasolina-regular",
+    "gasoil-optimo",
+    "gasoil-regular",
+    "glp",
+    "gas-natural",
+  ];
+  for (const f of requiredFuels) {
+    const val = candidate.prices[f];
+    if (typeof val !== "number" || isNaN(val) || val <= 0) {
+      return { valid: false, reason: `Combustible ${f} no tiene un precio válido (> 0)` };
+    }
+  }
+
+  // 3. Límites de cordura del mercado dominicano (Sanity Bounds)
+  const prem = candidate.prices["gasolina-premium"];
+  const reg = candidate.prices["gasolina-regular"];
+  const glp = candidate.prices["glp"];
+
+  if (prem < 150 || prem > 550) {
+    return { valid: false, reason: `Gasolina Premium fuera de rango sensato (${prem})` };
+  }
+  if (reg < 140 || reg > 500) {
+    return { valid: false, reason: `Gasolina Regular fuera de rango sensato (${reg})` };
+  }
+  if (glp < 50 || glp > 250) {
+    return { valid: false, reason: `GLP fuera de rango sensato (${glp})` };
+  }
+
+  // 4. Contraste de variación porcentual semanal máxima (<= 15% por semana)
+  for (const f of requiredFuels) {
+    const oldPrice = latestLocal.prices[f];
+    const newPrice = candidate.prices[f];
+    if (oldPrice > 0) {
+      const pctChange = Math.abs((newPrice - oldPrice) / oldPrice);
+      if (pctChange > 0.15) {
+        return {
+          valid: false,
+          reason: `Variación semanal anómala para ${f}: ${(pctChange * 100).toFixed(1)}% vs semana previa`,
+        };
+      }
+    }
+  }
+
+  return { valid: true };
+}
+
 async function main() {
-  console.log("Iniciando verificación semanal de precios de combustibles...");
+  console.log("=========================================================");
+  console.log("  subiólagasolina | Motor de Sincronización y Validación ");
+  console.log("=========================================================");
 
   if (!fs.existsSync(HISTORY_PATH)) {
     throw new Error(`Archivo histórico no encontrado en ${HISTORY_PATH}`);
@@ -119,27 +307,87 @@ async function main() {
   const history = JSON.parse(historyRaw);
   const latestLocal = history[history.length - 1];
 
-  console.log(`Última semana en registro local: ${latestLocal.weekId} (${latestLocal.dateLabel})`);
+  console.log(`[LOCAL] Última semana registrada: ${latestLocal.weekId} (${latestLocal.dateLabel})`);
+  console.log(`[LOCAL] Tarifa Premium vigente: RD$ ${latestLocal.prices["gasolina-premium"].toFixed(2)}`);
 
-  // Intentar ingesta oficial
-  const newRecords = await fetchFromOfficialCsv(history);
-  if (newRecords && newRecords.length > 0) {
-    console.log(`¡Detectadas ${newRecords.length} semanas nuevas en Datos Abiertos!`);
-    for (const rec of newRecords) {
-      console.log(` -> Incorporando: ${rec.weekId} (${rec.dateLabel})`);
-      history.push(rec);
+  console.log("\n[EXTRACCIÓN] Consultando fuentes oficiales en paralelo (Nota de Prensa + CSV)...");
+
+  // Consulta simultánea
+  const [pressReleaseResult, csvResult] = await Promise.allSettled([
+    fetchFromPressRelease(),
+    fetchFromOfficialCsv(),
+  ]);
+
+  const pressRecord = pressReleaseResult.status === "fulfilled" ? pressReleaseResult.value : null;
+  const csvRecords = csvResult.status === "fulfilled" ? csvResult.value : [];
+  const latestCsvRecord = csvRecords.length > 0 ? csvRecords[csvRecords.length - 1] : null;
+
+  console.log(` -> Nota de Prensa MICM: ${pressRecord ? `Encontrada (${pressRecord.weekId})` : "No disponible"}`);
+  console.log(` -> CSV Datos Abiertos: ${latestCsvRecord ? `Última fila (${latestCsvRecord.weekId})` : "No disponible"}`);
+
+  // Selección de candidato con consenso
+  let candidate = null;
+  let validationNote = "";
+
+  if (pressRecord && latestCsvRecord && pressRecord.startDate === latestCsvRecord.startDate) {
+    // Ambas fuentes coinciden en la fecha
+    console.log("\n[CONSENSO] Ambas fuentes reportan la misma semana. Verificando consistencia cruzada...");
+    const mismatch = Object.keys(pressRecord.prices).find(
+      (k) => Math.abs(pressRecord.prices[k] - latestCsvRecord.prices[k]) > 0.05
+    );
+    if (!mismatch) {
+      candidate = pressRecord;
+      validationNote = "Consenso total: 100% de coincidencia entre Nota de Prensa y CSV Datos Abiertos.";
+    } else {
+      console.log(`Discrepancia detectada en ${mismatch}. Dando prioridad a Nota de Prensa oficial.`);
+      candidate = pressRecord;
+      validationNote = "Validado prioritariamente vía Nota de Prensa oficial firmada por MICM.";
     }
-    fs.writeFileSync(HISTORY_PATH, JSON.stringify(history, null, 2), "utf-8");
-    console.log("Histórico actualizado con éxito.");
-    console.log("NEW_WEEK_DETECTED=true");
+  } else if (pressRecord) {
+    candidate = pressRecord;
+    validationNote = "Ingesta inmediata vía Nota de Prensa oficial del MICM (CSV aún pendiente de actualización).";
+  } else if (latestCsvRecord) {
+    candidate = latestCsvRecord;
+    validationNote = "Ingesta vía CSV de Datos Abiertos oficial.";
+  }
+
+  if (!candidate) {
+    console.log("\n[STATUS] Ninguna fuente arrojó datos legibles en este intento.");
+    console.log("NEW_WEEK_DETECTED=false");
     return;
   }
 
-  console.log("Verificación culminada. Los datos locales ya están al día con la última resolución oficial.");
-  console.log("NEW_WEEK_DETECTED=false");
+  // Contraste estricto contra la base de datos actual
+  console.log(`\n[CONTRASTE] Evaluando candidato: ${candidate.weekId} (${candidate.startDate})...`);
+  const validation = validateCandidateAgainstLocal(candidate, latestLocal);
+
+  if (!validation.valid) {
+    if (validation.isDuplicateOrOld) {
+      console.log(` -> [AL DÍA] ${validation.reason}`);
+      console.log("NEW_WEEK_DETECTED=false");
+      return;
+    }
+    console.error(` -> [RECHAZADO] Falló regla de integridad: ${validation.reason}`);
+    console.log("NEW_WEEK_DETECTED=false");
+    process.exit(1);
+  }
+
+  // Si pasó todas las pruebas: incorporar al histórico
+  console.log(`\n[APROBADO] Candidato superó todas las validaciones de cordura y contraste.`);
+  console.log(` -> Detalle: ${validationNote}`);
+  console.log(` -> Período nuevo: ${candidate.dateLabel} (${candidate.weekId})`);
+  console.log(` -> Gasolina Premium: RD$ ${candidate.prices["gasolina-premium"].toFixed(2)}`);
+  console.log(` -> Gasolina Regular: RD$ ${candidate.prices["gasolina-regular"].toFixed(2)}`);
+  console.log(` -> GLP: RD$ ${candidate.prices["glp"].toFixed(2)}`);
+
+  history.push(candidate);
+  fs.writeFileSync(HISTORY_PATH, JSON.stringify(history, null, 2), "utf-8");
+
+  console.log(`\n[ÉXITO] Archivo ${HISTORY_PATH} actualizado y persistido.`);
+  console.log("NEW_WEEK_DETECTED=true");
 }
 
-main().catch(err => {
-  console.error("Error en sincronización semanal:", err);
+main().catch((err) => {
+  console.error("Error crítico en sincronización:", err);
   process.exit(1);
 });

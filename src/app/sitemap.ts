@@ -16,40 +16,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${BASE_URL}/#precios`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/#grafica`,
+      url: `${BASE_URL}/api/prices`,
       lastModified,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/#calculadora`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/#historico`,
+      url: `${BASE_URL}/feed.xml`,
       lastModified,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     {
-      url: `${BASE_URL}/#preguntas`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${BASE_URL}/api/prices`,
+      url: `${BASE_URL}/feed.json`,
       lastModified,
       changeFrequency: "weekly",
-      priority: 0.5,
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/llms.txt`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.6,
     },
   ];
 }

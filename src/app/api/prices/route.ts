@@ -1,12 +1,35 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
-  getAllHistory,
   getCurrentWeekRecord,
   getFuelTimeSeries,
   getHistoryDescending,
   getWeeklySummary,
 } from "@/lib/services/fuel-service";
 import { FuelId } from "@/lib/types/fuel";
+import { SITE_CONFIG } from "@/lib/constants/site";
+
+const API_META = {
+  attribution: "subiólagasolina • Precios oficiales de combustibles en República Dominicana",
+  canonical: SITE_CONFIG.url,
+  license: "CC BY 4.0 (Uso libre con atribución)",
+  supportUs: SITE_CONFIG.buyMeACoffeeUrl,
+  officialSource: "Ministerio de Industria, Comercio y Mipymes (MICM, Ley 112-00)",
+  updatedWeekly: "Viernes ~1:00 PM AST (UTC-4)",
+};
+
+const CACHE_HEADERS = {
+  "Cache-Control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+};
+
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 204,
+    headers: CACHE_HEADERS,
+  });
+}
 
 export async function GET(request: NextRequest) {
   try {
@@ -21,20 +44,19 @@ export async function GET(request: NextRequest) {
       const series = getFuelTimeSeries(fuelFilter, weeksLimit);
       return NextResponse.json(
         {
+          _meta: API_META,
           fuel: fuelFilter,
           currentPrice: summary.currentWeek.prices[fuelFilter] ?? null,
           series,
         },
         {
-          headers: {
-            "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
-            "Access-Control-Allow-Origin": "*",
-          },
+          headers: CACHE_HEADERS,
         }
       );
     }
 
     const responsePayload: Record<string, unknown> = {
+      _meta: API_META,
       summary,
       current: getCurrentWeekRecord(),
     };
@@ -44,13 +66,11 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json(responsePayload, {
-      headers: {
-        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
-        "Access-Control-Allow-Origin": "*",
-      },
+      headers: CACHE_HEADERS,
     });
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : "Internal Server Error";
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }
+

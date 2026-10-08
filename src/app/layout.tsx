@@ -1,16 +1,22 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { NavbarHeader } from "@/components/NavbarHeader";
 import { DominicanFlag } from "@/components/DominicanFlag";
 import { getBaseUrl } from "@/lib/utils/url";
 
 const baseUrl = getBaseUrl();
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#080c14",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "SubióLaGasolina | Precios de Combustibles en República Dominicana",
-    template: "%s | SubióLaGasolina",
+    default: "subiólagasolina | Precios de Combustibles en República Dominicana",
+    template: "%s | subiólagasolina",
   },
   description:
     "¿Subió la gasolina esta semana en RD? Consulta al instante los precios oficiales de Gasolina Premium, Regular, Gasoil, GLP y Gas Natural emitidos por el MICM, con histórico completo y gráficas interactivas.",
@@ -18,6 +24,7 @@ export const metadata: Metadata = {
     "precio gasolina rd",
     "precio gasolina hoy",
     "subio la gasolina",
+    "subiolagasolina",
     "precio combustible republica dominicana",
     "gasolina premium rd",
     "gasolina regular rd",
@@ -26,9 +33,9 @@ export const metadata: Metadata = {
     "micm precios combustibles",
     "combustibles rd",
   ],
-  authors: [{ name: "SubióLaGasolina" }],
-  creator: "SubióLaGasolina",
-  publisher: "SubióLaGasolina",
+  authors: [{ name: "subiólagasolina" }],
+  creator: "subiólagasolina",
+  publisher: "subiólagasolina",
   formatDetection: {
     telephone: false,
   },
@@ -37,7 +44,7 @@ export const metadata: Metadata = {
     description:
       "Consulta los precios oficiales de combustibles vigentes según el MICM. Sin registros, rápido y con histórico completo.",
     url: baseUrl,
-    siteName: "SubióLaGasolina",
+    siteName: "subiólagasolina",
     locale: "es_DO",
     type: "website",
   },
@@ -49,6 +56,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: baseUrl,
+    types: {
+      "application/rss+xml": `${baseUrl}/feed.xml`,
+      "application/feed+json": `${baseUrl}/feed.json`,
+    },
   },
   robots: {
     index: true,
@@ -73,16 +84,27 @@ export default function RootLayout({
       <head>
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="theme-color" content="#080c14" />
+        <meta name="theme-color" content="#0b1120" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="subiólagasolina — Feed RSS de Precios"
+          href="/feed.xml"
+        />
+        <link
+          rel="alternate"
+          type="application/feed+json"
+          title="subiólagasolina — Feed JSON"
+          href="/feed.json"
+        />
       </head>
-      <body className="bg-[#080c14] text-slate-100 flex flex-col min-h-screen">
-        <NavbarHeader />
-        <main className="flex-1">{children}</main>
+      <body className="bg-[#0b1120] text-slate-100 flex flex-col min-h-screen">
+        <main className="flex-1 w-full min-w-0">{children}</main>
         <footer className="w-full border-t border-white/10 bg-[#06090f] py-12 px-4 sm:px-6 mt-16 text-xs text-slate-400">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
             <div>
               <p className="font-bold text-white text-sm flex items-center gap-1.5 justify-center md:justify-start">
-                <span>Subió<span className="text-blue-400">LaGasolina</span></span>
+                <span>subiólagasolina</span>
                 <DominicanFlag className="w-4 h-3 rounded-[1px] shadow-sm" />
               </p>
               <p className="text-slate-500 mt-1">
@@ -108,16 +130,16 @@ export default function RootLayout({
                 Portal Nacional de Datos Abiertos
               </a>
               <a
+                href="#apoyar"
+                className="hover:text-amber-300 text-amber-400 font-semibold transition-colors flex items-center gap-1"
+              >
+                <span>Invítame un galón ⛽</span>
+              </a>
+              <a
                 href="/api/prices"
                 className="hover:text-blue-400 transition-colors font-mono"
               >
                 API REST
-              </a>
-              <a
-                href="/llms.txt"
-                className="hover:text-blue-400 transition-colors font-mono"
-              >
-                llms.txt
               </a>
             </div>
           </div>
