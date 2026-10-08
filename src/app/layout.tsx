@@ -3,6 +3,7 @@ import "./globals.css";
 import { DominicanFlag } from "@/components/DominicanFlag";
 import { getBaseUrl } from "@/lib/utils/url";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const baseUrl = getBaseUrl();
 
@@ -149,6 +150,7 @@ export default function RootLayout({
           </div>
         </footer>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
