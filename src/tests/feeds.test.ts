@@ -67,8 +67,16 @@ describe("Feeds and Benchmarks Tests", () => {
     assert.ok(data._meta.supportUs);
     assert.ok(data.summary);
     assert.ok(data.current);
+    assert.ok(data.previous);
+    assert.strictEqual(data.current.weekId, data.summary.currentWeek.weekId, "current must match canonical summary.currentWeek");
+    assert.strictEqual(data.previous.weekId, data.summary.previousWeek.weekId, "previous must match canonical summary.previousWeek");
     assert.ok(data.verdict, "Response must include top-level verdict");
     assert.ok(data.scopes, "Response must include scopes breakdown");
+    assert.strictEqual(data.scopes.gasoline.state, data.summary.gasolineState);
+    assert.strictEqual(typeof data.scopes.gasoline.hasIncreased, "boolean");
+    assert.strictEqual(typeof data.scopes.gasoline.hasDecreased, "boolean");
+    assert.strictEqual(typeof data.scopes.gasoline.isUnchanged, "boolean");
+    assert.strictEqual(data.hasNotableOtherChanges, data.summary.hasNotableOtherChanges);
     assert.ok(data.changes, "Response must include categorized changes");
   });
 

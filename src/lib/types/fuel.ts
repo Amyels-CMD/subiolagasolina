@@ -70,6 +70,22 @@ export type AggregateMovement = "unchanged" | "increased" | "decreased" | "mixed
 
 export type HeadlineVerdict = "NO, SE MANTUVO" | "¡BAJÓ!" | "SÍ, SUBIÓ";
 
+export interface ScopeStatus {
+  state: AggregateMovement;
+  hasIncreased: boolean;
+  hasDecreased: boolean;
+  isUnchanged: boolean;
+  summaryText?: string;
+  headline?: HeadlineVerdict;
+  answer?: "SÍ" | "NO";
+}
+
+export interface ScopesSummary {
+  gasoline: ScopeStatus;
+  consumer: ScopeStatus;
+  market: ScopeStatus;
+}
+
 export interface StructuredVerdicts {
   gasoline: {
     answer: "SÍ" | "NO";
@@ -78,16 +94,26 @@ export interface StructuredVerdicts {
     headline: HeadlineVerdict;
     subtext: string;
     tone: "neutral" | "success" | "danger" | "warning";
+    hasIncreased: boolean;
+    hasDecreased: boolean;
+    isUnchanged: boolean;
   };
   consumer: {
     state: AggregateMovement;
     summaryText: string;
     hasNotableOtherChanges: boolean;
     notableChangeSummary?: string;
+    hasIncreased: boolean;
+    hasDecreased: boolean;
+    isUnchanged: boolean;
   };
   market: {
     state: AggregateMovement;
     summaryText: string;
+    hasNotableOtherChanges: boolean;
+    hasIncreased: boolean;
+    hasDecreased: boolean;
+    isUnchanged: boolean;
   };
 }
 
@@ -98,20 +124,37 @@ export interface CategorizedChanges {
 }
 
 export interface WeeklySummary {
-  // Scoped state machines
+  // Scoped state machines & detailed status
   gasolineState: AggregateMovement;
   consumerState: AggregateMovement;
   marketState: AggregateMovement;
+  scopes: ScopesSummary;
   verdicts: StructuredVerdicts;
   changes: CategorizedChanges;
 
-  // Historical records
+  // Contextual intelligence for non-gasoline fuels (never hidden)
+  hasNotableOtherChanges: boolean;
+  notableChangeSummary?: string;
+
+  // Historical records (canonical single source of truth)
   currentWeek: WeeklyFuelRecord;
   previousWeek: WeeklyFuelRecord;
 
-  // Backwards compatibility fields
+  // Backward compatibility fields (Ámbito explícito: Gasolinas Premium y Regular)
+  /**
+   * Indica si alguna gasolina (Premium o Regular) registró aumento de precio.
+   * Ámbito: Exclusivo gasolinas.
+   */
   hasIncreased: boolean;
+  /**
+   * Indica si alguna gasolina (Premium o Regular) registró rebaja de precio.
+   * Ámbito: Exclusivo gasolinas.
+   */
   hasDecreased: boolean;
+  /**
+   * Indica si ambas gasolinas (Premium y Regular) permanecieron sin cambios.
+   * Ámbito: Exclusivo gasolinas.
+   */
   isUnchanged: boolean;
   headlineVerdict: HeadlineVerdict;
   subVerdict: string;

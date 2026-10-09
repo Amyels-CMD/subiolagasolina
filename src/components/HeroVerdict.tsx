@@ -25,7 +25,7 @@ export function HeroVerdict({ summary }: HeroVerdictProps) {
 
   const verdictNote =
     gasoline.tone === "neutral"
-      ? "Precios de gasolinas congelados. Sin variación respecto a la semana anterior."
+      ? "Precios de gasolinas sin cambios respecto a la semana anterior."
       : isUp
       ? "Alzas aprobadas para el período vigente."
       : isMixed

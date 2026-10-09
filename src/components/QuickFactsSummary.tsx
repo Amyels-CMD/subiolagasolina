@@ -53,15 +53,16 @@ export function QuickFactsSummary({ summary }: QuickFactsSummaryProps) {
         <div className="space-y-1 lg:border-l lg:border-white/10 lg:pl-6">
           <div className="flex items-center gap-2 text-xs font-bold text-emerald-400 uppercase tracking-wider">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>Tarifa Clave en Bomba</span>
+            <span>Precio en la Bomba</span>
           </div>
+
           <div className="text-sm sm:text-base font-bold text-white font-mono flex flex-wrap items-center gap-x-2 gap-y-0.5">
             <span>Premium {formatCurrency(currentWeek.prices["gasolina-premium"])}</span>
             <span className="text-slate-500">•</span>
             <span>GLP {formatCurrency(currentWeek.prices["glp"])}</span>
           </div>
           <p className="text-xs text-slate-300">
-            Precios oficiales congelados bajo Ley 112-00
+            Precios oficiales sin cambios bajo Ley 112-00
           </p>
         </div>
 

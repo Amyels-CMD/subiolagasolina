@@ -6,6 +6,7 @@ import {
   FuelId,
   FuelPriceItem,
   HeadlineVerdict,
+  ScopesSummary,
   StructuredVerdicts,
   TankCalculationResult,
   WeeklyFuelRecord,
@@ -140,7 +141,7 @@ export function getWeeklySummary(historyOverride?: WeeklyFuelRecord[]): WeeklySu
   let primaryWord: "NO." | "SÍ." | "BAJÓ." = "NO.";
   let secondaryPhrase = "SE MANTUVO";
   let headlineVerdict: HeadlineVerdict = "NO, SE MANTUVO";
-  let subtext = "Los precios de la Gasolina Premium y Regular se mantienen congelados sin variación.";
+  let subtext = "Los precios de la Gasolina Premium y Regular se mantienen sin cambios respecto a la semana anterior.";
   let tone: "neutral" | "success" | "danger" | "warning" = "neutral";
 
   if (gasolineState === "increased") {
@@ -175,7 +176,7 @@ export function getWeeklySummary(historyOverride?: WeeklyFuelRecord[]): WeeklySu
     tone = "success";
 
     if (premiumItem.change < 0 && regularItem.change < 0) {
-      secondaryPhrase = "REBAJAS EN BOMBA";
+      secondaryPhrase = "BAJÓ EN LA BOMBA";
       subtext = `¡Buenas noticias! Bajaron ambas gasolinas: Premium (-RD$ ${Math.abs(premiumItem.change).toFixed(2)}) y Regular (-RD$ ${Math.abs(regularItem.change).toFixed(2)}).`;
     } else if (premiumItem.change < 0) {
       secondaryPhrase = "BAJÓ LA PREMIUM";
@@ -190,29 +191,55 @@ export function getWeeklySummary(historyOverride?: WeeklyFuelRecord[]): WeeklySu
     secondaryPhrase = "SE MANTUVO";
     headlineVerdict = "NO, SE MANTUVO";
     tone = "neutral";
-    subtext = "Los precios de la Gasolina Premium y Regular se mantienen congelados sin variación.";
+    subtext = "Los precios de la Gasolina Premium y Regular se mantienen sin cambios respecto a la semana anterior.";
   }
 
-  // Análisis de otros combustibles de consumo masivo para contextualización
-  const nonGasolineConsumer = consumerItems.filter(
+  // Análisis de otros combustibles para contextualización sin ocultar cambios en ningún derivado
+  const otherConsumerItems = consumerItems.filter(
     (i) => i.id !== "gasolina-premium" && i.id !== "gasolina-regular"
   );
-  const otherConsumerUps = nonGasolineConsumer.filter((i) => i.change > 0);
-  const otherConsumerDowns = nonGasolineConsumer.filter((i) => i.change < 0);
-  const hasNotableOtherChanges = otherConsumerUps.length > 0 || otherConsumerDowns.length > 0;
+  const otherConsumerUps = otherConsumerItems.filter((i) => i.change > 0);
+  const otherConsumerDowns = otherConsumerItems.filter((i) => i.change < 0);
+  const hasConsumerOtherChanges = otherConsumerUps.length > 0 || otherConsumerDowns.length > 0;
+
+  const industrialUps = industrialItems.filter((i) => i.change > 0);
+  const industrialDowns = industrialItems.filter((i) => i.change < 0);
+  const hasIndustrialChanges = industrialUps.length > 0 || industrialDowns.length > 0;
+
+  // hasNotableOtherChanges es TRUE si CUALQUIER combustible no-gasolina registró variación oficial
+  const hasNotableOtherChanges = hasConsumerOtherChanges || hasIndustrialChanges;
 
   let notableChangeSummary: string | undefined;
-  if (otherConsumerUps.length > 0 && otherConsumerDowns.length > 0) {
-    notableChangeSummary = `Otros combustibles registraron variaciones mixtas (alzas en ${otherConsumerUps.map((i) => i.name).join(", ")}; rebajas en ${otherConsumerDowns.map((i) => i.name).join(", ")}).`;
-  } else if (otherConsumerUps.length > 0) {
-    notableChangeSummary = `Aviso: Se registraron alzas en otros combustibles de consumo (${otherConsumerUps.map((i) => `${i.name} +RD$ ${i.change.toFixed(2)}`).join(", ")}).`;
-  } else if (otherConsumerDowns.length > 0) {
-    notableChangeSummary = `Aviso: Se registraron rebajas en otros combustibles (${otherConsumerDowns.map((i) => `${i.name} -RD$ ${Math.abs(i.change).toFixed(2)}`).join(", ")}).`;
+  if (hasConsumerOtherChanges && hasIndustrialChanges) {
+    const cSummary =
+      otherConsumerUps.length > 0 && otherConsumerDowns.length > 0
+        ? `variaciones mixtas en otros combustibles de consumo (${otherConsumerUps.map((i) => i.name).join(", ")}; rebajas en ${otherConsumerDowns.map((i) => i.name).join(", ")})`
+        : otherConsumerUps.length > 0
+        ? `alzas en otros combustibles de consumo (${otherConsumerUps.map((i) => `${i.name} +RD$ ${i.change.toFixed(2)}`).join(", ")})`
+        : `rebajas en otros combustibles (${otherConsumerDowns.map((i) => `${i.name} -RD$ ${Math.abs(i.change).toFixed(2)}`).join(", ")})`;
+    notableChangeSummary = `Aviso: Se registraron ${cSummary}, además de ajustes en derivados industriales.`;
+  } else if (hasConsumerOtherChanges) {
+    if (otherConsumerUps.length > 0 && otherConsumerDowns.length > 0) {
+      notableChangeSummary = `Otros combustibles registraron variaciones mixtas (alzas en ${otherConsumerUps.map((i) => i.name).join(", ")}; rebajas en ${otherConsumerDowns.map((i) => i.name).join(", ")}).`;
+    } else if (otherConsumerUps.length > 0) {
+      notableChangeSummary = `Aviso: Se registraron alzas en otros combustibles de consumo (${otherConsumerUps.map((i) => `${i.name} +RD$ ${i.change.toFixed(2)}`).join(", ")}).`;
+    } else {
+      notableChangeSummary = `Aviso: Se registraron rebajas en otros combustibles (${otherConsumerDowns.map((i) => `${i.name} -RD$ ${Math.abs(i.change).toFixed(2)}`).join(", ")}).`;
+    }
+  } else if (hasIndustrialChanges) {
+    const indParts: string[] = [];
+    if (industrialUps.length > 0) {
+      indParts.push(`alzas en ${industrialUps.map((i) => `${i.name} +RD$ ${i.change.toFixed(2)}`).join(", ")}`);
+    }
+    if (industrialDowns.length > 0) {
+      indParts.push(`rebajas en ${industrialDowns.map((i) => `${i.name} -RD$ ${Math.abs(i.change).toFixed(2)}`).join(", ")}`);
+    }
+    notableChangeSummary = `Combustibles de consumo masivo sin variación; se registraron ajustes en derivados industriales y de aviación (${indParts.join("; ")}).`;
   }
 
   let consumerSummaryText = "";
   if (consumerState === "unchanged") {
-    consumerSummaryText = "Todos los combustibles de consumo masivo (gasolinas, gasoil, GLP y gas natural) se mantienen congelados.";
+    consumerSummaryText = "Todos los combustibles de consumo masivo (gasolinas, gasoil, GLP y gas natural) se mantienen sin cambios.";
   } else if (consumerState === "increased") {
     consumerSummaryText = "Se registraron aumentos en combustibles de consumo masivo sin rebajas en esta categoría.";
   } else if (consumerState === "decreased") {
@@ -232,6 +259,44 @@ export function getWeeklySummary(historyOverride?: WeeklyFuelRecord[]): WeeklySu
     marketSummaryText = "Movimientos mixtos en el mercado oficial de combustibles (incluyendo derivados industriales).";
   }
 
+  // Booleans con alcance explícito por categoría para evitar contradicciones
+  const gasolineHasIncreased = gasolineState === "increased" || gasolineState === "mixed";
+  const gasolineHasDecreased = gasolineState === "decreased" || gasolineState === "mixed";
+  const gasolineIsUnchanged = gasolineState === "unchanged";
+
+  const consumerHasIncreased = consumerState === "increased" || consumerState === "mixed";
+  const consumerHasDecreased = consumerState === "decreased" || consumerState === "mixed";
+  const consumerIsUnchanged = consumerState === "unchanged";
+
+  const marketHasIncreased = marketState === "increased" || marketState === "mixed";
+  const marketHasDecreased = marketState === "decreased" || marketState === "mixed";
+  const marketIsUnchanged = marketState === "unchanged";
+
+  const scopes: ScopesSummary = {
+    gasoline: {
+      state: gasolineState,
+      hasIncreased: gasolineHasIncreased,
+      hasDecreased: gasolineHasDecreased,
+      isUnchanged: gasolineIsUnchanged,
+      headline: headlineVerdict,
+      answer,
+    },
+    consumer: {
+      state: consumerState,
+      hasIncreased: consumerHasIncreased,
+      hasDecreased: consumerHasDecreased,
+      isUnchanged: consumerIsUnchanged,
+      summaryText: consumerSummaryText,
+    },
+    market: {
+      state: marketState,
+      hasIncreased: marketHasIncreased,
+      hasDecreased: marketHasDecreased,
+      isUnchanged: marketIsUnchanged,
+      summaryText: marketSummaryText,
+    },
+  };
+
   const verdicts: StructuredVerdicts = {
     gasoline: {
       answer,
@@ -240,23 +305,28 @@ export function getWeeklySummary(historyOverride?: WeeklyFuelRecord[]): WeeklySu
       headline: headlineVerdict,
       subtext,
       tone,
+      hasIncreased: gasolineHasIncreased,
+      hasDecreased: gasolineHasDecreased,
+      isUnchanged: gasolineIsUnchanged,
     },
     consumer: {
       state: consumerState,
       summaryText: consumerSummaryText,
       hasNotableOtherChanges,
       notableChangeSummary,
+      hasIncreased: consumerHasIncreased,
+      hasDecreased: consumerHasDecreased,
+      isUnchanged: consumerIsUnchanged,
     },
     market: {
       state: marketState,
       summaryText: marketSummaryText,
+      hasNotableOtherChanges: hasIndustrialChanges,
+      hasIncreased: marketHasIncreased,
+      hasDecreased: marketHasDecreased,
+      isUnchanged: marketIsUnchanged,
     },
   };
-
-  // Backwards compatibility booleans: aligned to GASOLINE verdict so headline and booleans never contradict!
-  const hasIncreased = gasolineState === "increased" || gasolineState === "mixed";
-  const hasDecreased = gasolineState === "decreased";
-  const isUnchanged = gasolineState === "unchanged";
 
   const nextUpdate = getNextAnnouncementDate(new Date(current.endDate));
 
@@ -273,13 +343,16 @@ export function getWeeklySummary(historyOverride?: WeeklyFuelRecord[]): WeeklySu
     gasolineState,
     consumerState,
     marketState,
+    scopes,
     verdicts,
     changes,
+    hasNotableOtherChanges,
+    notableChangeSummary,
     currentWeek: current,
     previousWeek: previous,
-    hasIncreased,
-    hasDecreased,
-    isUnchanged,
+    hasIncreased: gasolineHasIncreased,
+    hasDecreased: gasolineHasDecreased,
+    isUnchanged: gasolineIsUnchanged,
     headlineVerdict,
     subVerdict: subtext,
     badgeTone: tone,

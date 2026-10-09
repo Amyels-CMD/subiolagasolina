@@ -123,7 +123,12 @@ describe("18 Mandatory Scenarios for Verdicts and Integrity", () => {
     assert.strictEqual(summary.verdicts.gasoline.answer, "NO");
     assert.strictEqual(summary.verdicts.gasoline.primaryWord, "NO.");
     assert.strictEqual(summary.hasIncreased, false);
+    assert.strictEqual(summary.hasDecreased, false);
     assert.strictEqual(summary.isUnchanged, true);
+    assert.strictEqual(summary.scopes.gasoline.isUnchanged, true);
+    assert.strictEqual(summary.hasNotableOtherChanges, false);
+    assert.strictEqual(summary.subVerdict.includes("sin cambios"), true);
+    assert.strictEqual(summary.subVerdict.includes("congelados"), false);
   });
 
   it("Scenario 2: Ambos tipos de gasolina suben", () => {
@@ -150,9 +155,10 @@ describe("18 Mandatory Scenarios for Verdicts and Integrity", () => {
     assert.strictEqual(summary.headlineVerdict, "¡BAJÓ!");
     assert.strictEqual(summary.verdicts.gasoline.answer, "NO");
     assert.strictEqual(summary.verdicts.gasoline.primaryWord, "BAJÓ.");
-    assert.strictEqual(summary.verdicts.gasoline.secondaryPhrase, "REBAJAS EN BOMBA");
+    assert.strictEqual(summary.verdicts.gasoline.secondaryPhrase, "BAJÓ EN LA BOMBA");
     assert.strictEqual(summary.hasDecreased, true);
   });
+
 
   it("Scenario 4: La Premium sube y la Regular permanece igual", () => {
     const history = createControlledHistory(
@@ -176,6 +182,12 @@ describe("18 Mandatory Scenarios for Verdicts and Integrity", () => {
     assert.strictEqual(summary.headlineVerdict, "SÍ, SUBIÓ");
     assert.strictEqual(summary.verdicts.gasoline.answer, "SÍ");
     assert.strictEqual(summary.verdicts.gasoline.secondaryPhrase, "MOVIMIENTOS MIXTOS");
+    assert.strictEqual(summary.hasIncreased, true);
+    assert.strictEqual(summary.hasDecreased, true);
+    assert.strictEqual(summary.isUnchanged, false);
+    assert.strictEqual(summary.scopes.gasoline.hasIncreased, true);
+    assert.strictEqual(summary.scopes.gasoline.hasDecreased, true);
+    assert.strictEqual(summary.scopes.gasoline.isUnchanged, false);
   });
 
   it("Scenario 6: La Premium baja y la Regular sube", () => {
@@ -200,7 +212,12 @@ describe("18 Mandatory Scenarios for Verdicts and Integrity", () => {
     assert.strictEqual(summary.gasolineState, "unchanged");
     assert.strictEqual(summary.headlineVerdict, "NO, SE MANTUVO");
     assert.strictEqual(summary.verdicts.gasoline.answer, "NO");
+    assert.strictEqual(summary.isUnchanged, true);
+    assert.strictEqual(summary.scopes.gasoline.isUnchanged, true);
     assert.strictEqual(summary.consumerState, "increased");
+    assert.strictEqual(summary.scopes.consumer.isUnchanged, false);
+    assert.strictEqual(summary.scopes.consumer.hasIncreased, true);
+    assert.strictEqual(summary.hasNotableOtherChanges, true);
     assert.strictEqual(summary.verdicts.consumer.hasNotableOtherChanges, true);
     assert.ok(summary.verdicts.consumer.notableChangeSummary?.includes("Gasoil Regular"));
   });
@@ -251,6 +268,13 @@ describe("18 Mandatory Scenarios for Verdicts and Integrity", () => {
     assert.strictEqual(summary.changes.up.length, 2);
     assert.strictEqual(summary.changes.down.length, 2);
     assert.strictEqual(summary.changes.unchanged.length, 6);
+    // Verificar que hasNotableOtherChanges NUNCA oculta cambios en derivados industriales
+    assert.strictEqual(summary.hasNotableOtherChanges, true);
+    assert.strictEqual(summary.verdicts.consumer.hasNotableOtherChanges, true);
+    assert.ok(summary.notableChangeSummary?.includes("Avtur"));
+    assert.ok(summary.notableChangeSummary?.includes("Fuel Oíl"));
+    assert.strictEqual(summary.verdicts.consumer.summaryText.includes("congelados"), false);
+    assert.ok(summary.verdicts.consumer.summaryText.includes("sin cambios"));
   });
 
   it("Scenario 10: Consumo masivo presenta exclusivamente subidas", () => {
@@ -375,6 +399,12 @@ describe("18 Mandatory Scenarios for Verdicts and Integrity", () => {
     assert.strictEqual(summary.headlineVerdict, summary.verdicts.gasoline.headline);
     assert.strictEqual(summary.subVerdict, summary.verdicts.gasoline.subtext);
     assert.strictEqual(summary.isUnchanged, summary.gasolineState === "unchanged");
+    assert.strictEqual(summary.scopes.gasoline.state, summary.gasolineState);
+    assert.strictEqual(summary.scopes.consumer.state, summary.consumerState);
+    assert.strictEqual(summary.scopes.market.state, summary.marketState);
+    assert.strictEqual(summary.verdicts.gasoline.hasIncreased, summary.hasIncreased);
+    assert.strictEqual(summary.verdicts.gasoline.hasDecreased, summary.hasDecreased);
+    assert.strictEqual(summary.verdicts.gasoline.isUnchanged, summary.isUnchanged);
   });
 });
 

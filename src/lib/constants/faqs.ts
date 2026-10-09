@@ -22,7 +22,7 @@ export const FAQS: FaqItem[] = [
   {
     question: "¿Cuándo conviene llenar el tanque si van a cambiar los precios?",
     answer:
-      "Si los precios van a subir, te conviene llenar el tanque antes de la medianoche del viernes (23:59 AST), momento en que finaliza la tarifa anterior. Si van a bajar, conviene esperar al sábado por la mañana para repostar con la rebaja oficial ya aplicada en las bombas.",
+      "Si los precios van a subir, te conviene llenar el tanque antes de la medianoche del viernes (23:59 AST), momento en que finaliza la tarifa anterior. Si van a bajar, conviene esperar al sábado por la mañana para echar gasolina con la rebaja oficial ya aplicada en la bomba.",
   },
   {
     question: "¿Cómo se calculan oficialmente los precios según la Ley 112-00 de Hidrocarburos?",

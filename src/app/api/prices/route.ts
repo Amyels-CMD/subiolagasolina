@@ -58,14 +58,13 @@ export async function GET(request: NextRequest) {
     const responsePayload: Record<string, unknown> = {
       _meta: API_META,
       verdict: summary.verdicts.gasoline,
-      scopes: {
-        gasoline: summary.gasolineState,
-        consumer: summary.consumerState,
-        market: summary.marketState,
-      },
+      scopes: summary.scopes,
+      hasNotableOtherChanges: summary.hasNotableOtherChanges,
+      notableChangeSummary: summary.notableChangeSummary,
       changes: summary.changes,
       summary,
-      current: getCurrentWeekRecord(),
+      current: summary.currentWeek,
+      previous: summary.previousWeek,
     };
 
 
