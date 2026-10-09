@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Calendar, Building2 } from "lucide-react";
+import { Calendar, Building2, Info, AlertTriangle } from "lucide-react";
 import { WeeklySummary } from "@/lib/types/fuel";
 import { DominicanFlag } from "@/components/DominicanFlag";
 import { CountdownTimer } from "@/components/CountdownTimer";
@@ -12,32 +12,26 @@ interface HeroVerdictProps {
 }
 
 export function HeroVerdict({ summary }: HeroVerdictProps) {
-  const { subVerdict, currentWeek, nextUpdateDate } = summary;
+  const { currentWeek, nextUpdateDate, verdicts } = summary;
+  const { gasoline, consumer, market } = verdicts;
 
-  const isUp = summary.hasIncreased;
-  const isDown = summary.hasDecreased && !summary.hasIncreased;
-  const isUnchanged = summary.isUnchanged;
+  const isUp = gasoline.tone === "danger";
+  const isDown = gasoline.tone === "success";
+  const isMixed = gasoline.tone === "warning";
 
-  // Split headline into primary brutalist word + secondary phrase
-  let primaryWord = "NO.";
-  let secondaryPhrase = "SE MANTUVO";
+  const primaryWord = gasoline.primaryWord;
+  const secondaryPhrase = gasoline.secondaryPhrase;
+  const subVerdict = gasoline.subtext;
 
-  if (isUp) {
-    primaryWord = "SÍ.";
-    secondaryPhrase = "SUBIÓ ESTA SEMANA";
-  } else if (isDown) {
-    primaryWord = "BAJÓ.";
-    secondaryPhrase = "REBAJAS EN BOMBA";
-  } else {
-    primaryWord = "NO.";
-    secondaryPhrase = "SE MANTUVO";
-  }
+  const verdictNote =
+    gasoline.tone === "neutral"
+      ? "Precios de gasolinas congelados. Sin variación respecto a la semana anterior."
+      : isUp
+      ? "Alzas aprobadas para el período vigente."
+      : isMixed
+      ? "Resolución con variaciones encontradas entre gasolinas."
+      : "Rebajas directas aplicadas para el consumidor.";
 
-  const verdictNote = isUnchanged
-    ? "Precios congelados. Sin variación respecto a la semana anterior."
-    : isUp
-    ? "Alzas aprobadas para el período vigente."
-    : "Rebajas directas aplicadas para el consumidor.";
 
   return (
     <section id="veredicto-principal" className="relative pt-6 sm:pt-10 md:pt-12 pb-10 sm:pb-14 border-b border-white/10">
@@ -129,8 +123,26 @@ export function HeroVerdict({ summary }: HeroVerdictProps) {
           </div>
         </div>
 
+        {/* Contextual Intelligence Banner: Informs user if other non-gasoline fuels moved */}
+        {consumer.hasNotableOtherChanges && consumer.notableChangeSummary && (
+          <div className="mt-6 py-2.5 px-3 sm:px-4 rounded-lg bg-amber-500/10 border border-amber-500/25 flex items-center gap-2 text-xs sm:text-sm text-amber-200">
+            <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0" />
+            <span>{consumer.notableChangeSummary}</span>
+          </div>
+        )}
+
+        {!consumer.hasNotableOtherChanges && market.state !== "unchanged" && (
+          <div className="mt-6 py-2 px-3 sm:px-4 rounded-lg bg-slate-800/80 border border-white/10 flex items-center gap-2 text-xs text-slate-300">
+            <Info className="w-4 h-4 text-cyan-400 shrink-0" />
+            <span>
+              Combustibles de consumo masivo sin variación. Ajustes registrados únicamente en derivados industriales y de aviación.
+            </span>
+          </div>
+        )}
+
         {/* Hero Utility Strip: Official Period, Regulation, Countdown & Share */}
         <div className="relative mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+
           {/* Ambient specular beam cast from the verdict down along the divider */}
           <div
             className={`absolute -top-[1px] right-0 w-full sm:w-2/3 md:w-1/2 h-[1px] pointer-events-none ${

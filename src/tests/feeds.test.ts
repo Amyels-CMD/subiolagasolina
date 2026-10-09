@@ -67,7 +67,11 @@ describe("Feeds and Benchmarks Tests", () => {
     assert.ok(data._meta.supportUs);
     assert.ok(data.summary);
     assert.ok(data.current);
+    assert.ok(data.verdict, "Response must include top-level verdict");
+    assert.ok(data.scopes, "Response must include scopes breakdown");
+    assert.ok(data.changes, "Response must include categorized changes");
   });
+
 
   it("should support OPTIONS preflight for /api/prices", async () => {
     const response = await optionsPricesApi();

@@ -57,9 +57,17 @@ export async function GET(request: NextRequest) {
 
     const responsePayload: Record<string, unknown> = {
       _meta: API_META,
+      verdict: summary.verdicts.gasoline,
+      scopes: {
+        gasoline: summary.gasolineState,
+        consumer: summary.consumerState,
+        market: summary.marketState,
+      },
+      changes: summary.changes,
       summary,
       current: getCurrentWeekRecord(),
     };
+
 
     if (includeHistory) {
       responsePayload.history = getHistoryDescending().slice(0, weeksLimit);
