@@ -13,7 +13,7 @@ import {
   WeeklySummary,
 } from "@/lib/types/fuel";
 
-import { getNextAnnouncementDate } from "@/lib/utils/date-rd";
+import { formatDominicanDateTime, getNextAnnouncementDate } from "@/lib/utils/date-rd";
 
 // Cache sorted historical records in memory
 const sortedHistory: WeeklyFuelRecord[] = (rawHistory as WeeklyFuelRecord[])
@@ -200,17 +200,17 @@ export function getWeeklySummary(historyOverride?: WeeklyFuelRecord[]): WeeklySu
   );
   const otherConsumerUps = otherConsumerItems.filter((i) => i.change > 0);
   const otherConsumerDowns = otherConsumerItems.filter((i) => i.change < 0);
-  const hasConsumerOtherChanges = otherConsumerUps.length > 0 || otherConsumerDowns.length > 0;
+  const hasOtherConsumerChanges = otherConsumerUps.length > 0 || otherConsumerDowns.length > 0;
 
   const industrialUps = industrialItems.filter((i) => i.change > 0);
   const industrialDowns = industrialItems.filter((i) => i.change < 0);
   const hasIndustrialChanges = industrialUps.length > 0 || industrialDowns.length > 0;
 
   // hasNotableOtherChanges es TRUE si CUALQUIER combustible no-gasolina registró variación oficial
-  const hasNotableOtherChanges = hasConsumerOtherChanges || hasIndustrialChanges;
+  const hasNotableOtherChanges = hasOtherConsumerChanges || hasIndustrialChanges;
 
   let notableChangeSummary: string | undefined;
-  if (hasConsumerOtherChanges && hasIndustrialChanges) {
+  if (hasOtherConsumerChanges && hasIndustrialChanges) {
     const cSummary =
       otherConsumerUps.length > 0 && otherConsumerDowns.length > 0
         ? `variaciones mixtas en otros combustibles de consumo (${otherConsumerUps.map((i) => i.name).join(", ")}; rebajas en ${otherConsumerDowns.map((i) => i.name).join(", ")})`
@@ -218,7 +218,7 @@ export function getWeeklySummary(historyOverride?: WeeklyFuelRecord[]): WeeklySu
         ? `alzas en otros combustibles de consumo (${otherConsumerUps.map((i) => `${i.name} +RD$ ${i.change.toFixed(2)}`).join(", ")})`
         : `rebajas en otros combustibles (${otherConsumerDowns.map((i) => `${i.name} -RD$ ${Math.abs(i.change).toFixed(2)}`).join(", ")})`;
     notableChangeSummary = `Aviso: Se registraron ${cSummary}, además de ajustes en derivados industriales.`;
-  } else if (hasConsumerOtherChanges) {
+  } else if (hasOtherConsumerChanges) {
     if (otherConsumerUps.length > 0 && otherConsumerDowns.length > 0) {
       notableChangeSummary = `Otros combustibles registraron variaciones mixtas (alzas en ${otherConsumerUps.map((i) => i.name).join(", ")}; rebajas en ${otherConsumerDowns.map((i) => i.name).join(", ")}).`;
     } else if (otherConsumerUps.length > 0) {
@@ -328,7 +328,7 @@ export function getWeeklySummary(historyOverride?: WeeklyFuelRecord[]): WeeklySu
     },
   };
 
-  const nextUpdate = getNextAnnouncementDate(new Date(current.endDate));
+  const nextUpdate = getNextAnnouncementDate(current.endDate);
 
   // Benchmark WTI (Texas) de referencia internacional citado por el MICM
   const wti = {
@@ -347,6 +347,8 @@ export function getWeeklySummary(historyOverride?: WeeklyFuelRecord[]): WeeklySu
     verdicts,
     changes,
     hasNotableOtherChanges,
+    hasOtherConsumerChanges,
+    hasIndustrialChanges,
     notableChangeSummary,
     currentWeek: current,
     previousWeek: previous,
@@ -360,6 +362,7 @@ export function getWeeklySummary(historyOverride?: WeeklyFuelRecord[]): WeeklySu
     consumerItems,
     industrialItems,
     nextUpdateDate: nextUpdate.toISOString(),
+    nextUpdateDateDominican: formatDominicanDateTime(nextUpdate),
     wti,
   };
 }

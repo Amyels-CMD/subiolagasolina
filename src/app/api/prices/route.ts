@@ -15,6 +15,12 @@ const API_META = {
   supportUs: SITE_CONFIG.buyMeACoffeeUrl,
   officialSource: "Ministerio de Industria, Comercio y Mipymes (MICM, Ley 112-00)",
   updatedWeekly: "Viernes ~1:00 PM AST (UTC-4)",
+  scopeExplanation: {
+    primaryQuestion: "El titular '¿Subió la gasolina?' evalúa exclusivamente Gasolina Premium y Gasolina Regular.",
+    gasoline: "Exclusivo Gasolinas (Premium y Regular).",
+    consumer: "Combustibles de consumo masivo (Gasolinas, Gasoil Óptimo/Regular, GLP y Gas Natural).",
+    market: "Mercado total oficial publicado por el MICM (incluye derivados industriales y de aviación).",
+  },
 };
 
 const CACHE_HEADERS = {
@@ -60,11 +66,15 @@ export async function GET(request: NextRequest) {
       verdict: summary.verdicts.gasoline,
       scopes: summary.scopes,
       hasNotableOtherChanges: summary.hasNotableOtherChanges,
+      hasOtherConsumerChanges: summary.hasOtherConsumerChanges,
+      hasIndustrialChanges: summary.hasIndustrialChanges,
       notableChangeSummary: summary.notableChangeSummary,
       changes: summary.changes,
       summary,
       current: summary.currentWeek,
       previous: summary.previousWeek,
+      nextUpdateDate: summary.nextUpdateDate,
+      nextUpdateDateDominican: summary.nextUpdateDateDominican,
     };
 
 

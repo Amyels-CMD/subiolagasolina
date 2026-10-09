@@ -8,7 +8,12 @@ import {
   getFuelTimeSeries,
 } from "../lib/services/fuel-service.js";
 import { formatCurrency, formatDelta, formatPercentage } from "../lib/utils/format.js";
-import { getNextAnnouncementDate, getTimeUntilAnnouncement } from "../lib/utils/date-rd.js";
+import {
+  formatDominicanDateTime,
+  getDominicanNow,
+  getNextAnnouncementDate,
+  getTimeUntilAnnouncement,
+} from "../lib/utils/date-rd.js";
 
 describe("Fuel Service Tests", () => {
   it("should load historical records from real dataset", () => {
@@ -270,6 +275,8 @@ describe("18 Mandatory Scenarios for Verdicts and Integrity", () => {
     assert.strictEqual(summary.changes.unchanged.length, 6);
     // Verificar que hasNotableOtherChanges NUNCA oculta cambios en derivados industriales
     assert.strictEqual(summary.hasNotableOtherChanges, true);
+    assert.strictEqual(summary.hasOtherConsumerChanges, false);
+    assert.strictEqual(summary.hasIndustrialChanges, true);
     assert.strictEqual(summary.verdicts.consumer.hasNotableOtherChanges, true);
     assert.ok(summary.notableChangeSummary?.includes("Avtur"));
     assert.ok(summary.notableChangeSummary?.includes("Fuel Oíl"));
@@ -338,24 +345,92 @@ describe("18 Mandatory Scenarios for Verdicts and Integrity", () => {
     assert.strictEqual(summary.consumerState, "mixed");
   });
 
-  it("Scenario 13: Todos los combustibles permanecen iguales", () => {
+  it("Scenario 13: Todos los combustibles permanecen iguales (Mercado sin cambios)", () => {
     const history = createControlledHistory({}, {});
     const summary = getWeeklySummary(history);
     assert.strictEqual(summary.gasolineState, "unchanged");
     assert.strictEqual(summary.consumerState, "unchanged");
     assert.strictEqual(summary.marketState, "unchanged");
+    assert.strictEqual(summary.scopes.gasoline.isUnchanged, true);
+    assert.strictEqual(summary.scopes.consumer.isUnchanged, true);
+    assert.strictEqual(summary.scopes.market.isUnchanged, true);
+    assert.strictEqual(summary.hasNotableOtherChanges, false);
+    assert.strictEqual(summary.hasOtherConsumerChanges, false);
+    assert.strictEqual(summary.hasIndustrialChanges, false);
     assert.strictEqual(summary.changes.up.length, 0);
     assert.strictEqual(summary.changes.down.length, 0);
     assert.strictEqual(summary.changes.unchanged.length, 10);
   });
 
-  it("Scenario 14: Todos los combustibles presentan movimientos mixtos", () => {
+  it("Scenario 14a: Todos los combustibles presentan aumento (Mercado con aumentos)", () => {
+    const history = createControlledHistory(
+      {
+        "gasolina-premium": 360, "gasolina-regular": 325,
+        "gasoil-optimo": 315, "gasoil-regular": 280,
+        "glp": 140, "gas-natural": 46,
+        "avtur": 345, "kerosene": 390,
+        "fuel-oil-6": 185, "fuel-oil-1s": 220
+      },
+      {
+        "gasolina-premium": 350, "gasolina-regular": 315,
+        "gasoil-optimo": 305, "gasoil-regular": 270,
+        "glp": 135, "gas-natural": 43,
+        "avtur": 335, "kerosene": 380,
+        "fuel-oil-6": 175, "fuel-oil-1s": 210
+      }
+    );
+    const summary = getWeeklySummary(history);
+    assert.strictEqual(summary.gasolineState, "increased");
+    assert.strictEqual(summary.consumerState, "increased");
+    assert.strictEqual(summary.marketState, "increased");
+    assert.strictEqual(summary.scopes.gasoline.hasIncreased, true);
+    assert.strictEqual(summary.scopes.consumer.hasIncreased, true);
+    assert.strictEqual(summary.scopes.market.hasIncreased, true);
+    assert.strictEqual(summary.hasNotableOtherChanges, true);
+    assert.strictEqual(summary.hasOtherConsumerChanges, true);
+    assert.strictEqual(summary.hasIndustrialChanges, true);
+    assert.strictEqual(summary.changes.up.length, 10);
+    assert.strictEqual(summary.changes.down.length, 0);
+  });
+
+  it("Scenario 14b: Todos los combustibles presentan rebaja (Mercado con reducciones)", () => {
+    const history = createControlledHistory(
+      {
+        "gasolina-premium": 340, "gasolina-regular": 305,
+        "gasoil-optimo": 295, "gasoil-regular": 260,
+        "glp": 130, "gas-natural": 41,
+        "avtur": 325, "kerosene": 370,
+        "fuel-oil-6": 165, "fuel-oil-1s": 200
+      },
+      {
+        "gasolina-premium": 350, "gasolina-regular": 315,
+        "gasoil-optimo": 305, "gasoil-regular": 270,
+        "glp": 135, "gas-natural": 43,
+        "avtur": 335, "kerosene": 380,
+        "fuel-oil-6": 175, "fuel-oil-1s": 210
+      }
+    );
+    const summary = getWeeklySummary(history);
+    assert.strictEqual(summary.gasolineState, "decreased");
+    assert.strictEqual(summary.consumerState, "decreased");
+    assert.strictEqual(summary.marketState, "decreased");
+    assert.strictEqual(summary.scopes.gasoline.hasDecreased, true);
+    assert.strictEqual(summary.scopes.consumer.hasDecreased, true);
+    assert.strictEqual(summary.scopes.market.hasDecreased, true);
+    assert.strictEqual(summary.verdicts.gasoline.secondaryPhrase, "BAJÓ EN LA BOMBA");
+    assert.strictEqual(summary.changes.down.length, 10);
+  });
+
+  it("Scenario 14c: Todos los combustibles presentan movimientos mixtos (Mercado con movimientos mixtos)", () => {
     const history = createControlledHistory(
       { "avtur": 340, "kerosene": 370 },
       { "avtur": 330, "kerosene": 380 }
     );
     const summary = getWeeklySummary(history);
     assert.strictEqual(summary.marketState, "mixed");
+    assert.strictEqual(summary.scopes.market.hasIncreased, true);
+    assert.strictEqual(summary.scopes.market.hasDecreased, true);
+    assert.strictEqual(summary.scopes.market.isUnchanged, false);
   });
 
   it("Scenario 15: Faltan precios anteriores o existen valores inválidos", () => {
@@ -430,13 +505,33 @@ describe("Format Utilities Tests", () => {
 });
 
 describe("Date Utilities Tests", () => {
-  it("should calculate next Friday 1:00 PM announcement", () => {
-    // Reference on Wednesday Oct 7, 2026
+  it("should calculate next Friday 1:00 PM announcement in exact UTC and Dominican AST time", () => {
+    // Reference on Wednesday Oct 7, 2026 at 10:00 AM AST (14:00 UTC)
     const ref = new Date("2026-10-07T14:00:00Z");
     const nextFriday = getNextAnnouncementDate(ref);
     assert.ok(nextFriday instanceof Date);
+
+    // Exact UTC check: 1:00 PM AST (UTC-4) = 17:00:00.000Z
+    assert.strictEqual(nextFriday.toISOString(), "2026-10-09T17:00:00.000Z");
+
+    // Exact Dominican AST check: Hour must be 13 (1:00 PM) on Friday (day 5)
+    const dom = getDominicanNow(nextFriday);
+    assert.strictEqual(dom.hours, 13);
+    assert.strictEqual(dom.dayOfWeek, 5);
+    assert.strictEqual(dom.isoDate, "2026-10-09");
+
+    // Check countdown from reference
     const diff = getTimeUntilAnnouncement(nextFriday, ref);
     assert.ok(diff.days >= 1);
     assert.strictEqual(diff.isPastOrImminent, false);
+
+    // Test passing an ISO date string directly
+    const nextFromStr = getNextAnnouncementDate("2026-10-09");
+    assert.strictEqual(nextFromStr.toISOString(), "2026-10-09T17:00:00.000Z");
+
+    // Test Dominican locale string formatting
+    const formatted = formatDominicanDateTime(nextFriday);
+    assert.ok(formatted.toLowerCase().includes("1:00"));
+    assert.ok(formatted.toLowerCase().includes("viernes"));
   });
 });

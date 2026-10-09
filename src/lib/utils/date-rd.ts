@@ -5,42 +5,87 @@
  */
 
 export const AST_OFFSET_HOURS = -4; // República Dominicana no usa horario de verano (UTC-4 todo el año)
+export const AST_OFFSET_MS = AST_OFFSET_HOURS * 3600 * 1000; // -14,400,000 ms
 
-export function getNextAnnouncementDate(referenceDate: Date = new Date()): Date {
-  // Obtenemos fecha actual en UTC
-  const now = new Date(referenceDate);
+/**
+ * Desglosa los componentes de fecha y hora expresados en hora dominicana (AST / UTC-4).
+ * Es determinista e inmune a la zona horaria del servidor o entorno de ejecución.
+ */
+export function getDominicanNow(reference: Date | string = new Date()): {
+  year: number;
+  month: number;
+  day: number;
+  dayOfWeek: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  isoDate: string;
+} {
+  let refDate: Date;
+  if (typeof reference === "string") {
+    // Si viene en formato simple "YYYY-MM-DD", asumimos mediodía en AST para evitar desbordes UTC
+    if (/^\d{4}-\d{2}-\d{2}$/.test(reference)) {
+      refDate = new Date(`${reference}T12:00:00-04:00`);
+    } else {
+      refDate = new Date(reference);
+    }
+  } else {
+    refDate = reference;
+  }
 
-  // Convertimos a hora local dominicana
-  const utc = now.getTime() + now.getTimezoneOffset() * 60000;
-  const domDate = new Date(utc + 3600000 * AST_OFFSET_HOURS);
+  // Desplazamiento exacto a hora dominicana (-4 horas de UTC)
+  const domDate = new Date(refDate.getTime() + AST_OFFSET_MS);
 
-  const dayOfWeek = domDate.getDay(); // 0 = Domingo, 5 = Viernes, 6 = Sábado
-  const hours = domDate.getHours();
+  const year = domDate.getUTCFullYear();
+  const month = domDate.getUTCMonth() + 1;
+  const day = domDate.getUTCDate();
+  const dayOfWeek = domDate.getUTCDay(); // 0 = Domingo, 5 = Viernes, 6 = Sábado
+  const hours = domDate.getUTCHours();
+  const minutes = domDate.getUTCMinutes();
+  const seconds = domDate.getUTCSeconds();
+  const isoDate = `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 
-  // Viernes objetivo:
-  // Si hoy es viernes antes de la 1:00 PM (13:00), el objetivo es hoy a las 13:00.
-  // Si hoy es viernes a las 13:00 o después, o sábado/domingo/lunes/etc., el próximo viernes.
+  return { year, month, day, dayOfWeek, hours, minutes, seconds, isoDate };
+}
+
+/**
+ * Calcula la fecha y hora oficial del próximo anuncio semanal del MICM.
+ * El MICM anuncia cada viernes a la 1:00 PM AST (13:00 AST).
+ * En UTC, 13:00 AST equivale exactamente a las 17:00:00.000Z (13 - (-4) = 17:00 UTC).
+ */
+export function getNextAnnouncementDate(referenceDate: Date | string = new Date()): Date {
+  const dom = getDominicanNow(referenceDate);
+
   let daysToAdd = 0;
-  if (dayOfWeek === 5) {
-    if (hours >= 13) {
+  if (dom.dayOfWeek === 5) {
+    // Si hoy es viernes y ya son las 13:00 AST (1:00 PM) o más tarde, el objetivo es el siguiente viernes
+    if (dom.hours >= 13) {
       daysToAdd = 7;
     } else {
       daysToAdd = 0;
     }
-  } else if (dayOfWeek < 5) {
-    daysToAdd = 5 - dayOfWeek;
+  } else if (dom.dayOfWeek < 5) {
+    daysToAdd = 5 - dom.dayOfWeek;
   } else {
     // Sábado (6)
     daysToAdd = 6;
   }
 
-  const nextFridayDom = new Date(domDate);
-  nextFridayDom.setDate(domDate.getDate() + daysToAdd);
-  nextFridayDom.setHours(13, 0, 0, 0);
+  // 13:00 AST en UTC es exactamente 17:00 UTC (13 + 4 = 17)
+  const targetUtcMs = Date.UTC(dom.year, dom.month - 1, dom.day + daysToAdd, 17, 0, 0, 0);
+  return new Date(targetUtcMs);
+}
 
-  // Convertir de vuelta a tiempo absoluto UTC/Date
-  const targetUtc = nextFridayDom.getTime() - 3600000 * AST_OFFSET_HOURS;
-  return new Date(targetUtc);
+/**
+ * Formatea una fecha en hora estándar dominicana (AST / UTC-4).
+ */
+export function formatDominicanDateTime(date: Date | string): string {
+  const d = typeof date === "string" ? new Date(date) : date;
+  return d.toLocaleString("es-DO", {
+    timeZone: "America/Santo_Domingo",
+    dateStyle: "full",
+    timeStyle: "short",
+  });
 }
 
 export interface TimeUntilAnnouncement {
@@ -89,26 +134,6 @@ export type AnnouncementPhase =
   | "waiting_official" // Friday 1:00 PM AST while government resolution is pending
   | "effective_tonight"; // Friday afternoon/evening once newly announced, before Saturday 00:00 AST
 
-export function getDominicanNow(referenceDate: Date = new Date()): {
-  year: number;
-  month: number;
-  day: number;
-  dayOfWeek: number;
-  hours: number;
-  minutes: number;
-  isoDate: string;
-} {
-  const utc = referenceDate.getTime() + referenceDate.getTimezoneOffset() * 60000;
-  const domDate = new Date(utc + 3600000 * AST_OFFSET_HOURS);
-  const year = domDate.getFullYear();
-  const month = domDate.getMonth() + 1;
-  const day = domDate.getDate();
-  const dayOfWeek = domDate.getDay();
-  const hours = domDate.getHours();
-  const minutes = domDate.getMinutes();
-  const isoDate = `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
-  return { year, month, day, dayOfWeek, hours, minutes, isoDate };
-}
 
 export function getAnnouncementLifecycle(
   announcementDateStr: string,

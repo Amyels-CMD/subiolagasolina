@@ -77,6 +77,12 @@ describe("Feeds and Benchmarks Tests", () => {
     assert.strictEqual(typeof data.scopes.gasoline.hasDecreased, "boolean");
     assert.strictEqual(typeof data.scopes.gasoline.isUnchanged, "boolean");
     assert.strictEqual(data.hasNotableOtherChanges, data.summary.hasNotableOtherChanges);
+    assert.strictEqual(typeof data.hasOtherConsumerChanges, "boolean");
+    assert.strictEqual(typeof data.hasIndustrialChanges, "boolean");
+    assert.ok(data.nextUpdateDate);
+    assert.ok(data.nextUpdateDate.endsWith("T17:00:00.000Z"), "nextUpdateDate must be Friday 17:00 UTC (1:00 PM AST)");
+    assert.ok(data.nextUpdateDateDominican);
+    assert.ok(data._meta.scopeExplanation);
     assert.ok(data.changes, "Response must include categorized changes");
   });
 

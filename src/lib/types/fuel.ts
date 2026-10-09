@@ -134,6 +134,8 @@ export interface WeeklySummary {
 
   // Contextual intelligence for non-gasoline fuels (never hidden)
   hasNotableOtherChanges: boolean;
+  hasOtherConsumerChanges: boolean;
+  hasIndustrialChanges: boolean;
   notableChangeSummary?: string;
 
   // Historical records (canonical single source of truth)
@@ -162,7 +164,8 @@ export interface WeeklySummary {
   items: FuelPriceItem[];
   consumerItems: FuelPriceItem[];
   industrialItems: FuelPriceItem[];
-  nextUpdateDate: string; // ISO timestamp
+  nextUpdateDate: string; // ISO 8601 UTC timestamp (e.g. 2026-10-09T17:00:00.000Z)
+  nextUpdateDateDominican?: string; // Fecha formateada en hora local dominicana (AST / UTC-4)
   wti?: WtiBenchmark;
 }
 
