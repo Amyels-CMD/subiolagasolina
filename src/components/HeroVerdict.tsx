@@ -62,15 +62,15 @@ export function HeroVerdict({ summary }: HeroVerdictProps) {
         </div>
 
         {/* Core Hero: Question + Verdict (Coupled directly together) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           {/* Question Block */}
-          <div className="lg:col-span-7 space-y-3 sm:space-y-4">
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-[4.5rem] font-black text-white tracking-tighter leading-[0.98]">
+          <div className="lg:col-span-7 space-y-4 sm:space-y-5">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-[4.5rem] 2xl:text-[5rem] font-black text-white tracking-tighter leading-[0.96]">
               ¿Subió la gasolina esta semana en RD?
             </h1>
 
             {/* Subtitle on Desktop (hidden on mobile to keep verdict immediately after title) */}
-            <p className="hidden lg:block text-base sm:text-lg text-slate-200 font-normal leading-relaxed max-w-xl">
+            <p className="hidden lg:block text-lg sm:text-xl xl:text-2xl text-slate-200 font-normal leading-relaxed max-w-xl mt-4">
               {subVerdict}
             </p>
           </div>
@@ -80,27 +80,27 @@ export function HeroVerdict({ summary }: HeroVerdictProps) {
             <span
               className={`text-xs sm:text-sm uppercase font-extrabold tracking-widest block mb-2 sm:mb-3 ${
                 isUp
-                  ? "text-rose-400/80"
+                  ? "text-rose-400/90"
                   : isDown
-                  ? "text-emerald-400/80"
-                  : "text-amber-400/80"
+                  ? "text-emerald-400/90"
+                  : "text-amber-400/90"
               }`}
             >
               Veredicto Oficial
             </span>
             <div
-              className={`text-7xl sm:text-8xl md:text-9xl lg:text-[7.5rem] xl:text-[10rem] font-black tracking-tighter leading-none select-none uppercase ${
+              className={`text-8xl sm:text-9xl md:text-[9.5rem] lg:text-[8rem] xl:text-[10.5rem] 2xl:text-[11.5rem] font-black tracking-tighter leading-none select-none uppercase ${
                 isUp
-                  ? "text-rose-500 drop-shadow-[0_0_60px_rgba(244,63,94,0.45)]"
+                  ? "text-rose-500 drop-shadow-[0_0_65px_rgba(244,63,94,0.45)]"
                   : isDown
-                  ? "text-emerald-400 drop-shadow-[0_0_60px_rgba(16,185,129,0.45)]"
-                  : "text-amber-400 drop-shadow-[0_0_60px_rgba(245,158,11,0.45)]"
+                  ? "text-emerald-400 drop-shadow-[0_0_65px_rgba(16,185,129,0.45)]"
+                  : "text-amber-400 drop-shadow-[0_0_65px_rgba(245,158,11,0.45)]"
               }`}
             >
               {primaryWord}
             </div>
             <div
-              className={`text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-5xl font-black tracking-tight leading-tight mt-2 sm:mt-3 uppercase ${
+              className={`text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-[2.75rem] 2xl:text-5xl font-black tracking-tight leading-tight mt-2 sm:mt-3 uppercase ${
                 isUp
                   ? "text-rose-200"
                   : isDown
@@ -112,12 +112,12 @@ export function HeroVerdict({ summary }: HeroVerdictProps) {
             </div>
 
             {/* Mobile-only subtitle (rendered right under the verdict for immediate context) */}
-            <p className="lg:hidden text-sm sm:text-base text-slate-300 font-normal leading-relaxed mt-4 sm:mt-5 max-w-xl">
+            <p className="lg:hidden text-base sm:text-lg text-slate-300 font-normal leading-relaxed mt-4 max-w-xl">
               {subVerdict}
             </p>
 
             {/* Desktop-only secondary note */}
-            <p className="hidden lg:block text-xs sm:text-sm md:text-base text-slate-300 mt-4 sm:mt-5 max-w-xs lg:ml-auto leading-normal">
+            <p className="hidden lg:block text-sm sm:text-base xl:text-lg text-slate-300 mt-4 sm:mt-5 max-w-sm lg:ml-auto leading-normal">
               {verdictNote}
             </p>
           </div>
