@@ -78,7 +78,7 @@ export function HeroVerdict({ summary }: HeroVerdictProps) {
           {/* Verdict Block (Renders immediately after question on mobile, right column on desktop) */}
           <div className="lg:col-span-5 text-left lg:text-right pt-2 lg:pt-0">
             <span
-              className={`text-xs sm:text-sm uppercase font-extrabold tracking-widest block mb-1 sm:mb-2 ${
+              className={`text-xs sm:text-sm uppercase font-extrabold tracking-widest block mb-2 sm:mb-3 ${
                 isUp
                   ? "text-rose-400/80"
                   : isDown
@@ -89,7 +89,7 @@ export function HeroVerdict({ summary }: HeroVerdictProps) {
               Veredicto Oficial
             </span>
             <div
-              className={`text-7xl sm:text-8xl md:text-9xl lg:text-[7.5rem] xl:text-[10.5rem] font-black tracking-tighter leading-[0.80] select-none uppercase ${
+              className={`text-7xl sm:text-8xl md:text-9xl lg:text-[7.5rem] xl:text-[10rem] font-black tracking-tighter leading-none select-none uppercase ${
                 isUp
                   ? "text-rose-500 drop-shadow-[0_0_60px_rgba(244,63,94,0.45)]"
                   : isDown
@@ -100,7 +100,7 @@ export function HeroVerdict({ summary }: HeroVerdictProps) {
               {primaryWord}
             </div>
             <div
-              className={`text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-5xl font-black tracking-tight mt-1 sm:mt-2 uppercase ${
+              className={`text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-5xl font-black tracking-tight leading-tight mt-2 sm:mt-3 uppercase ${
                 isUp
                   ? "text-rose-200"
                   : isDown
@@ -112,12 +112,12 @@ export function HeroVerdict({ summary }: HeroVerdictProps) {
             </div>
 
             {/* Mobile-only subtitle (rendered right under the verdict for immediate context) */}
-            <p className="lg:hidden text-sm sm:text-base text-slate-300 font-normal leading-relaxed mt-3 max-w-xl">
+            <p className="lg:hidden text-sm sm:text-base text-slate-300 font-normal leading-relaxed mt-4 sm:mt-5 max-w-xl">
               {subVerdict}
             </p>
 
             {/* Desktop-only secondary note */}
-            <p className="hidden lg:block text-xs sm:text-sm md:text-base text-slate-300 mt-2 max-w-xs lg:ml-auto leading-normal">
+            <p className="hidden lg:block text-xs sm:text-sm md:text-base text-slate-300 mt-4 sm:mt-5 max-w-xs lg:ml-auto leading-normal">
               {verdictNote}
             </p>
           </div>
