@@ -8117,5 +8117,29 @@
       "fuel-oil-6": 180.76,
       "fuel-oil-1s": 212.75
     }
+  },
+  {
+    "weekId": "2026-W41",
+    "year": 2026,
+    "weekNumber": 41,
+    "startDate": "2026-10-10",
+    "endDate": "2026-10-16",
+    "dateLabel": "10 al 16 de octubre de 2026",
+    "shortDateLabel": "10-16 OCT",
+    "announcementDate": "2026-10-09",
+    "source": "Nota de Prensa Oficial MICM",
+    "officialBulletinUrl": "https://micm.gob.do/gobierno-congela-gasoil-regular-glp-y-gasolina-regular-reajusta-precio-del-gasoil-optimo-y-gasolina-premium/",
+    "prices": {
+      "gasolina-premium": 358.1,
+      "gasolina-regular": 317.5,
+      "gasoil-optimo": 318.1,
+      "gasoil-regular": 270.8,
+      "glp": 135.2,
+      "gas-natural": 43.97,
+      "avtur": 344.59,
+      "kerosene": 387.2,
+      "fuel-oil-6": 183.02,
+      "fuel-oil-1s": 219.67
+    }
   }
 ]

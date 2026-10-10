@@ -25,9 +25,9 @@ describe("Fuel Service Tests", () => {
   it("should have correct current week record", () => {
     const current = getCurrentWeekRecord();
     assert.ok(current.weekId);
-    assert.strictEqual(current.prices["gasolina-premium"], 353.1);
+    assert.strictEqual(current.prices["gasolina-premium"], 358.1);
     assert.strictEqual(current.prices["gasolina-regular"], 317.5);
-    assert.strictEqual(current.prices["gasoil-optimo"], 306.1);
+    assert.strictEqual(current.prices["gasoil-optimo"], 318.1);
     assert.strictEqual(current.prices["gasoil-regular"], 270.8);
     assert.strictEqual(current.prices["glp"], 135.2);
     assert.strictEqual(current.prices["gas-natural"], 43.97);
@@ -35,34 +35,34 @@ describe("Fuel Service Tests", () => {
 
   it("should compute weekly summary and verdict correctly with real data", () => {
     const summary = getWeeklySummary();
-    assert.strictEqual(summary.headlineVerdict, "NO, SE MANTUVO");
-    assert.strictEqual(summary.gasolineState, "unchanged");
-    assert.strictEqual(summary.consumerState, "unchanged");
-    assert.strictEqual(summary.isUnchanged, true);
-    assert.strictEqual(summary.hasIncreased, false);
+    assert.strictEqual(summary.headlineVerdict, "SÍ, SUBIÓ");
+    assert.strictEqual(summary.gasolineState, "increased");
+    assert.strictEqual(summary.consumerState, "increased");
+    assert.strictEqual(summary.isUnchanged, false);
+    assert.strictEqual(summary.hasIncreased, true);
     assert.strictEqual(summary.hasDecreased, false);
-    assert.strictEqual(summary.verdicts.gasoline.answer, "NO");
+    assert.strictEqual(summary.verdicts.gasoline.answer, "SÍ");
     assert.ok(summary.consumerItems.length === 6);
     assert.ok(summary.industrialItems.length === 4);
 
     const premiumItem = summary.consumerItems.find((i) => i.id === "gasolina-premium");
     assert.ok(premiumItem);
-    assert.strictEqual(premiumItem.price, 353.1);
-    assert.strictEqual(premiumItem.change, 0);
-    assert.strictEqual(premiumItem.trend, "unchanged");
+    assert.strictEqual(premiumItem.price, 358.1);
+    assert.strictEqual(premiumItem.change, 5);
+    assert.strictEqual(premiumItem.trend, "up");
   });
 
   it("should accurately calculate vehicle tank costs", () => {
     const calc = calculateTankCost("gasolina-premium", 10);
-    assert.strictEqual(calc.currentCost, 3531.0);
-    assert.strictEqual(calc.differenceCost, 0);
+    assert.strictEqual(calc.currentCost, 3581.0);
+    assert.strictEqual(calc.differenceCost, 50.0);
   });
 
   it("should generate valid time series for charting", () => {
     const series = getFuelTimeSeries("gasolina-premium", 12);
     assert.strictEqual(series.length, 12);
     const last = series[series.length - 1];
-    assert.strictEqual(last.price, 353.1);
+    assert.strictEqual(last.price, 358.1);
   });
 });
 

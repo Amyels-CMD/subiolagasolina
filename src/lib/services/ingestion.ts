@@ -62,11 +62,21 @@ async function scrapeOfficialPressRelease(): Promise<WeeklyFuelRecord | null> {
     const html = await res.text();
 
     const matches = [...html.matchAll(/<a[^>]+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi)];
-    const article = matches.find(
-      (m) =>
-        /gobierno-(?:congela|reajusta|mantiene)-combustibles/i.test(m[1]) ||
-        /Gobierno (?:congela|reajusta|mantiene) combustibles/i.test(m[2])
-    );
+    const article = matches.find((m) => {
+      const href = m[1] || "";
+      const text = (m[2] || "").replace(/<[^>]+>/g, " ").trim();
+      if (href.includes("/direcciones/") || href.includes("/categoria/")) return false;
+
+      const isFuelGovArticle =
+        /gobierno-(?:congela|reajusta|mantiene|dispone|anuncia|subsidia)/i.test(href) ||
+        /(?:precios?-de?-los?-combustibles)/i.test(href);
+
+      const mentionsFuels =
+        /combustible|gasolina|gasoil|glp/i.test(href) ||
+        /combustible|gasolina|gasoil|glp/i.test(text);
+
+      return isFuelGovArticle && mentionsFuels;
+    });
     if (!article) return null;
 
     const artUrl = article[1];
