@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Share2, Check, Copy } from "lucide-react";
 import { WeeklySummary } from "@/lib/types/fuel";
 import { formatCurrency, formatDelta } from "@/lib/utils/format";
+import { getBaseUrl } from "@/lib/utils/url";
 
 interface ShareButtonsProps {
   summary: WeeklySummary;
@@ -12,10 +13,25 @@ interface ShareButtonsProps {
 
 export function ShareButtons({ summary, className = "" }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
+  const [shareUrl, setShareUrl] = useState<string>("https://subiolagasolina.com");
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.location?.origin) {
+      setShareUrl(window.location.origin);
+    }
+  }, []);
+
+  const getActiveShareUrl = () => {
+    if (typeof window !== "undefined" && window.location?.origin) {
+      return window.location.origin;
+    }
+    return shareUrl || getBaseUrl();
+  };
 
   const { currentWeek, consumerItems, headlineVerdict } = summary;
 
   const buildShareText = () => {
+    const activeUrl = getActiveShareUrl();
     const lines = [
       `¿Subió la gasolina esta semana en República Dominicana? -> ${headlineVerdict}`,
       `Período oficial: ${currentWeek.dateLabel}`,
@@ -28,7 +44,7 @@ export function ShareButtons({ summary, className = "" }: ShareButtonsProps) {
       ),
       "",
       "Consulta el histórico oficial en:",
-      "https://subiolagasolina.com",
+      activeUrl,
     ];
     return lines.join("\n");
   };
@@ -45,6 +61,7 @@ export function ShareButtons({ summary, className = "" }: ShareButtonsProps) {
   };
 
   const handleNativeShare = async () => {
+    const activeUrl = getActiveShareUrl();
     const text = `¿Subió la gasolina esta semana en RD? -> ${headlineVerdict}\nPrecios oficiales vigentes (${currentWeek.shortDateLabel}):\n• Premium: ${formatCurrency(
       currentWeek.prices["gasolina-premium"]
     )}\n• Regular: ${formatCurrency(
@@ -56,7 +73,7 @@ export function ShareButtons({ summary, className = "" }: ShareButtonsProps) {
         await navigator.share({
           title: "¿Subió la gasolina esta semana en República Dominicana?",
           text,
-          url: "https://subiolagasolina.com",
+          url: activeUrl,
         });
       } catch (err: unknown) {
         if (err instanceof Error && err.name !== "AbortError") {
@@ -74,16 +91,18 @@ export function ShareButtons({ summary, className = "" }: ShareButtonsProps) {
   };
 
   const handleTelegram = () => {
+    const activeUrl = getActiveShareUrl();
     const text = encodeURIComponent(
       `¿Subió la gasolina esta semana en RD? -> ${headlineVerdict}\nPrecios oficiales del MICM:`
     );
-    const url = encodeURIComponent("https://subiolagasolina.com");
+    const url = encodeURIComponent(activeUrl);
     window.open(`https://t.me/share/url?url=${url}&text=${text}`, "_blank");
   };
 
   const handleTwitter = () => {
+    const activeUrl = getActiveShareUrl();
     const text = encodeURIComponent(
-      `¿Subió la gasolina en RD esta semana? -> ${headlineVerdict}. Precios oficiales actualizados del MICM: https://subiolagasolina.com`
+      `¿Subió la gasolina en RD esta semana? -> ${headlineVerdict}. Precios oficiales actualizados del MICM: ${activeUrl}`
     );
     window.open(`https://twitter.com/intent/tweet?text=${text}`, "_blank");
   };

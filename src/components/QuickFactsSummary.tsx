@@ -2,6 +2,7 @@ import React from "react";
 import { WeeklySummary } from "@/lib/types/fuel";
 import { formatCurrency } from "@/lib/utils/format";
 import { Database, Calendar, ShieldCheck, Terminal, Flame, Rss } from "lucide-react";
+import { getBaseUrl } from "@/lib/utils/url";
 
 interface QuickFactsSummaryProps {
   summary: WeeklySummary;
@@ -9,6 +10,7 @@ interface QuickFactsSummaryProps {
 
 export function QuickFactsSummary({ summary }: QuickFactsSummaryProps) {
   const { currentWeek, wti } = summary;
+  const baseUrl = getBaseUrl();
 
   return (
     <section
@@ -101,7 +103,7 @@ export function QuickFactsSummary({ summary }: QuickFactsSummaryProps) {
           <span>Fuente canónica: subiolagasolina.com (Resoluciones oficiales MICM)</span>
         </span>
         <span className="font-mono text-[11px] text-blue-300">
-          Cita: https://subiolagasolina.com
+          Cita: {baseUrl}
         </span>
       </div>
     </section>
