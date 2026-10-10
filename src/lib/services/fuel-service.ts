@@ -11,9 +11,11 @@ import {
   TankCalculationResult,
   WeeklyFuelRecord,
   WeeklySummary,
+  WtiBenchmark,
 } from "@/lib/types/fuel";
 
 import { formatDominicanDateTime, getNextAnnouncementDate } from "@/lib/utils/date-rd";
+import { getWtiBenchmark } from "./wti-service";
 
 // Cache sorted historical records in memory
 const sortedHistory: WeeklyFuelRecord[] = (rawHistory as WeeklyFuelRecord[])
@@ -100,7 +102,10 @@ export function computeAggregateMovement(items: FuelPriceItem[]): AggregateMovem
   return "unchanged";
 }
 
-export function getWeeklySummary(historyOverride?: WeeklyFuelRecord[]): WeeklySummary {
+export function getWeeklySummary(
+  historyOverride?: WeeklyFuelRecord[],
+  wtiOverride?: WtiBenchmark
+): WeeklySummary {
   const history = historyOverride ?? sortedHistory;
   const current = getCurrentWeekRecord(history);
   const previous = getPreviousWeekRecord(history);
@@ -331,13 +336,7 @@ export function getWeeklySummary(historyOverride?: WeeklyFuelRecord[]): WeeklySu
   const nextUpdate = getNextAnnouncementDate(current.endDate);
 
   // Benchmark WTI (Texas) de referencia internacional citado por el MICM
-  const wti = {
-    priceUsd: 89.04,
-    changeUsd: -1.25,
-    percentageChange: -1.38,
-    trend: "down" as const,
-    label: "Crudo WTI • Texas (Ref. Internacional)",
-  };
+  const wti = wtiOverride ?? getWtiBenchmark();
 
   return {
     gasolineState,

@@ -64,6 +64,7 @@ export interface WtiBenchmark {
   percentageChange: number;
   trend: TrendDirection;
   label: string;
+  updatedAt?: string;
 }
 
 export type AggregateMovement = "unchanged" | "increased" | "decreased" | "mixed";

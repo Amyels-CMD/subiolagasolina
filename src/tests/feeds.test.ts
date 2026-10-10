@@ -4,6 +4,7 @@ import { GET as getRssFeed } from "../app/feed.xml/route.js";
 import { GET as getJsonFeed } from "../app/feed.json/route.js";
 import { GET as getPricesApi, OPTIONS as optionsPricesApi } from "../app/api/prices/route.js";
 import { getWeeklySummary } from "../lib/services/fuel-service.js";
+import { getWtiBenchmark } from "../lib/services/wti-service.js";
 
 describe("Feeds and Benchmarks Tests", () => {
   it("should provide WTI international benchmark in weekly summary", () => {
@@ -13,6 +14,15 @@ describe("Feeds and Benchmarks Tests", () => {
     assert.ok(summary.wti.priceUsd > 0);
     assert.strictEqual(typeof summary.wti.changeUsd, "number");
     assert.ok(summary.wti.label.includes("WTI"));
+  });
+
+  it("should retrieve valid WTI benchmark from wti-service", () => {
+    const benchmark = getWtiBenchmark();
+    assert.ok(benchmark);
+    assert.ok(benchmark.priceUsd > 40 && benchmark.priceUsd < 250);
+    assert.strictEqual(typeof benchmark.changeUsd, "number");
+    assert.strictEqual(typeof benchmark.percentageChange, "number");
+    assert.ok(["up", "down", "unchanged"].includes(benchmark.trend));
   });
 
   it("should generate a valid RSS 2.0 XML feed with correct content-type", async () => {

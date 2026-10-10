@@ -34,7 +34,7 @@ jobs:
       - name: Verificar cambios en los datos
         id: git-check
         run: |
-          if git status --porcelain src/data/fuel-history.json | grep -q "src/data/fuel-history.json"; then
+          if git status --porcelain src/data/fuel-history.json src/data/wti-benchmark.json | grep -q "src/data/"; then
             echo "changed=true" >> $GITHUB_OUTPUT
           else
             echo "changed=false" >> $GITHUB_OUTPUT
@@ -45,7 +45,7 @@ jobs:
         run: |
           git config --global user.name "SubioLaGasolina Bot"
           git config --global user.email "bot@subiolagasolina.com"
-          git add src/data/fuel-history.json
-          git commit -m "chore(data): auto-update precios oficiales MICM para nueva semana"
+          git add src/data/fuel-history.json src/data/wti-benchmark.json
+          git commit -m "chore(data): auto-update precios oficiales MICM y crudo WTI"
           git push
 

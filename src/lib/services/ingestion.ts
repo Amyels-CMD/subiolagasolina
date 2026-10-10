@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { WeeklyFuelRecord } from "@/lib/types/fuel";
 import { getAllHistory } from "@/lib/services/fuel-service";
+import { fetchLiveWti } from "./wti-service";
 
 export const CKAN_PACKAGE_URL =
   "https://datos.gob.do/api/3/action/package_show?id=precios-de-los-combustibles";
@@ -198,6 +199,9 @@ export async function syncFuelData(): Promise<SyncResult> {
   const latestLocal = currentHistory[currentHistory.length - 1];
 
   try {
+    // Sincronizar cotización internacional del Crudo WTI (Texas)
+    await fetchLiveWti().catch(() => {});
+
     // 1. Check Press Release (Fastest Friday Announcement)
     const pressRecord = await scrapeOfficialPressRelease();
     if (pressRecord && pressRecord.startDate > latestLocal.startDate) {

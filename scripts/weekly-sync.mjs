@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 
 const HISTORY_PATH = path.resolve("src", "data", "fuel-history.json");
+const WTI_PATH = path.resolve("src", "data", "wti-benchmark.json");
 const CSV_URL =
   "https://micm.gob.do/transparencias/datos-abiertos/precios-de-combustibles/precios-de-combustibles-2010-2026.csv";
 const NOTICIAS_URL = "https://micm.gob.do/noticias/";
@@ -324,6 +325,61 @@ function validateCandidateAgainstLocal(candidate, latestLocal) {
   return { valid: true };
 }
 
+/**
+ * Consulta y sincroniza la cotización internacional del Crudo WTI (Texas)
+ */
+async function syncWtiBenchmark() {
+  try {
+    console.log("\n[WTI] Sincronizando cotización internacional del Crudo Texas (CL=F)...");
+    const res = await fetch(
+      "https://query1.finance.yahoo.com/v8/finance/chart/CL=F?interval=1d&range=5d",
+      {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        },
+        signal: AbortSignal.timeout(8000),
+      }
+    );
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const result = data.chart?.result?.[0];
+    if (!result) throw new Error("Sin respuesta de mercado");
+
+    const meta = result.meta;
+    const rawQuotes = result.indicators?.quote?.[0]?.close || [];
+    const quotes = rawQuotes.filter((v) => typeof v === "number" && !isNaN(v));
+    const currentPrice = meta?.regularMarketPrice || quotes[quotes.length - 1];
+    const prevPrice = meta?.chartPreviousClose || quotes[0] || currentPrice;
+
+    if (!currentPrice || isNaN(currentPrice)) throw new Error("Precio WTI inválido");
+
+    const changeUsd = Math.round((currentPrice - prevPrice) * 100) / 100;
+    const percentageChange =
+      prevPrice > 0 ? Math.round(((currentPrice - prevPrice) / prevPrice) * 10000) / 100 : 0;
+    const trend = changeUsd > 0 ? "up" : changeUsd < 0 ? "down" : "unchanged";
+
+    const benchmark = {
+      priceUsd: Math.round(currentPrice * 100) / 100,
+      changeUsd,
+      percentageChange,
+      trend,
+      label: "Crudo WTI • Texas (Ref. Internacional)",
+      updatedAt: new Date().toISOString(),
+    };
+
+    fs.writeFileSync(WTI_PATH, JSON.stringify(benchmark, null, 2), "utf-8");
+    console.log(
+      ` -> WTI Actualizado: US$ ${benchmark.priceUsd.toFixed(2)} (${benchmark.changeUsd >= 0 ? "+" : ""}${benchmark.changeUsd.toFixed(2)} / ${benchmark.percentageChange}%)`
+    );
+    return true;
+  } catch (err) {
+    console.warn(" -> No se pudo actualizar WTI en vivo, manteniendo caché persistente:", err.message);
+    return false;
+  }
+}
+
 async function main() {
   console.log("=========================================================");
   console.log("  subiólagasolina | Motor de Sincronización y Validación ");
@@ -339,6 +395,9 @@ async function main() {
 
   console.log(`[LOCAL] Última semana registrada: ${latestLocal.weekId} (${latestLocal.dateLabel})`);
   console.log(`[LOCAL] Tarifa Premium vigente: RD$ ${latestLocal.prices["gasolina-premium"].toFixed(2)}`);
+
+  // Actualizar cotización internacional del Crudo WTI (Texas)
+  await syncWtiBenchmark();
 
   console.log("\n[EXTRACCIÓN] Consultando fuentes oficiales en paralelo (Nota de Prensa + CSV)...");
 
