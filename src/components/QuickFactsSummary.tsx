@@ -39,9 +39,15 @@ export function QuickFactsSummary({ summary }: QuickFactsSummaryProps) {
             <span>Crudo WTI (Texas)</span>
           </div>
           <div className="text-sm sm:text-base font-bold text-white font-mono flex items-center gap-2">
-            <span>US$ {wti ? wti.priceUsd.toFixed(2) : "89.04"}</span>
-            <span className="text-[11px] font-semibold px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/20">
-              {wti && wti.changeUsd <= 0 ? "▼" : "▲"} {wti ? Math.abs(wti.percentageChange).toFixed(1) : "1.4"}%
+            <span>US$ {wti ? wti.priceUsd.toFixed(2) : "91.85"}</span>
+            <span
+              className={`text-[11px] font-semibold px-1.5 py-0.5 rounded border ${
+                wti && wti.changeUsd > 0
+                  ? "bg-rose-500/15 text-rose-400 border-rose-500/20"
+                  : "bg-emerald-500/15 text-emerald-400 border-emerald-500/20"
+              }`}
+            >
+              {wti && wti.changeUsd <= 0 ? "▼" : "▲"} {wti ? Math.abs(wti.percentageChange).toFixed(1) : "2.7"}%
             </span>
           </div>
           <p className="text-xs text-slate-300">

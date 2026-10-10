@@ -31,72 +31,73 @@ export function getWtiBenchmark(): WtiBenchmark {
   return DEFAULT_WTI;
 }
 
+const WTI_ENDPOINTS = [
+  "https://query1.finance.yahoo.com/v8/finance/chart/CL=F?interval=1d&range=5d",
+  "https://query2.finance.yahoo.com/v8/finance/chart/CL=F?interval=1d&range=5d",
+];
+
 /**
  * Consulta en tiempo real la cotización oficial del Crudo WTI (CL=F en NYMEX)
- * y actualiza el archivo persistente si el entorno lo permite.
+ * probando múltiples endpoints de respaldo y actualiza el archivo persistente.
  */
 export async function fetchLiveWti(): Promise<WtiBenchmark> {
-  try {
-    const res = await fetch(
-      "https://query1.finance.yahoo.com/v8/finance/chart/CL=F?interval=1d&range=5d",
-      {
+  for (const endpoint of WTI_ENDPOINTS) {
+    try {
+      const res = await fetch(endpoint, {
         headers: {
           "User-Agent":
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         },
-        signal: AbortSignal.timeout(8000),
+        signal: AbortSignal.timeout(6000),
+      });
+
+      if (!res.ok) continue;
+
+      const data = await res.json();
+      const result = data.chart?.result?.[0];
+      if (!result) continue;
+
+      const meta = result.meta;
+      const rawQuotes = (result.indicators?.quote?.[0]?.close as (number | null)[]) || [];
+      const quotes = rawQuotes.filter((v): v is number => typeof v === "number" && !isNaN(v));
+
+      const currentPrice = meta?.regularMarketPrice || quotes[quotes.length - 1];
+      const prevPrice = meta?.chartPreviousClose || quotes[0] || currentPrice;
+
+      if (!currentPrice || isNaN(currentPrice)) continue;
+
+      const changeUsd = Math.round((currentPrice - prevPrice) * 100) / 100;
+      const percentageChange =
+        prevPrice > 0
+          ? Math.round(((currentPrice - prevPrice) / prevPrice) * 10000) / 100
+          : 0;
+
+      const trend = changeUsd > 0 ? "up" : changeUsd < 0 ? "down" : "unchanged";
+
+      const benchmark: WtiBenchmark = {
+        priceUsd: Math.round(currentPrice * 100) / 100,
+        changeUsd,
+        percentageChange,
+        trend,
+        label: "Crudo WTI • Texas (Ref. Internacional)",
+        updatedAt: new Date().toISOString(),
+      };
+
+      try {
+        if (fs.existsSync(WTI_PATH)) {
+          fs.writeFileSync(WTI_PATH, JSON.stringify(benchmark, null, 2), "utf-8");
+        }
+      } catch {
+        // Ignorar en entornos serverless con sistema de archivos de solo lectura
       }
-    );
 
-    if (!res.ok) {
-      throw new Error(`Respuesta no satisfactoria de cotización WTI: HTTP ${res.status}`);
-    }
-
-    const data = await res.json();
-    const result = data.chart?.result?.[0];
-    if (!result) {
-      throw new Error("Estructura de respuesta de mercado sin resultados");
-    }
-
-    const meta = result.meta;
-    const rawQuotes = (result.indicators?.quote?.[0]?.close as (number | null)[]) || [];
-    const quotes = rawQuotes.filter((v): v is number => typeof v === "number" && !isNaN(v));
-
-    const currentPrice = meta?.regularMarketPrice || quotes[quotes.length - 1];
-    const prevPrice = meta?.chartPreviousClose || quotes[0] || currentPrice;
-
-    if (!currentPrice || isNaN(currentPrice)) {
-      throw new Error("Precio spot de WTI inválido");
-    }
-
-    const changeUsd = Math.round((currentPrice - prevPrice) * 100) / 100;
-    const percentageChange =
-      prevPrice > 0
-        ? Math.round(((currentPrice - prevPrice) / prevPrice) * 10000) / 100
-        : 0;
-
-    const trend = changeUsd > 0 ? "up" : changeUsd < 0 ? "down" : "unchanged";
-
-    const benchmark: WtiBenchmark = {
-      priceUsd: Math.round(currentPrice * 100) / 100,
-      changeUsd,
-      percentageChange,
-      trend,
-      label: "Crudo WTI • Texas (Ref. Internacional)",
-      updatedAt: new Date().toISOString(),
-    };
-
-    try {
-      if (fs.existsSync(WTI_PATH)) {
-        fs.writeFileSync(WTI_PATH, JSON.stringify(benchmark, null, 2), "utf-8");
-      }
+      return benchmark;
     } catch {
-      // Ignorar en entornos serverless con sistema de archivos de solo lectura
+      // Probar el siguiente endpoint de respaldo
+      continue;
     }
-
-    return benchmark;
-  } catch (err) {
-    console.warn("Fallo al consultar cotización en vivo de WTI, usando caché persistente:", err);
-    return getWtiBenchmark();
   }
+
+  console.warn("Fallo en todos los endpoints remotos de WTI, sirviendo caché persistente.");
+  return getWtiBenchmark();
 }
