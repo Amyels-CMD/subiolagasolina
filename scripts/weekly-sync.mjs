@@ -72,31 +72,51 @@ async function fetchFromPressRelease() {
       .replace(/<[^>]+>/g, " ")
       .replace(/\s+/g, " ");
 
-    const marker = "dispone que los combustibles se comercialicen a los siguientes precios:";
-    const idx = cleanText.indexOf(marker);
-    if (idx === -1) return null;
+    const markerMatch = cleanText.match(
+      /(?:dispone que los combustibles se comercialicen|se comercialicen a los siguientes precios|los siguientes precios:)/i
+    );
+    if (!markerMatch || markerMatch.index === undefined) return null;
+    const idx = markerMatch.index;
 
-    const periodMatch = cleanText
-      .slice(Math.max(0, idx - 180), idx)
-      .match(/semana del (\d+) al (\d+) de ([a-záéíóú]+) de (\d{4})/i);
+    // Buscar período de la semana (soporta semana dentro del mismo mes o cruce de meses/años)
+    const context = cleanText.slice(Math.max(0, idx - 250), idx + 100);
+    const periodMatch = context.match(
+      /semana del (\d+)(?: de ([a-záéíóú]+))?(?: de (\d{4}))? al (\d+) de ([a-záéíóú]+) de (\d{4})/i
+    );
     if (!periodMatch) return null;
 
-    const [, diaDesdeStr, diaHastaStr, mesStr, anioStr] = periodMatch;
-    const diaDesde = parseInt(diaDesdeStr, 10);
-    const diaHasta = parseInt(diaHastaStr, 10);
-    const anio = parseInt(anioStr, 10);
-    const mesNum = MONTH_MAP[mesStr.toLowerCase()] || "01";
-    const mesIndex = parseInt(mesNum, 10) - 1;
+    const diaDesde = parseInt(periodMatch[1], 10);
+    const mesDesdeStr = periodMatch[2]?.toLowerCase();
+    const anioDesdeStr = periodMatch[3];
+    const diaHasta = parseInt(periodMatch[4], 10);
+    const mesHastaStr = periodMatch[5].toLowerCase();
+    const anioHasta = parseInt(periodMatch[6], 10);
 
-    const startDate = `${anio}-${mesNum}-${String(diaDesde).padStart(2, "0")}`;
-    let endMonth = mesNum;
-    let endYear = anio;
-    if (diaHasta < diaDesde) {
-      const nextMes = (mesIndex + 1) % 12;
-      endMonth = String(nextMes + 1).padStart(2, "0");
-      if (nextMes === 0) endYear = anio + 1;
-    }
-    const endDate = `${endYear}-${endMonth}-${String(diaHasta).padStart(2, "0")}`;
+    const mesHastaNum = MONTH_MAP[mesHastaStr] || "01";
+    const mesDesdeNum = mesDesdeStr
+      ? MONTH_MAP[mesDesdeStr] || mesHastaNum
+      : diaHasta < diaDesde
+      ? String(parseInt(mesHastaNum, 10) === 1 ? 12 : parseInt(mesHastaNum, 10) - 1).padStart(2, "0")
+      : mesHastaNum;
+    const anioDesde = anioDesdeStr
+      ? parseInt(anioDesdeStr, 10)
+      : diaHasta < diaDesde && !mesDesdeStr && mesHastaNum === "01"
+      ? anioHasta - 1
+      : anioHasta;
+
+    const startDate = `${anioDesde}-${mesDesdeNum}-${String(diaDesde).padStart(2, "0")}`;
+    const endDate = `${anioHasta}-${mesHastaNum}-${String(diaHasta).padStart(2, "0")}`;
+
+    const mesDesdeIndex = parseInt(mesDesdeNum, 10) - 1;
+    const mesHastaIndex = parseInt(mesHastaNum, 10) - 1;
+    const dateLabel =
+      mesDesdeNum === mesHastaNum
+        ? `${diaDesde} al ${diaHasta} de ${MONTH_NAMES[mesHastaIndex]} de ${anioHasta}`
+        : `${diaDesde} de ${MONTH_NAMES[mesDesdeIndex]} al ${diaHasta} de ${MONTH_NAMES[mesHastaIndex]} de ${anioHasta}`;
+    const shortDateLabel =
+      mesDesdeNum === mesHastaNum
+        ? `${diaDesde}-${diaHasta} ${MONTH_NAMES[mesHastaIndex].slice(0, 3).toUpperCase()}`
+        : `${diaDesde} ${MONTH_NAMES[mesDesdeIndex].slice(0, 3).toUpperCase()}-${diaHasta} ${MONTH_NAMES[mesHastaIndex].slice(0, 3).toUpperCase()}`;
 
     const priceSection = cleanText.slice(idx, idx + 1200);
 
@@ -128,9 +148,9 @@ async function fetchFromPressRelease() {
       weekNumber: iso.week,
       startDate,
       endDate,
-      dateLabel: `${diaDesde} al ${diaHasta} de ${MONTH_NAMES[mesIndex]} de ${anio}`,
-      shortDateLabel: `${diaDesde}-${diaHasta} ${MONTH_NAMES[mesIndex].slice(0, 3).toUpperCase()}`,
-      announcementDate: `${anio}-${mesNum}-${String(Math.max(1, diaDesde - 1)).padStart(2, "0")}`,
+      dateLabel,
+      shortDateLabel,
+      announcementDate: `${anioHasta}-${mesHastaNum}-${String(Math.max(1, diaDesde - 1)).padStart(2, "0")}`,
       source: "Nota de Prensa Oficial MICM",
       officialBulletinUrl: artUrl,
       prices: {
