@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { DominicanFlag } from "@/components/DominicanFlag";
 import { getBaseUrl } from "@/lib/utils/url";
+import { Analytics } from "@vercel/analytics/next";
 
 const baseUrl = getBaseUrl();
 
@@ -147,6 +148,7 @@ export default function RootLayout({
             Los datos mostrados se basan en las resoluciones oficiales emitidas conforme a la Ley 112-00 de Hidrocarburos. No constituimos una entidad gubernamental oficial.
           </div>
         </footer>
+        <Analytics />
       </body>
     </html>
   );
