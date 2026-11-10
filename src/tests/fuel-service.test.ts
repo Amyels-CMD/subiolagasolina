@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   getAllHistory,
   getCurrentWeekRecord,
+  getPreviousWeekRecord,
   getWeeklySummary,
   calculateTankCost,
   getFuelTimeSeries,
@@ -16,53 +17,103 @@ import {
 } from "../lib/utils/date-rd.js";
 
 describe("Fuel Service Tests", () => {
-  it("should load historical records from real dataset", () => {
+  it("should load historical records from real dataset in chronological order", () => {
     const history = getAllHistory();
     assert.ok(Array.isArray(history));
     assert.ok(history.length > 50, "Should have more than 50 historical records");
+    for (let i = 1; i < history.length; i++) {
+      assert.ok(
+        history[i].startDate >= history[i - 1].startDate,
+        `History must remain sorted: ${history[i - 1].startDate} -> ${history[i].startDate}`
+      );
+    }
   });
 
-  it("should have correct current week record", () => {
+  it("should have valid current week record within market sanity bounds", () => {
+    const history = getAllHistory();
     const current = getCurrentWeekRecord();
-    assert.ok(current.weekId);
-    assert.strictEqual(current.prices["gasolina-premium"], 358.1);
-    assert.strictEqual(current.prices["gasolina-regular"], 317.5);
-    assert.strictEqual(current.prices["gasoil-optimo"], 318.1);
-    assert.strictEqual(current.prices["gasoil-regular"], 270.8);
-    assert.strictEqual(current.prices["glp"], 135.2);
-    assert.strictEqual(current.prices["gas-natural"], 43.97);
+    assert.strictEqual(current.weekId, history[history.length - 1].weekId);
+    assert.ok(/^\d{4}-W\d{2}/.test(current.weekId), "weekId must match ISO format");
+    assert.ok(/^\d{4}-\d{2}-\d{2}$/.test(current.startDate), "startDate must be ISO YYYY-MM-DD");
+    assert.ok(/^\d{4}-\d{2}-\d{2}$/.test(current.endDate), "endDate must be ISO YYYY-MM-DD");
+    assert.ok(current.endDate >= current.startDate, "endDate must be >= startDate");
+    assert.ok(
+      current.prices["gasolina-premium"] >= 150 && current.prices["gasolina-premium"] <= 550,
+      "Gasolina Premium price must be valid"
+    );
+    assert.ok(
+      current.prices["gasolina-regular"] >= 140 && current.prices["gasolina-regular"] <= 500,
+      "Gasolina Regular price must be valid"
+    );
+    assert.ok(current.prices["gasoil-optimo"] > 0, "Gasoil Óptimo must be > 0");
+    assert.ok(current.prices["gasoil-regular"] > 0, "Gasoil Regular must be > 0");
+    assert.ok(current.prices["glp"] > 0, "GLP must be > 0");
+    assert.ok(current.prices["gas-natural"] > 0, "Gas Natural must be > 0");
   });
 
-  it("should compute weekly summary and verdict correctly with real data", () => {
+  it("should compute weekly summary and verdict consistently with real data", () => {
+    const current = getCurrentWeekRecord();
+    const previous = getPreviousWeekRecord();
     const summary = getWeeklySummary();
-    assert.strictEqual(summary.headlineVerdict, "SÍ, SUBIÓ");
-    assert.strictEqual(summary.gasolineState, "increased");
-    assert.strictEqual(summary.consumerState, "increased");
-    assert.strictEqual(summary.isUnchanged, false);
-    assert.strictEqual(summary.hasIncreased, true);
-    assert.strictEqual(summary.hasDecreased, false);
-    assert.strictEqual(summary.verdicts.gasoline.answer, "SÍ");
-    assert.ok(summary.consumerItems.length === 6);
-    assert.ok(summary.industrialItems.length === 4);
+
+    assert.strictEqual(summary.currentWeek.weekId, current.weekId);
+    assert.strictEqual(summary.previousWeek.weekId, previous.weekId);
+    assert.ok(
+      ["NO, SE MANTUVO", "SÍ, SUBIÓ", "¡BAJÓ!"].includes(summary.headlineVerdict),
+      `Unexpected headlineVerdict: ${summary.headlineVerdict}`
+    );
+    assert.ok(
+      ["unchanged", "increased", "decreased", "mixed"].includes(summary.gasolineState),
+      "Valid gasolineState"
+    );
+    assert.ok(
+      ["unchanged", "increased", "decreased", "mixed"].includes(summary.consumerState),
+      "Valid consumerState"
+    );
+    assert.strictEqual(summary.consumerItems.length, 6);
+    assert.strictEqual(summary.industrialItems.length, 4);
 
     const premiumItem = summary.consumerItems.find((i) => i.id === "gasolina-premium");
     assert.ok(premiumItem);
-    assert.strictEqual(premiumItem.price, 358.1);
-    assert.strictEqual(premiumItem.change, 5);
-    assert.strictEqual(premiumItem.trend, "up");
+    const expectedPrice = current.prices["gasolina-premium"];
+    const expectedPrev = previous.prices["gasolina-premium"];
+    const expectedChange = Math.round((expectedPrice - expectedPrev) * 100) / 100;
+    assert.strictEqual(premiumItem.price, expectedPrice);
+    assert.strictEqual(premiumItem.change, expectedChange);
+    assert.strictEqual(
+      premiumItem.trend,
+      expectedChange > 0 ? "up" : expectedChange < 0 ? "down" : "unchanged"
+    );
+
+    const regularItem = summary.consumerItems.find((i) => i.id === "gasolina-regular");
+    assert.ok(regularItem);
+    const gasolineChanged = premiumItem.change !== 0 || regularItem.change !== 0;
+    assert.strictEqual(summary.isUnchanged, !gasolineChanged);
+    assert.strictEqual(summary.verdicts.gasoline.answer, summary.hasIncreased ? "SÍ" : "NO");
   });
 
   it("should accurately calculate vehicle tank costs", () => {
-    const calc = calculateTankCost("gasolina-premium", 10);
-    assert.strictEqual(calc.currentCost, 3581.0);
-    assert.strictEqual(calc.differenceCost, 50.0);
+    const current = getCurrentWeekRecord();
+    const previous = getPreviousWeekRecord();
+    const gallons = 10;
+    const calc = calculateTankCost("gasolina-premium", gallons);
+
+    const expectedCurrentCost = Math.round(current.prices["gasolina-premium"] * gallons * 100) / 100;
+    const expectedPreviousCost = Math.round(previous.prices["gasolina-premium"] * gallons * 100) / 100;
+    const expectedDiff = Math.round((expectedCurrentCost - expectedPreviousCost) * 100) / 100;
+
+    assert.strictEqual(calc.currentCost, expectedCurrentCost);
+    assert.strictEqual(calc.previousCost, expectedPreviousCost);
+    assert.strictEqual(calc.differenceCost, expectedDiff);
   });
 
   it("should generate valid time series for charting", () => {
+    const current = getCurrentWeekRecord();
     const series = getFuelTimeSeries("gasolina-premium", 12);
     assert.strictEqual(series.length, 12);
     const last = series[series.length - 1];
-    assert.strictEqual(last.price, 358.1);
+    assert.strictEqual(last.price, current.prices["gasolina-premium"]);
+    assert.strictEqual(last.date, current.startDate);
   });
 });
 

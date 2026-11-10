@@ -2,9 +2,15 @@ name: Sincronización Semanal de Precios (MICM)
 
 on:
   schedule:
-    # República Dominicana: Viernes de 1:00 PM a 4:45 PM AST (17:00 a 20:45 UTC) cada 15 min
-    - cron: '*/15 17-20 * * 5'
+    # República Dominicana: Viernes de 1:00 PM a 5:45 PM AST (17:00 a 21:45 UTC) cada 15 min
+    - cron: '*/15 17-21 * * 5'
+    # Respaldo sabatino a las 8:00 AM AST (12:00 UTC) si el MICM publicó tarde o la cola falló
+    - cron: '0 12 * * 6'
   workflow_dispatch: # Permite ejecución manual desde GitHub con 1 clic
+
+concurrency:
+  group: weekly-sync-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   sync-fuel-prices:
@@ -28,8 +34,10 @@ jobs:
       - name: Ejecutar script de sincronización oficial
         run: node scripts/weekly-sync.mjs
 
-      - name: Ejecutar pruebas unitarias de integridad
-        run: npm test
+      - name: Verificar tipos y ejecutar pruebas de integridad
+        run: |
+          npx tsc --noEmit
+          npm test
 
       - name: Verificar cambios en los datos
         id: git-check
@@ -47,5 +55,5 @@ jobs:
           git config --global user.email "bot@subiolagasolina.com"
           git add src/data/fuel-history.json src/data/wti-benchmark.json
           git commit -m "chore(data): auto-update precios oficiales MICM y crudo WTI"
+          git pull --rebase origin main
           git push
-

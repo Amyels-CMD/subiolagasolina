@@ -8141,5 +8141,101 @@
       "fuel-oil-6": 183.02,
       "fuel-oil-1s": 219.67
     }
+  },
+  {
+    "weekId": "2026-W42",
+    "year": 2026,
+    "weekNumber": 42,
+    "startDate": "2026-10-17",
+    "endDate": "2026-10-23",
+    "dateLabel": "17 al 23 de octubre de 2026",
+    "shortDateLabel": "17-23 OCT",
+    "announcementDate": "2026-10-16",
+    "source": "Nota de Prensa Oficial MICM",
+    "officialBulletinUrl": "https://micm.gob.do/gobierno-congela-combustibles-7/",
+    "prices": {
+      "gasolina-premium": 358.1,
+      "gasolina-regular": 317.5,
+      "gasoil-optimo": 318.1,
+      "gasoil-regular": 270.8,
+      "glp": 135.2,
+      "gas-natural": 43.97,
+      "avtur": 352.48,
+      "kerosene": 395.8,
+      "fuel-oil-6": 192.08,
+      "fuel-oil-1s": 228.9
+    }
+  },
+  {
+    "weekId": "2026-W43",
+    "year": 2026,
+    "weekNumber": 43,
+    "startDate": "2026-10-24",
+    "endDate": "2026-10-30",
+    "dateLabel": "24 al 30 de octubre de 2026",
+    "shortDateLabel": "24-30 OCT",
+    "announcementDate": "2026-10-23",
+    "source": "Nota de Prensa Oficial MICM",
+    "officialBulletinUrl": "https://micm.gob.do/gobierno-congela-combustibles-8/",
+    "prices": {
+      "gasolina-premium": 358.1,
+      "gasolina-regular": 317.5,
+      "gasoil-optimo": 318.1,
+      "gasoil-regular": 270.8,
+      "glp": 135.2,
+      "gas-natural": 43.97,
+      "avtur": 358.66,
+      "kerosene": 402.7,
+      "fuel-oil-6": 195.87,
+      "fuel-oil-1s": 232.64
+    }
+  },
+  {
+    "weekId": "2026-W44",
+    "year": 2026,
+    "weekNumber": 44,
+    "startDate": "2026-10-31",
+    "endDate": "2026-11-06",
+    "dateLabel": "31 de octubre al 6 de noviembre de 2026",
+    "shortDateLabel": "31 OCT - 6 NOV",
+    "announcementDate": "2026-10-30",
+    "source": "Nota de Prensa Oficial MICM",
+    "officialBulletinUrl": "https://micm.gob.do/gobierno-congela-combustibles-9/",
+    "prices": {
+      "gasolina-premium": 358.1,
+      "gasolina-regular": 317.5,
+      "gasoil-optimo": 318.1,
+      "gasoil-regular": 270.8,
+      "glp": 135.2,
+      "gas-natural": 43.97,
+      "avtur": 356.82,
+      "kerosene": 400.1,
+      "fuel-oil-6": 194.56,
+      "fuel-oil-1s": 234.86
+    }
+  },
+  {
+    "weekId": "2026-W45",
+    "year": 2026,
+    "weekNumber": 45,
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-13",
+    "dateLabel": "7 al 13 de noviembre de 2026",
+    "shortDateLabel": "7-13 NOV",
+    "announcementDate": "2026-11-06",
+    "source": "Nota de Prensa Oficial MICM",
+    "officialBulletinUrl": "https://micm.gob.do/gobierno-reajusta-combustibles-premium/",
+    "prices": {
+      "gasolina-premium": 362.1,
+      "gasolina-regular": 317.5,
+      "gasoil-optimo": 322.1,
+      "gasoil-regular": 270.8,
+      "glp": 135.2,
+      "gas-natural": 43.97,
+      "avtur": 340.48,
+      "kerosene": 383,
+      "fuel-oil-6": 182.39,
+      "fuel-oil-1s": 222.41
+    }
   }
 ]
