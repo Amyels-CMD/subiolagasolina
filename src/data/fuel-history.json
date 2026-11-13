@@ -8237,5 +8237,29 @@
       "fuel-oil-6": 182.39,
       "fuel-oil-1s": 222.41
     }
+  },
+  {
+    "weekId": "2026-W46",
+    "year": 2026,
+    "weekNumber": 46,
+    "startDate": "2026-11-14",
+    "endDate": "2026-11-20",
+    "dateLabel": "14 al 20 de noviembre de 2026",
+    "shortDateLabel": "14-20 NOV",
+    "announcementDate": "2026-11-13",
+    "source": "Nota de Prensa Oficial MICM",
+    "officialBulletinUrl": "https://micm.gob.do/gobierno-congela-precios-de-los-principales-combustibles/",
+    "prices": {
+      "gasolina-premium": 362.1,
+      "gasolina-regular": 317.5,
+      "gasoil-optimo": 322.1,
+      "gasoil-regular": 270.8,
+      "glp": 135.2,
+      "gas-natural": 43.97,
+      "avtur": 333.54,
+      "kerosene": 375.6,
+      "fuel-oil-6": 170.33,
+      "fuel-oil-1s": 209.13
+    }
   }
 ]
