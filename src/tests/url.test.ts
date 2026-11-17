@@ -31,18 +31,44 @@ describe("URL Utilities and Domain Resolution", () => {
       const resolved = getBaseUrl();
       assert.strictEqual(resolved, "https://subiolagasolina.vercel.app");
     } finally {
-      process.env.VERCEL_URL = origVercelUrl;
+      if (origVercelUrl === undefined) {
+        delete process.env.VERCEL_URL;
+      } else {
+        process.env.VERCEL_URL = origVercelUrl;
+      }
     }
   });
 
-  it("should resolve VERCEL_PROJECT_PRODUCTION_URL with priority", () => {
+  it("should resolve VERCEL_PROJECT_PRODUCTION_URL when configured with a custom domain", () => {
     const origProjUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
     try {
+      process.env.VERCEL_PROJECT_PRODUCTION_URL = "www.subiolagasolina.com";
+      const resolved = getBaseUrl();
+      assert.strictEqual(resolved, "https://www.subiolagasolina.com");
+    } finally {
+      if (origProjUrl === undefined) {
+        delete process.env.VERCEL_PROJECT_PRODUCTION_URL;
+      } else {
+        process.env.VERCEL_PROJECT_PRODUCTION_URL = origProjUrl;
+      }
+    }
+  });
+
+  it("should default to PRIMARY_DOMAIN in production when Vercel provides default vercel.app", () => {
+    const origEnv = process.env.NODE_ENV;
+    const origProjUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+    try {
+      (process.env as Record<string, string>).NODE_ENV = "production";
       process.env.VERCEL_PROJECT_PRODUCTION_URL = "subiolagasolina.vercel.app";
       const resolved = getBaseUrl();
-      assert.strictEqual(resolved, "https://subiolagasolina.vercel.app");
+      assert.strictEqual(resolved, `https://${PRIMARY_DOMAIN}`);
     } finally {
-      process.env.VERCEL_PROJECT_PRODUCTION_URL = origProjUrl;
+      (process.env as Record<string, string>).NODE_ENV = origEnv || "test";
+      if (origProjUrl === undefined) {
+        delete process.env.VERCEL_PROJECT_PRODUCTION_URL;
+      } else {
+        process.env.VERCEL_PROJECT_PRODUCTION_URL = origProjUrl;
+      }
     }
   });
 

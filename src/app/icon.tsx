@@ -1,8 +1,8 @@
 import { ImageResponse } from "next/og";
 
 export const size = {
-  width: 32,
-  height: 32,
+  width: 48,
+  height: 48,
 };
 export const contentType = "image/png";
 
@@ -17,17 +17,17 @@ export default function Icon() {
           alignItems: "center",
           justifyContent: "center",
           background: "#080c14",
-          borderRadius: "8px",
-          border: "1px solid rgba(245, 158, 11, 0.4)",
+          borderRadius: "10px",
+          border: "2px solid rgba(245, 158, 11, 0.45)",
         }}
       >
         <svg
-          width="20"
-          height="20"
+          width="30"
+          height="30"
           viewBox="0 0 24 24"
           fill="none"
           stroke="#f59e0b"
-          strokeWidth="2.75"
+          strokeWidth="2.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         >

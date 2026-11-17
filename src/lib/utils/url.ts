@@ -13,7 +13,8 @@ export function normalizeUrl(urlStr: string): string {
   return trimmed;
 }
 
-export const PRIMARY_DOMAIN = "subiolagasolina.com";
+export const PRIMARY_DOMAIN = "www.subiolagasolina.com";
+export const APEX_DOMAIN = "subiolagasolina.com";
 export const VERCEL_DOMAIN = "subiolagasolina.vercel.app";
 
 export function getBaseUrl(): string {
@@ -33,15 +34,20 @@ export function getBaseUrl(): string {
   }
 
   if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
-    return normalizeUrl(process.env.VERCEL_PROJECT_PRODUCTION_URL);
-  }
-
-  if (process.env.VERCEL_URL) {
-    return normalizeUrl(process.env.VERCEL_URL);
+    const prodUrl = normalizeUrl(process.env.VERCEL_PROJECT_PRODUCTION_URL);
+    // Only use VERCEL_PROJECT_PRODUCTION_URL if it's already a custom domain (not default vercel.app)
+    if (!prodUrl.includes("vercel.app") && prodUrl !== "https://undefined") {
+      return prodUrl;
+    }
   }
 
   if (isProd) {
     return `https://${PRIMARY_DOMAIN}`;
+  }
+
+  const vercelUrl = process.env.VERCEL_URL;
+  if (vercelUrl && vercelUrl !== "undefined") {
+    return normalizeUrl(vercelUrl);
   }
 
   return "http://localhost:3000";
