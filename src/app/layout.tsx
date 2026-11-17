@@ -130,12 +130,6 @@ export default function RootLayout({
                 Portal Nacional de Datos Abiertos
               </a>
               <a
-                href="#apoyar"
-                className="hover:text-amber-300 text-amber-400 font-semibold transition-colors flex items-center gap-1"
-              >
-                <span>Invítame un galón ⛽</span>
-              </a>
-              <a
                 href="/api/prices"
                 className="hover:text-blue-400 transition-colors font-mono"
               >

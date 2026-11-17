@@ -6,7 +6,6 @@ import { EvolutionChart } from "@/components/EvolutionChart";
 import { TankCalculator } from "@/components/TankCalculator";
 import { HistoricalTable } from "@/components/HistoricalTable";
 import { FaqSection } from "@/components/FaqSection";
-import { FuelSupportSection } from "@/components/FuelSupportSection";
 import { QuickFactsSummary } from "@/components/QuickFactsSummary";
 import { JsonLd } from "@/components/JsonLd";
 
@@ -44,12 +43,6 @@ export default async function HomePage() {
 
       {/* SEO FAQ & Dominican Guide */}
       <FaqSection />
-
-      {/* Buy Me a Coffee / Invítame un Galón */}
-      <FuelSupportSection
-        premiumPrice={summary.currentWeek.prices["gasolina-premium"]}
-        regularPrice={summary.currentWeek.prices["gasolina-regular"]}
-      />
     </>
   );
 }
