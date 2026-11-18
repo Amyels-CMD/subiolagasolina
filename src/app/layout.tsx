@@ -61,6 +61,17 @@ export const metadata: Metadata = {
       "application/feed+json": `${baseUrl}/feed.json`,
     },
   },
+  icons: {
+    icon: [
+      { url: "/icon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/icon-96.png", sizes: "96x96", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+  },
   robots: {
     index: true,
     follow: true,
@@ -103,10 +114,20 @@ export default function RootLayout({
         <footer className="w-full border-t border-white/10 bg-[#06090f] py-12 px-4 sm:px-6 mt-16 text-xs text-slate-400">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
             <div>
-              <p className="font-bold text-white text-sm flex items-center gap-1.5 justify-center md:justify-start">
-                <span>subiólagasolina</span>
-                <DominicanFlag className="w-4 h-3 rounded-[1px] shadow-sm" />
-              </p>
+              <div className="flex items-center gap-2 justify-center md:justify-start">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/icon-96.png"
+                  alt="subiólagasolina logo"
+                  width={22}
+                  height={22}
+                  className="rounded-md border border-white/10 shrink-0"
+                />
+                <p className="font-bold text-white text-sm flex items-center gap-1.5">
+                  <span>subiólagasolina</span>
+                  <DominicanFlag className="w-4 h-3 rounded-[1px] shadow-sm" />
+                </p>
+              </div>
               <p className="text-slate-500 mt-1">
                 La forma más simple y rápida de consultar combustibles en República Dominicana.
               </p>

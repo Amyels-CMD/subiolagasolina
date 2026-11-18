@@ -30,7 +30,7 @@ export function JsonLd({ summary }: JsonLdProps) {
       "@type": "Organization",
       name: "subiólagasolina",
       url: baseUrl,
-      logo: `${baseUrl}/icon`,
+      logo: `${baseUrl}/logo.png`,
     },
     temporalCoverage: "2020/..",
     spatialCoverage: {
@@ -102,7 +102,7 @@ export function JsonLd({ summary }: JsonLdProps) {
       "@type": "Organization",
       name: "subiólagasolina",
       url: baseUrl,
-      logo: `${baseUrl}/icon`,
+      logo: `${baseUrl}/logo.png`,
     },
     potentialAction: {
       "@type": "SearchAction",

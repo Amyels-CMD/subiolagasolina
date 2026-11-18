@@ -1,5 +1,5 @@
 import React from "react";
-import { Fuel, ShieldCheck } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 import { DominicanFlag } from "@/components/DominicanFlag";
 
 export function NavbarHeader() {
@@ -8,9 +8,14 @@ export function NavbarHeader() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         {/* Brand */}
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/20 text-white">
-            <Fuel className="w-5 h-5" />
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/icon-96.png"
+            alt="subiólagasolina logo"
+            width={40}
+            height={40}
+            className="rounded-xl border border-white/10 shadow-lg shadow-amber-500/10 shrink-0"
+          />
           <div>
             <div className="flex items-center gap-2">
               <span className="font-black text-lg tracking-tight text-white">

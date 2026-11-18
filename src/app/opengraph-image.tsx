@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import { ImageResponse } from "next/og";
 import { getWeeklySummary } from "@/lib/services/fuel-service";
 import { formatCurrency } from "@/lib/utils/format";
@@ -12,9 +14,23 @@ export const size = {
 
 export const contentType = "image/png";
 
+// Load the official logo mark as base64 for embedding in OpenGraph card
+function getLogoBase64(): string {
+  try {
+    const p = path.join(process.cwd(), "public", "icon-512.png");
+    if (fs.existsSync(p)) {
+      return `data:image/png;base64,${fs.readFileSync(p).toString("base64")}`;
+    }
+  } catch {
+    // fallback if filesystem access fails
+  }
+  return "";
+}
+
 export default function Image() {
   const summary = getWeeklySummary();
   const { currentWeek, headlineVerdict, badgeTone } = summary;
+  const logoBase64 = getLogoBase64();
 
   const premiumPrice = currentWeek.prices["gasolina-premium"];
   const regularPrice = currentWeek.prices["gasolina-regular"];
@@ -51,8 +67,8 @@ export default function Image() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          padding: "60px 70px",
-          background: "linear-gradient(145deg, #070b14 0%, #0d1527 60%, #080c16 100%)",
+          padding: "54px 64px",
+          background: "linear-gradient(145deg, #050811 0%, #0a1122 55%, #050812 100%)",
           fontFamily: "system-ui, -apple-system, sans-serif",
           color: "#ffffff",
         }}
@@ -66,26 +82,39 @@ export default function Image() {
             width: "100%",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-            <div
-              style={{
-                width: "48px",
-                height: "48px",
-                borderRadius: "14px",
-                background: "rgba(245, 158, 11, 0.15)",
-                border: "1.5px solid rgba(245, 158, 11, 0.35)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "26px",
-              }}
-            >
-              ⛽
-            </div>
+          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+            {logoBase64 ? (
+              <img
+                src={logoBase64}
+                width="54"
+                height="54"
+                style={{
+                  borderRadius: "14px",
+                  border: "2px solid rgba(245, 158, 11, 0.45)",
+                  boxShadow: "0 6px 20px rgba(0, 0, 0, 0.6)",
+                }}
+              />
+            ) : (
+              <div
+                style={{
+                  width: "54px",
+                  height: "54px",
+                  borderRadius: "14px",
+                  background: "rgba(245, 158, 11, 0.15)",
+                  border: "1.5px solid rgba(245, 158, 11, 0.35)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "28px",
+                }}
+              >
+                ⛽
+              </div>
+            )}
             <div style={{ display: "flex", flexDirection: "column" }}>
               <span
                 style={{
-                  fontSize: "30px",
+                  fontSize: "32px",
                   fontWeight: 900,
                   letterSpacing: "-0.5px",
                   color: "#ffffff",
@@ -101,73 +130,111 @@ export default function Image() {
 
           <div
             style={{
-              padding: "10px 20px",
+              padding: "10px 22px",
               borderRadius: "999px",
-              background: "rgba(255, 255, 255, 0.05)",
-              border: "1px solid rgba(255, 255, 255, 0.12)",
+              background: "rgba(255, 255, 255, 0.06)",
+              border: "1px solid rgba(255, 255, 255, 0.15)",
               fontSize: "16px",
-              color: "#cbd5e1",
-              fontWeight: 600,
+              color: "#e2e8f0",
+              fontWeight: 700,
             }}
           >
             {currentWeek.dateLabel}
           </div>
         </div>
 
-        {/* Center: Verdict Banner */}
+        {/* Center: Verdict Banner with Official Brand Emblem */}
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-            gap: "14px",
-            margin: "24px 0",
+            alignItems: "center",
+            justifyContent: "space-between",
+            width: "100%",
+            margin: "16px 0",
           }}
         >
           <div
             style={{
-              padding: "12px 24px",
-              borderRadius: "16px",
-              background: verdictBg,
-              border: `1.5px solid ${verdictBorder}`,
               display: "flex",
-              alignItems: "center",
-              gap: "12px",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              gap: "14px",
+              maxWidth: "780px",
             }}
           >
             <div
               style={{
-                width: "12px",
-                height: "12px",
-                borderRadius: "999px",
-                background: verdictColor,
-              }}
-            />
-            <span
-              style={{
-                fontSize: "22px",
-                fontWeight: 800,
-                color: verdictColor,
-                letterSpacing: "0.5px",
-                textTransform: "uppercase",
+                padding: "12px 26px",
+                borderRadius: "16px",
+                background: verdictBg,
+                border: `1.5px solid ${verdictBorder}`,
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
               }}
             >
-              {headlineVerdict}
-            </span>
+              <div
+                style={{
+                  width: "14px",
+                  height: "14px",
+                  borderRadius: "999px",
+                  background: verdictColor,
+                  boxShadow: `0 0 12px ${verdictColor}`,
+                }}
+              />
+              <span
+                style={{
+                  fontSize: "24px",
+                  fontWeight: 900,
+                  color: verdictColor,
+                  letterSpacing: "0.5px",
+                  textTransform: "uppercase",
+                }}
+              >
+                {headlineVerdict}
+              </span>
+            </div>
+
+            <h1
+              style={{
+                fontSize: "46px",
+                fontWeight: 900,
+                lineHeight: 1.12,
+                color: "#ffffff",
+                margin: 0,
+                letterSpacing: "-1px",
+              }}
+            >
+              Precios Oficiales de Combustibles
+            </h1>
           </div>
 
-          <h1
-            style={{
-              fontSize: "46px",
-              fontWeight: 900,
-              lineHeight: 1.15,
-              color: "#ffffff",
-              margin: 0,
-              letterSpacing: "-1px",
-            }}
-          >
-            Precios Oficiales de Combustibles
-          </h1>
+          {/* Right Emblem Badge with glowing border */}
+          {logoBase64 ? (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "136px",
+                height: "136px",
+                borderRadius: "26px",
+                background: "#03051c",
+                border: "2px solid rgba(245, 158, 11, 0.45)",
+                boxShadow: "0 12px 32px rgba(0, 0, 0, 0.8), 0 0 40px rgba(245, 158, 11, 0.15)",
+                padding: "8px",
+              }}
+            >
+              <img
+                src={logoBase64}
+                width="116"
+                height="116"
+                style={{
+                  borderRadius: "18px",
+                }}
+              />
+            </div>
+          ) : null}
         </div>
 
         {/* Key Prices 3-Card Strip */}
@@ -277,7 +344,7 @@ export default function Image() {
             justifyContent: "space-between",
             width: "100%",
             borderTop: "1px solid rgba(255, 255, 255, 0.08)",
-            paddingTop: "20px",
+            paddingTop: "18px",
             fontSize: "14px",
             color: "#64748b",
           }}

@@ -49,7 +49,15 @@ export function HeroVerdict({ summary }: HeroVerdictProps) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Top brand & official source bar */}
         <div className="flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm font-semibold text-slate-300 mb-6 sm:mb-8 pb-3 border-b border-white/5">
-          <div className="flex items-center gap-1.5 shrink-0">
+          <div className="flex items-center gap-2 shrink-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/icon-96.png"
+              alt="subiólagasolina logo"
+              width={26}
+              height={26}
+              className="rounded-md border border-white/10 shrink-0 shadow-sm"
+            />
             <span className="font-black text-white tracking-tight text-base sm:text-lg">
               subiólagasolina
             </span>
